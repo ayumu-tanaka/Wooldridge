@@ -105,7 +105,8 @@ $$ t_{\hat{\beta}_j} = \frac{\hat{\beta}_j}{\text{se}(\hat{\beta}_j)} $$
 ```{r, echo=TRUE}
 data(meap93)
 # 支出を対数変換してモデル化
-model_meap <- lm(math10 ~ log(expend) + lnchprg, data = meap93)
+model_meap <- lm(math10 ~ log(expend) + lnchprg, 
+                 data = meap93)
 ```
 
 ---

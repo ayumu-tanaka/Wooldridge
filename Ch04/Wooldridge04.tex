@@ -293,7 +293,8 @@ t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(meap93)}
 \CommentTok{\# 支出を対数変換してモデル化}
-\NormalTok{model\_meap }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(math10 }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(expend) }\SpecialCharTok{+}\NormalTok{ lnchprg, }\AttributeTok{data =}\NormalTok{ meap93)}
+\NormalTok{model\_meap }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(math10 }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(expend) }\SpecialCharTok{+}\NormalTok{ lnchprg, }
+                 \AttributeTok{data =}\NormalTok{ meap93)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
