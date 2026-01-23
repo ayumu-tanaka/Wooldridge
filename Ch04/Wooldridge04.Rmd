@@ -1,0 +1,237 @@
+---
+title: |
+    | 第4章: 多重回帰分析：推論
+subtitle: |
+    | Jeffrey Wooldridge (2016).
+    | Introductory Econometrics: A Modern Approach 
+    | 6rd ed. Cengage Learning.
+author: "資料作成: 田中 鮎夢"
+date: "2026-01-23"
+output:
+  beamer_presentation:
+    theme: Montpellier
+    # theme: null
+    latex_engine: lualatex
+    keep_tex: true
+    includes:
+      in_header: ../Ch19/header_beamer.tex
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+# install.packages("wooldridge") # wooldridgeパッケージが未インストールの場合は実行
+library(wooldridge)
+```
+
+
+# 準備
+
+## 必要なパッケージの読み込み
+
+* `wooldridge`パッケージの読み込み
+
+```r
+library(wooldridge)
+```
+
+* `car`パッケージ（仮説検定用）の読み込み（オプション）
+
+```r
+# install.packages("car")
+library(car)
+```
+
+# 4-1 古典的線形回帰モデルの仮定
+
+---
+
+## 誤差項の正規性の仮定 (MLR.6)
+
+- これまでのガウス・マルコフの仮定（MLR.1 ~ MLR.5）に加えて、推論（検定）を行うためには、誤差項 $u$ の分布に関する仮定が必要となる。
+
+**仮定 MLR.6 (正規性)**
+誤差項 $u$ は、説明変数 $x_1, x_2, \dots, x_k$ とは独立であり、平均0、分散 $\sigma^2$ の正規分布に従う。
+
+$$ u \sim \text{Normal}(0, \sigma^2) $$
+
+- この仮定の下で、OLS推定量 $\hat{\beta}_j$ もまた正規分布に従う。
+
+$$ \hat{\beta}_j \sim \text{Normal}(\beta_j, \text{Var}(\hat{\beta}_j)) $$
+
+# 4-2 t検定：単一の母集団パラメータに関する検定
+
+---
+
+## t統計量（1）
+
+- 特定のパラメータ $\beta_j$ に関する仮説検定を行うために、標準化を行う。
+
+$$ \frac{\hat{\beta}_j - \beta_j}{\text{sd}(\hat{\beta}_j)} \sim \text{Normal}(0, 1) $$
+
+---
+
+## t統計量（2）
+
+- しかし、標準偏差 $\text{sd}(\hat{\beta}_j)$ は未知の $\sigma$ に依存するため、推定値である標準誤差 $\text{se}(\hat{\beta}_j)$ で置き換える。これにより、分布はt分布となる。
+
+$$ t = \frac{\hat{\beta}_j - \beta_j}{\text{se}(\hat{\beta}_j)} \sim t_{n-k-1} $$
+
+- $n$: サンプルサイズ、$k$: 説明変数の数、$n-k-1$: 自由度 (df)
+
+---
+
+## 帰無仮説と対立仮説
+
+- 最も一般的な検定は、変数が従属変数に影響を与えないという帰無仮説である。
+
+$$ H_0: \beta_j = 0 $$
+
+- 対立仮説（両側検定の場合）：
+
+$$ H_1: \beta_j \neq 0 $$
+
+- この $H_0$ の下でのt統計量（t値）は以下のようになる。
+
+$$ t_{\hat{\beta}_j} = \frac{\hat{\beta}_j}{\text{se}(\hat{\beta}_j)} $$
+
+---
+
+## Rによる実装例 (`meap93`)
+
+- ミシガン州の学校データ (`meap93`) を用いて、数学の合格率 (`math10`) を、支出 (`expend`) と 昼食補助受給率 (`lnchprg`) で説明するモデル。
+
+```{r, echo=TRUE}
+data(meap93)
+# 支出を対数変換してモデル化
+model_meap <- lm(math10 ~ log(expend) + lnchprg, data = meap93)
+```
+
+---
+
+## Rによるt検定の結果表示
+
+
+\scriptsize
+
+```{r, echo=TRUE}
+# 結果の要約（t値を含む）
+summary(model_meap)$coefficients
+```
+
+---
+
+## t検定の結果解釈
+
+- `log(expend)` の推定係数は $11.16$、標準誤差は $3.17$。
+- t値は $11.16 / 3.17 \approx 3.52$。
+- 自由度 $408 - 2 - 1 = 405$ のt分布において、3.52は非常に稀な値（棄却域に入る）。
+- したがって、$H_0: \beta_{\log(expend)} = 0$ は棄却され、支出は数学の合格率に有意な正の影響を与えると結論付けられる。
+
+# 4-3 p値と信頼区間
+
+---
+
+## p値 (p-value)
+
+- **p値**とは、帰無仮説が正しいとした場合に、観測されたt値（の絶対値）以上の値が得られる確率のこと。
+- p値が有意水準（例: $\alpha = 0.05$）より小さければ、$H_0$ を棄却する。
+    - $p < 0.05$: 5%水準で統計的に有意
+    - $p < 0.01$: 1%水準で統計的に有意
+
+- 先ほどの例では、`log(expend)` のp値 (`Pr(>|t|)`) は `0.00048` であり、非常に小さい。
+
+---
+
+## 信頼区間 (Confidence Interval)
+
+- パラメータ $\beta_j$ の真の値が含まれると期待される範囲。
+- 95%信頼区間の構成：
+
+$$ \hat{\beta}_j \pm c \cdot \text{se}(\hat{\beta}_j) $$
+
+- ここで $c$ は $t_{n-k-1}$ 分布の $97.5$ パーセンタイル点（自由度が大きければ約1.96）。
+
+## Rによる信頼区間の計算例
+
+```{r, echo=TRUE}
+# 95%信頼区間の計算
+confint(model_meap)
+```
+
+# 4-4 F検定：複数の線形制約の検定
+
+---
+
+## 複数の仮説の同時検定
+
+- 複数の変数が**同時に**意味を持たないかどうかを検定したい場合がある。
+- 例：野球選手の年俸モデルにおいて、成績に関する変数群（打率、ホームラン数、打点）がすべて無関係か？
+
+$$ H_0: \beta_{\text{batavg}} = 0, \beta_{\text{hruns}} = 0, \beta_{\text{rbis}} = 0 $$
+
+- 対立仮説 $H_1$: 少なくとも一つの $\beta$ は0ではない。
+- この場合、個々のt検定を見るだけでは不十分であり、**F検定**を用いる必要がある。
+
+---
+
+## F統計量
+
+- **制約なしモデル** (Unrestricted Model: UR) と、制約（$H_0$）を課した**制約付きモデル** (Restricted Model: R) のSSR（残差二乗和）を比較する。
+
+$$ F = \frac{(\text{SSR}_r - \text{SSR}_{ur}) / q}{\text{SSR}_{ur} / (n - k - 1)} $$
+
+- $q$: 制約の数（$H_0$ で0とするパラメータの数）
+- $n-k-1$: 制約なしモデルの自由度
+- $H_0$ が正しい場合、SSRはあまり増加しないはずである。F値が大きければ $H_0$ を棄却する。
+
+---
+
+## RによるF検定の実装例 (`mlb1`)
+
+- メジャーリーグの選手データ (`mlb1`)。
+
+```{r, echo=TRUE}
+data(mlb1)
+# 制約なしモデル
+model_ur <- lm(log(salary) ~ years + gamesyr + bavg + 
+               hrunsyr + rbisyr, data = mlb1)
+# 制約付きモデル (成績変数をすべて除外)
+model_r <- lm(log(salary) ~ years + gamesyr, data = mlb1)
+```
+
+---
+
+## `anova`関数による比較
+
+```{r, echo=TRUE}
+# F検定の実行
+anova(model_r, model_ur)
+```
+
+- 出力結果の `F` 値と `Pr(>F)` を確認する。
+- p値が非常に小さければ、成績変数はグループとして統計的に有意である。
+
+---
+
+## モデル全体の有意性検定
+
+- 通常の `summary()` 出力の最後にある `F-statistic` は、すべての独立変数（切片以外）が0であるという帰無仮説に対する検定結果である。
+
+$$ H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0 $$
+
+- これにより、モデル全体として説明力があるかどうかを判断できる。
+
+# まとめ
+
+---
+
+## まとめ
+
+- **正規性の仮定** (MLR.6) の下で、t検定やF検定が可能になる。
+- **t検定**: 個々の変数の統計的有意性を判断する。t値とp値を確認する。
+- **信頼区間**: パラメータの真の値が含まれる範囲を推定する。
+- **F検定**: 複数の変数（または線形制約）がグループとして有意かどうかを判断する。
+- 統計的有意性（p値が小さい）と、経済的（実質的）重要性は区別する必要がある。サンプルサイズが大きいと、実質的に意味のない小さな効果でも統計的に有意になることがある。
+

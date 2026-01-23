@@ -1,0 +1,537 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語を使う場合は必須
+%\usepackage[japanese]{babel}	
+%\usefonttheme[onlymath]{serif}
+%\usepackage[T1]{fontenc} %これを使うと、ギリシャ文字が出ない
+%\usepackage{textcomp}
+%\usepackage[scale=1.0]{tgheros} % Sans serif font
+%\usepackage[scaled]{beramono} % Monospace font
+%\usepackage{luatexja-otf}
+%\renewcommand{\kanjifamilydefault}{\gtdefault}
+%\usepackage[haranoaji]{luatexja-preset}
+
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} \hspace*{2ex} % new version without total frames
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdfauthor={資料作成: 田中 鮎夢},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第4章: 多重回帰分析：推論}
+\subtitle{Jeffrey Wooldridge (2016).\\
+Introductory Econometrics: A Modern Approach\\
+6rd ed.~Cengage Learning.}
+\author{資料作成: 田中 鮎夢}
+\date{2026-01-23}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{準備}\label{ux6e96ux5099}
+
+\begin{frame}[fragile]{必要なパッケージの読み込み}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wooldridge}パッケージの読み込み
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(wooldridge)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{car}パッケージ（仮説検定用）の読み込み（オプション）
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("car")}
+\FunctionTok{library}\NormalTok{(car)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\section{4-1
+古典的線形回帰モデルの仮定}\label{ux53e4ux5178ux7684ux7ddaux5f62ux56deux5e30ux30e2ux30c7ux30ebux306eux4eeeux5b9a}
+
+\begin{frame}{誤差項の正規性の仮定 (MLR.6)}
+\phantomsection\label{ux8aa4ux5deeux9805ux306eux6b63ux898fux6027ux306eux4eeeux5b9a-mlr.6}
+\begin{itemize}
+\tightlist
+\item
+  これまでのガウス・マルコフの仮定（MLR.1 \textasciitilde{}
+  MLR.5）に加えて、推論（検定）を行うためには、誤差項 \(u\)
+  の分布に関する仮定が必要となる。
+\end{itemize}
+
+\textbf{仮定 MLR.6 (正規性)} 誤差項 \(u\) は、説明変数
+\(x_1, x_2, \dots, x_k\) とは独立であり、平均0、分散 \(\sigma^2\)
+の正規分布に従う。
+
+\[ u \sim \text{Normal}(0, \sigma^2) \]
+
+\begin{itemize}
+\tightlist
+\item
+  この仮定の下で、OLS推定量 \(\hat{\beta}_j\) もまた正規分布に従う。
+\end{itemize}
+
+\[ \hat{\beta}_j \sim \text{Normal}(\beta_j, \text{Var}(\hat{\beta}_j)) \]
+\end{frame}
+
+\section{4-2
+t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b9aux5358ux4e00ux306eux6bcdux96c6ux56e3ux30d1ux30e9ux30e1ux30fcux30bfux306bux95a2ux3059ux308bux691cux5b9a}
+
+\begin{frame}{t統計量（1）}
+\phantomsection\label{tux7d71ux8a08ux91cf1}
+\begin{itemize}
+\tightlist
+\item
+  特定のパラメータ \(\beta_j\)
+  に関する仮説検定を行うために、標準化を行う。
+\end{itemize}
+
+\[ \frac{\hat{\beta}_j - \beta_j}{\text{sd}(\hat{\beta}_j)} \sim \text{Normal}(0, 1) \]
+\end{frame}
+
+\begin{frame}{t統計量（2）}
+\phantomsection\label{tux7d71ux8a08ux91cf2}
+\begin{itemize}
+\tightlist
+\item
+  しかし、標準偏差 \(\text{sd}(\hat{\beta}_j)\) は未知の \(\sigma\)
+  に依存するため、推定値である標準誤差 \(\text{se}(\hat{\beta}_j)\)
+  で置き換える。これにより、分布はt分布となる。
+\end{itemize}
+
+\[ t = \frac{\hat{\beta}_j - \beta_j}{\text{se}(\hat{\beta}_j)} \sim t_{n-k-1} \]
+
+\begin{itemize}
+\tightlist
+\item
+  \(n\): サンプルサイズ、\(k\): 説明変数の数、\(n-k-1\): 自由度 (df)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{帰無仮説と対立仮説}
+\phantomsection\label{ux5e30ux7121ux4eeeux8aacux3068ux5bfeux7acbux4eeeux8aac}
+\begin{itemize}
+\tightlist
+\item
+  最も一般的な検定は、変数が従属変数に影響を与えないという帰無仮説である。
+\end{itemize}
+
+\[ H_0: \beta_j = 0 \]
+
+\begin{itemize}
+\tightlist
+\item
+  対立仮説（両側検定の場合）：
+\end{itemize}
+
+\[ H_1: \beta_j \neq 0 \]
+
+\begin{itemize}
+\tightlist
+\item
+  この \(H_0\) の下でのt統計量（t値）は以下のようになる。
+\end{itemize}
+
+\[ t_{\hat{\beta}_j} = \frac{\hat{\beta}_j}{\text{se}(\hat{\beta}_j)} \]
+\end{frame}
+
+\begin{frame}[fragile]{Rによる実装例 (\texttt{meap93})}
+\phantomsection\label{rux306bux3088ux308bux5b9fux88c5ux4f8b-meap93}
+\begin{itemize}
+\tightlist
+\item
+  ミシガン州の学校データ (\texttt{meap93}) を用いて、数学の合格率
+  (\texttt{math10}) を、支出 (\texttt{expend}) と 昼食補助受給率
+  (\texttt{lnchprg}) で説明するモデル。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(meap93)}
+\CommentTok{\# 支出を対数変換してモデル化}
+\NormalTok{model\_meap }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(math10 }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(expend) }\SpecialCharTok{+}\NormalTok{ lnchprg, }\AttributeTok{data =}\NormalTok{ meap93)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Rによるt検定の結果表示}
+\phantomsection\label{rux306bux3088ux308btux691cux5b9aux306eux7d50ux679cux8868ux793a}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 結果の要約（t値を含む）}
+\FunctionTok{summary}\NormalTok{(model\_meap)}\SpecialCharTok{$}\NormalTok{coefficients}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Estimate  Std. Error    t value     Pr(>|t|)
+## (Intercept) -20.3608165 25.07287437 -0.8120655 4.172311e-01
+## log(expend)   6.2296983  2.97263426  2.0956827 3.673061e-02
+## lnchprg      -0.3045853  0.03535742 -8.6144670 1.587327e-16
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{t検定の結果解釈}
+\phantomsection\label{tux691cux5b9aux306eux7d50ux679cux89e3ux91c8}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{log(expend)} の推定係数は \(11.16\)、標準誤差は \(3.17\)。
+\item
+  t値は \(11.16 / 3.17 \approx 3.52\)。
+\item
+  自由度 \(408 - 2 - 1 = 405\)
+  のt分布において、3.52は非常に稀な値（棄却域に入る）。
+\item
+  したがって、\(H_0: \beta_{\log(expend)} = 0\)
+  は棄却され、支出は数学の合格率に有意な正の影響を与えると結論付けられる。
+\end{itemize}
+\end{frame}
+
+\section{4-3 p値と信頼区間}\label{pux5024ux3068ux4fe1ux983cux533aux9593}
+
+\begin{frame}[fragile]{p値 (p-value)}
+\phantomsection\label{pux5024-p-value}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{p値}とは、帰無仮説が正しいとした場合に、観測されたt値（の絶対値）以上の値が得られる確率のこと。
+\item
+  p値が有意水準（例: \(\alpha = 0.05\)）より小さければ、\(H_0\)
+  を棄却する。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(p < 0.05\): 5\%水準で統計的に有意
+  \item
+    \(p < 0.01\): 1\%水準で統計的に有意
+  \end{itemize}
+\item
+  先ほどの例では、\texttt{log(expend)} のp値
+  (\texttt{Pr(\textgreater{}\textbar{}t\textbar{})}) は \texttt{0.00048}
+  であり、非常に小さい。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{信頼区間 (Confidence Interval)}
+\phantomsection\label{ux4fe1ux983cux533aux9593-confidence-interval}
+\begin{itemize}
+\tightlist
+\item
+  パラメータ \(\beta_j\) の真の値が含まれると期待される範囲。
+\item
+  95\%信頼区間の構成：
+\end{itemize}
+
+\[ \hat{\beta}_j \pm c \cdot \text{se}(\hat{\beta}_j) \]
+
+\begin{itemize}
+\tightlist
+\item
+  ここで \(c\) は \(t_{n-k-1}\) 分布の \(97.5\)
+  パーセンタイル点（自由度が大きければ約1.96）。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Rによる信頼区間の計算例}
+\phantomsection\label{rux306bux3088ux308bux4fe1ux983cux533aux9593ux306eux8a08ux7b97ux4f8b}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 95\%信頼区間の計算}
+\FunctionTok{confint}\NormalTok{(model\_meap)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   2.5 %     97.5 %
+## (Intercept) -69.6500430 28.9284100
+## log(expend)   0.3859788 12.0734177
+## lnchprg      -0.3740923 -0.2350783
+\end{verbatim}
+\end{frame}
+
+\section{4-4
+F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eux7ddaux5f62ux5236ux7d04ux306eux691cux5b9a}
+
+\begin{frame}{複数の仮説の同時検定}
+\phantomsection\label{ux8907ux6570ux306eux4eeeux8aacux306eux540cux6642ux691cux5b9a}
+\begin{itemize}
+\tightlist
+\item
+  複数の変数が\textbf{同時に}意味を持たないかどうかを検定したい場合がある。
+\item
+  例：野球選手の年俸モデルにおいて、成績に関する変数群（打率、ホームラン数、打点）がすべて無関係か？
+\end{itemize}
+
+\[ H_0: \beta_{\text{batavg}} = 0, \beta_{\text{hruns}} = 0, \beta_{\text{rbis}} = 0 \]
+
+\begin{itemize}
+\tightlist
+\item
+  対立仮説 \(H_1\): 少なくとも一つの \(\beta\) は0ではない。
+\item
+  この場合、個々のt検定を見るだけでは不十分であり、\textbf{F検定}を用いる必要がある。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{F統計量}
+\phantomsection\label{fux7d71ux8a08ux91cf}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{制約なしモデル} (Unrestricted Model: UR)
+  と、制約（\(H_0\)）を課した\textbf{制約付きモデル} (Restricted Model:
+  R) のSSR（残差二乗和）を比較する。
+\end{itemize}
+
+\[ F = \frac{(\text{SSR}_r - \text{SSR}_{ur}) / q}{\text{SSR}_{ur} / (n - k - 1)} \]
+
+\begin{itemize}
+\tightlist
+\item
+  \(q\): 制約の数（\(H_0\) で0とするパラメータの数）
+\item
+  \(n-k-1\): 制約なしモデルの自由度
+\item
+  \(H_0\) が正しい場合、SSRはあまり増加しないはずである。F値が大きければ
+  \(H_0\) を棄却する。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{RによるF検定の実装例 (\texttt{mlb1})}
+\phantomsection\label{rux306bux3088ux308bfux691cux5b9aux306eux5b9fux88c5ux4f8b-mlb1}
+\begin{itemize}
+\tightlist
+\item
+  メジャーリーグの選手データ (\texttt{mlb1})。
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(mlb1)}
+\CommentTok{\# 制約なしモデル}
+\NormalTok{model\_ur }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(salary) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ years }\SpecialCharTok{+}\NormalTok{ gamesyr }\SpecialCharTok{+}\NormalTok{ bavg }\SpecialCharTok{+} 
+\NormalTok{               hrunsyr }\SpecialCharTok{+}\NormalTok{ rbisyr, }\AttributeTok{data =}\NormalTok{ mlb1)}
+\CommentTok{\# 制約付きモデル (成績変数をすべて除外)}
+\NormalTok{model\_r }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(salary) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ years }\SpecialCharTok{+}\NormalTok{ gamesyr, }\AttributeTok{data =}\NormalTok{ mlb1)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{anova}関数による比較}
+\phantomsection\label{anovaux95a2ux6570ux306bux3088ux308bux6bd4ux8f03}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# F検定の実行}
+\FunctionTok{anova}\NormalTok{(model\_r, model\_ur)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Model 1: log(salary) ~ years + gamesyr
+## Model 2: log(salary) ~ years + gamesyr + bavg + hrunsyr + rbisyr
+##   Res.Df    RSS Df Sum of Sq      F    Pr(>F)    
+## 1    350 198.31                                  
+## 2    347 183.19  3    15.125 9.5503 4.474e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  出力結果の \texttt{F} 値と \texttt{Pr(\textgreater{}F)} を確認する。
+\item
+  p値が非常に小さければ、成績変数はグループとして統計的に有意である。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{モデル全体の有意性検定}
+\phantomsection\label{ux30e2ux30c7ux30ebux5168ux4f53ux306eux6709ux610fux6027ux691cux5b9a}
+\begin{itemize}
+\tightlist
+\item
+  通常の \texttt{summary()} 出力の最後にある \texttt{F-statistic}
+  は、すべての独立変数（切片以外）が0であるという帰無仮説に対する検定結果である。
+\end{itemize}
+
+\[ H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0 \]
+
+\begin{itemize}
+\tightlist
+\item
+  これにより、モデル全体として説明力があるかどうかを判断できる。
+\end{itemize}
+\end{frame}
+
+\section{まとめ}\label{ux307eux3068ux3081}
+
+\begin{frame}{まとめ}
+\phantomsection\label{ux307eux3068ux3081-1}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{正規性の仮定} (MLR.6) の下で、t検定やF検定が可能になる。
+\item
+  \textbf{t検定}:
+  個々の変数の統計的有意性を判断する。t値とp値を確認する。
+\item
+  \textbf{信頼区間}: パラメータの真の値が含まれる範囲を推定する。
+\item
+  \textbf{F検定}:
+  複数の変数（または線形制約）がグループとして有意かどうかを判断する。
+\item
+  統計的有意性（p値が小さい）と、経済的（実質的）重要性は区別する必要がある。サンプルサイズが大きいと、実質的に意味のない小さな効果でも統計的に有意になることがある。
+\end{itemize}
+\end{frame}
+
+\end{document}
