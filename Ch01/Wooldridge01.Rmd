@@ -1,0 +1,236 @@
+---
+title: |
+    | 第1章: 計量経済学と経済データの性質
+subtitle: |
+    | Jeffrey Wooldridge (2016).
+    | Introductory Econometrics: A Modern Approach 
+    | 6rd ed. Cengage Learning.
+author: "資料作成: 田中 鮎夢"
+date: "2026-01-19"
+output:
+  beamer_presentation:
+    theme: Montpellier
+    # theme: null
+    latex_engine: lualatex
+    keep_tex: true
+    includes:
+      in_header: ../Ch19/header_beamer.tex
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+# install.packages("wooldridge") # wooldridgeパッケージが未インストールの場合は実行
+library(wooldridge)
+```
+
+
+# 準備
+
+## 必要なパッケージのインストールと読み込み
+
+* `wooldridge`パッケージが未インストールの場合は実行
+
+```
+install.packages("wooldridge")
+```
+
+* `wooldridge`パッケージの読み込み
+
+```
+library(wooldridge)
+```
+
+* <https://cran.r-project.org/web/packages/wooldridge/index.html>
+
+# 1-1 計量経済学とは何か
+
+---
+
+## 計量経済学とは
+
+- 経済関係を推定し、経済理論を検証し、政府や企業の政策を評価・実施するための統計的手法の開発に基づいている。
+- 応用経済学のほぼすべての分野で重要な役割を果たす。
+- 重要なマクロ経済変数（金利、インフレ率、GDPなど）の予測は、計量経済学の一般的な応用例である。
+
+---
+
+## 非実験データ
+
+- 計量経済学は、個人、企業、または経済のセグメントに対する制御された実験を通じて蓄積されない**非実験データ**（観測データまたは遡及的データとも呼ばれる）の収集と分析に固有の問題に焦点を当てているため、数理統計学とは別の学問分野として発展してきた。
+
+# 1-2 実証的経済分析のステップ
+
+---
+
+## 実証分析のステップ（1）関心のある問題の注意深い定式化
+
+- 経済理論の特定の側面を検証すること、あるいは政府政策の効果を検証することなど。
+
+
+---
+
+## 実証分析のステップ（2）経済モデルの構築
+
+- **経済モデル**は、様々な関係を記述する数式で構成される。
+
+### 例：犯罪の経済モデル
+
+$$
+crime = f(\text{wages}, \text{other\_income}, \text{freq\_arrest},$$
+$$
+\text{freq\_convict}, \text{sentence}, \text{age})
+$$
+
+ここで、$crime$：犯罪率、$wages$：賃金、$other\_income$：その他の収入、$freq\_arrest$：逮捕頻度、$freq\_convict$：有罪判決頻度、$sentence$：刑罰の厳しさ、$age$：年齢。
+
+---
+
+## 実証分析のステップ（3）計量経済モデルの特定
+
+- 経済モデルを**計量経済モデル**に変換する。
+
+$$crime = \beta_0 + \beta_1 \text{wages} + \beta_2 \text{other\_income} + ... + u$$
+
+ここで、 $u$は誤差項または撹乱項であり、観測されない要因を含む。
+
+
+# 1-3 経済データの構造
+
+---
+
+## データの種類
+
+- **クロスセクションデータ**
+- **時系列データ**
+- **プールされたクロスセクション**
+- **パネルデータ（または縦断的データ）**
+
+---
+
+## クロスセクションデータ
+
+- 個人、世帯、企業、都市、州、国など、様々な単位のサンプルを**ある特定の時点**で採取したもの。
+- クロスセクションデータでは、データの順序は重要ではない。
+
+---
+
+## 例: `wage1` データセット
+
+* <https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html#wage1>
+
+```{r, echo=TRUE}
+# wage1データセットの最初の数行を表示
+head(wage1[, c("wage", "educ", "female")])
+```
+
+
+---
+
+## 時系列データ
+
+- 1つまたは複数の変数の観測値を**時間の経過とともに**集めたもの。
+- 過去の出来事が未来の出来事に影響を与える可能性があるため、時系列データセットでは時間の次元が重要である。
+- データの**頻度**（日次、週次、月次、四半期、年次）に注意が必要。
+
+---
+
+## 例: `prminwge` データセット (プエルトリコ)
+
+* <https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html#prminwge>
+
+```{r, echo=TRUE}
+# prminwgeデータセットの最初の数行を表示
+data(prminwge)
+head(prminwge[, c("year", "avgmin")])
+```
+
+
+---
+
+
+## プールされたクロスセクション
+
+- クロスセクションデータと時系列データの両方の特徴を持つ。
+- 例えば、1985年と1990年に家計の無作為標本を調査する。
+- 新しい政府政策の効果を分析するのに有効な方法である。
+
+---
+
+## 例: `hprice3` データセット（1）
+
+* <https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html#hprice3>
+
+```{r, echo=TRUE}
+# 1978年のhpriceデータセットを抽出
+hprice1978 <- subset(hprice3, year == 1978)
+# hpriceデータセットの最初の数行を表示
+head(hprice1978[, c("year", "price", "rooms")])
+```
+
+---
+
+## 例: `hprice3` データセット（2）
+
+```{r, echo=TRUE}
+# 1981年のhpriceデータセットを抽出
+hprice1981 <- subset(hprice3, year == 1981)
+# hpriceデータセットの最初の数行を表示
+head(hprice1981[, c("year", "price", "rooms")])
+```
+
+
+---
+
+
+## パネルデータ（または縦断的データ）
+
+- データセット内の各クロスセクションメンバーに対する時系列で構成される。
+- **同じ**クロスセクション単位（個人、企業、郡など）が一定期間追跡される。
+- 観測されない特性を制御することができるという利点がある。
+
+
+---
+
+
+## 例: `crime3` データセット
+
+* <https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html#crime3>
+
+```{r, echo=TRUE}
+# crime3データセットの最初の数行を表示
+head(crime3[, c("district", "year", "crime")])
+```
+
+# 1-4 因果関係、セテリス・パリバス、反事実的推論
+
+
+---
+
+
+## 因果関係とセテリス・パリバス
+
+- 経済理論のほとんどの検証や公共政策の評価において、経済学者の目標は、ある変数（例：教育）が別の変数（例：労働者の生産性）に**因果的効果**を持つことを推論することである。
+- **ceteris paribus**（「他の（関連する）要因を等しく保つ」という意味）の概念は、因果分析において重要な役割を果たす。
+
+---
+
+## 反事実的推論
+
+- セテリス・パリバスの概念は、**反事実的推論**を通じても説明できる。
+- ある経済単位（個人や企業など）を、2つ以上の異なる世界の状態で想像する。
+- 例：ある労働者が、職業訓練プログラムに参加した場合と参加しなかった場合の2つの世界の状態で、その後の賃金がどうなるかを想像する。
+
+
+---
+
+
+## まとめ
+
+
+
+- 計量経済学は、経済理論の検証、政策立案者への情報提供、経済時系列の予測に使用される。
+- 経済データには、クロスセクション、時系列、プールされたクロスセクション、パネルデータなど、様々な種類がある。
+- 社会科学における仮説のほとんどは、セテリス・パリバスの性質を持っている。
+- ほとんどのデータは非実験的な性質を持つため、因果関係を明らかにすることは非常に困難である。

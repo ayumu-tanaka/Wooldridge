@@ -1,0 +1,504 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語を使う場合は必須
+%\usepackage[japanese]{babel}	
+%\usefonttheme[onlymath]{serif}
+%\usepackage[T1]{fontenc} %これを使うと、ギリシャ文字が出ない
+%\usepackage{textcomp}
+%\usepackage[scale=1.0]{tgheros} % Sans serif font
+%\usepackage[scaled]{beramono} % Monospace font
+%\usepackage{luatexja-otf}
+%\renewcommand{\kanjifamilydefault}{\gtdefault}
+%\usepackage[haranoaji]{luatexja-preset}
+
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} \hspace*{2ex} % new version without total frames
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdfauthor={資料作成: 田中 鮎夢},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第1章: 計量経済学と経済データの性質}
+\subtitle{Jeffrey Wooldridge (2016).\\
+Introductory Econometrics: A Modern Approach\\
+6rd ed.~Cengage Learning.}
+\author{資料作成: 田中 鮎夢}
+\date{2026-01-19}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{準備}\label{ux6e96ux5099}
+
+\begin{frame}[fragile]{必要なパッケージのインストールと読み込み}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux30a4ux30f3ux30b9ux30c8ux30fcux30ebux3068ux8aadux307fux8fbcux307f}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wooldridge}パッケージが未インストールの場合は実行
+\end{itemize}
+
+\begin{verbatim}
+install.packages("wooldridge")
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wooldridge}パッケージの読み込み
+\end{itemize}
+
+\begin{verbatim}
+library(wooldridge)
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  \url{https://cran.r-project.org/web/packages/wooldridge/index.html}
+\end{itemize}
+\end{frame}
+
+\section{1-1
+計量経済学とは何か}\label{ux8a08ux91cfux7d4cux6e08ux5b66ux3068ux306fux4f55ux304b}
+
+\begin{frame}{計量経済学とは}
+\phantomsection\label{ux8a08ux91cfux7d4cux6e08ux5b66ux3068ux306f}
+\begin{itemize}
+\tightlist
+\item
+  経済関係を推定し、経済理論を検証し、政府や企業の政策を評価・実施するための統計的手法の開発に基づいている。
+\item
+  応用経済学のほぼすべての分野で重要な役割を果たす。
+\item
+  重要なマクロ経済変数（金利、インフレ率、GDPなど）の予測は、計量経済学の一般的な応用例である。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{非実験データ}
+\phantomsection\label{ux975eux5b9fux9a13ux30c7ux30fcux30bf}
+\begin{itemize}
+\tightlist
+\item
+  計量経済学は、個人、企業、または経済のセグメントに対する制御された実験を通じて蓄積されない\textbf{非実験データ}（観測データまたは遡及的データとも呼ばれる）の収集と分析に固有の問題に焦点を当てているため、数理統計学とは別の学問分野として発展してきた。
+\end{itemize}
+\end{frame}
+
+\section{1-2
+実証的経済分析のステップ}\label{ux5b9fux8a3cux7684ux7d4cux6e08ux5206ux6790ux306eux30b9ux30c6ux30c3ux30d7}
+
+\begin{frame}{実証分析のステップ（1）関心のある問題の注意深い定式化}
+\phantomsection\label{ux5b9fux8a3cux5206ux6790ux306eux30b9ux30c6ux30c3ux30d71ux95a2ux5fc3ux306eux3042ux308bux554fux984cux306eux6ce8ux610fux6df1ux3044ux5b9aux5f0fux5316}
+\begin{itemize}
+\tightlist
+\item
+  経済理論の特定の側面を検証すること、あるいは政府政策の効果を検証することなど。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{実証分析のステップ（2）経済モデルの構築}
+\phantomsection\label{ux5b9fux8a3cux5206ux6790ux306eux30b9ux30c6ux30c3ux30d72ux7d4cux6e08ux30e2ux30c7ux30ebux306eux69cbux7bc9}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{経済モデル}は、様々な関係を記述する数式で構成される。
+\end{itemize}
+
+\begin{block}{例：犯罪の経済モデル}
+\phantomsection\label{ux4f8bux72afux7f6aux306eux7d4cux6e08ux30e2ux30c7ux30eb}
+\[
+crime = f(\text{wages}, \text{other\_income}, \text{freq\_arrest},\] \[
+\text{freq\_convict}, \text{sentence}, \text{age})
+\]
+
+ここで、\(crime\)：犯罪率、\(wages\)：賃金、\(other\_income\)：その他の収入、\(freq\_arrest\)：逮捕頻度、\(freq\_convict\)：有罪判決頻度、\(sentence\)：刑罰の厳しさ、\(age\)：年齢。
+\end{block}
+\end{frame}
+
+\begin{frame}{実証分析のステップ（3）計量経済モデルの特定}
+\phantomsection\label{ux5b9fux8a3cux5206ux6790ux306eux30b9ux30c6ux30c3ux30d73ux8a08ux91cfux7d4cux6e08ux30e2ux30c7ux30ebux306eux7279ux5b9a}
+\begin{itemize}
+\tightlist
+\item
+  経済モデルを\textbf{計量経済モデル}に変換する。
+\end{itemize}
+
+\[crime = \beta_0 + \beta_1 \text{wages} + \beta_2 \text{other\_income} + ... + u\]
+
+ここで、 \(u\)は誤差項または撹乱項であり、観測されない要因を含む。
+\end{frame}
+
+\section{1-3
+経済データの構造}\label{ux7d4cux6e08ux30c7ux30fcux30bfux306eux69cbux9020}
+
+\begin{frame}{データの種類}
+\phantomsection\label{ux30c7ux30fcux30bfux306eux7a2eux985e}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{クロスセクションデータ}
+\item
+  \textbf{時系列データ}
+\item
+  \textbf{プールされたクロスセクション}
+\item
+  \textbf{パネルデータ（または縦断的データ）}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{クロスセクションデータ}
+\phantomsection\label{ux30afux30edux30b9ux30bbux30afux30b7ux30e7ux30f3ux30c7ux30fcux30bf}
+\begin{itemize}
+\tightlist
+\item
+  個人、世帯、企業、都市、州、国など、様々な単位のサンプルを\textbf{ある特定の時点}で採取したもの。
+\item
+  クロスセクションデータでは、データの順序は重要ではない。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{例: \texttt{wage1} データセット}
+\phantomsection\label{ux4f8b-wage1-ux30c7ux30fcux30bfux30bbux30c3ux30c8}
+\begin{itemize}
+\tightlist
+\item
+  \url{https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html\#wage1}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# wage1データセットの最初の数行を表示}
+\FunctionTok{head}\NormalTok{(wage1[, }\FunctionTok{c}\NormalTok{(}\StringTok{"wage"}\NormalTok{, }\StringTok{"educ"}\NormalTok{, }\StringTok{"female"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   wage educ female
+## 1 3.10   11      1
+## 2 3.24   12      1
+## 3 3.00   11      0
+## 4 6.00    8      0
+## 5 5.30   12      0
+## 6 8.75   16      0
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{時系列データ}
+\phantomsection\label{ux6642ux7cfbux5217ux30c7ux30fcux30bf}
+\begin{itemize}
+\tightlist
+\item
+  1つまたは複数の変数の観測値を\textbf{時間の経過とともに}集めたもの。
+\item
+  過去の出来事が未来の出来事に影響を与える可能性があるため、時系列データセットでは時間の次元が重要である。
+\item
+  データの\textbf{頻度}（日次、週次、月次、四半期、年次）に注意が必要。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{例: \texttt{prminwge} データセット
+(プエルトリコ)}
+\phantomsection\label{ux4f8b-prminwge-ux30c7ux30fcux30bfux30bbux30c3ux30c8-ux30d7ux30a8ux30ebux30c8ux30eaux30b3}
+\begin{itemize}
+\tightlist
+\item
+  \url{https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html\#prminwge}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# prminwgeデータセットの最初の数行を表示}
+\FunctionTok{data}\NormalTok{(prminwge)}
+\FunctionTok{head}\NormalTok{(prminwge[, }\FunctionTok{c}\NormalTok{(}\StringTok{"year"}\NormalTok{, }\StringTok{"avgmin"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   year avgmin
+## 1 1950  0.198
+## 2 1951  0.209
+## 3 1952  0.225
+## 4 1953  0.311
+## 5 1954  0.313
+## 6 1955  0.369
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{プールされたクロスセクション}
+\phantomsection\label{ux30d7ux30fcux30ebux3055ux308cux305fux30afux30edux30b9ux30bbux30afux30b7ux30e7ux30f3}
+\begin{itemize}
+\tightlist
+\item
+  クロスセクションデータと時系列データの両方の特徴を持つ。
+\item
+  例えば、1985年と1990年に家計の無作為標本を調査する。
+\item
+  新しい政府政策の効果を分析するのに有効な方法である。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{例: \texttt{hprice3} データセット（1）}
+\phantomsection\label{ux4f8b-hprice3-ux30c7ux30fcux30bfux30bbux30c3ux30c81}
+\begin{itemize}
+\tightlist
+\item
+  \url{https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html\#hprice3}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1978年のhpriceデータセットを抽出}
+\NormalTok{hprice1978 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(hprice3, year }\SpecialCharTok{==} \DecValTok{1978}\NormalTok{)}
+\CommentTok{\# hpriceデータセットの最初の数行を表示}
+\FunctionTok{head}\NormalTok{(hprice1978[, }\FunctionTok{c}\NormalTok{(}\StringTok{"year"}\NormalTok{, }\StringTok{"price"}\NormalTok{, }\StringTok{"rooms"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   year price rooms
+## 1 1978 60000     7
+## 2 1978 40000     6
+## 3 1978 34000     6
+## 4 1978 63900     5
+## 5 1978 44000     5
+## 6 1978 46000     6
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{例: \texttt{hprice3} データセット（2）}
+\phantomsection\label{ux4f8b-hprice3-ux30c7ux30fcux30bfux30bbux30c3ux30c82}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1981年のhpriceデータセットを抽出}
+\NormalTok{hprice1981 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(hprice3, year }\SpecialCharTok{==} \DecValTok{1981}\NormalTok{)}
+\CommentTok{\# hpriceデータセットの最初の数行を表示}
+\FunctionTok{head}\NormalTok{(hprice1981[, }\FunctionTok{c}\NormalTok{(}\StringTok{"year"}\NormalTok{, }\StringTok{"price"}\NormalTok{, }\StringTok{"rooms"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     year price rooms
+## 180 1981 49000     6
+## 181 1981 52000     5
+## 182 1981 68000     6
+## 183 1981 54000     6
+## 184 1981 70000     6
+## 185 1981 47000     6
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{パネルデータ（または縦断的データ）}
+\phantomsection\label{ux30d1ux30cdux30ebux30c7ux30fcux30bfux307eux305fux306fux7e26ux65adux7684ux30c7ux30fcux30bf}
+\begin{itemize}
+\tightlist
+\item
+  データセット内の各クロスセクションメンバーに対する時系列で構成される。
+\item
+  \textbf{同じ}クロスセクション単位（個人、企業、郡など）が一定期間追跡される。
+\item
+  観測されない特性を制御することができるという利点がある。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{例: \texttt{crime3} データセット}
+\phantomsection\label{ux4f8b-crime3-ux30c7ux30fcux30bfux30bbux30c3ux30c8}
+\begin{itemize}
+\tightlist
+\item
+  \url{https://cran.r-project.org/web/packages/wooldridge/refman/wooldridge.html\#crime3}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# crime3データセットの最初の数行を表示}
+\FunctionTok{head}\NormalTok{(crime3[, }\FunctionTok{c}\NormalTok{(}\StringTok{"district"}\NormalTok{, }\StringTok{"year"}\NormalTok{, }\StringTok{"crime"}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   district year crime
+## 1        1   72 49.54
+## 2        1   78 71.32
+## 3        2   72 14.77
+## 4        2   78 17.85
+## 5        3   72 17.35
+## 6        3   78 24.57
+\end{verbatim}
+\end{frame}
+
+\section{1-4
+因果関係、セテリス・パリバス、反事実的推論}\label{ux56e0ux679cux95a2ux4fc2ux30bbux30c6ux30eaux30b9ux30d1ux30eaux30d0ux30b9ux53cdux4e8bux5b9fux7684ux63a8ux8ad6}
+
+\begin{frame}{因果関係とセテリス・パリバス}
+\phantomsection\label{ux56e0ux679cux95a2ux4fc2ux3068ux30bbux30c6ux30eaux30b9ux30d1ux30eaux30d0ux30b9}
+\begin{itemize}
+\tightlist
+\item
+  経済理論のほとんどの検証や公共政策の評価において、経済学者の目標は、ある変数（例：教育）が別の変数（例：労働者の生産性）に\textbf{因果的効果}を持つことを推論することである。
+\item
+  \textbf{ceteris
+  paribus}（「他の（関連する）要因を等しく保つ」という意味）の概念は、因果分析において重要な役割を果たす。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{反事実的推論}
+\phantomsection\label{ux53cdux4e8bux5b9fux7684ux63a8ux8ad6}
+\begin{itemize}
+\tightlist
+\item
+  セテリス・パリバスの概念は、\textbf{反事実的推論}を通じても説明できる。
+\item
+  ある経済単位（個人や企業など）を、2つ以上の異なる世界の状態で想像する。
+\item
+  例：ある労働者が、職業訓練プログラムに参加した場合と参加しなかった場合の2つの世界の状態で、その後の賃金がどうなるかを想像する。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{まとめ}
+\phantomsection\label{ux307eux3068ux3081}
+\begin{itemize}
+\tightlist
+\item
+  計量経済学は、経済理論の検証、政策立案者への情報提供、経済時系列の予測に使用される。
+\item
+  経済データには、クロスセクション、時系列、プールされたクロスセクション、パネルデータなど、様々な種類がある。
+\item
+  社会科学における仮説のほとんどは、セテリス・パリバスの性質を持っている。
+\item
+  ほとんどのデータは非実験的な性質を持つため、因果関係を明らかにすることは非常に困難である。
+\end{itemize}
+\end{frame}
+
+\end{document}

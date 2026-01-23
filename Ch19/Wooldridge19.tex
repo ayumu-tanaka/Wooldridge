@@ -1,0 +1,516 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+%\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語を使う場合は必須
+%\usepackage[japanese]{babel}	
+%\usefonttheme[onlymath]{serif}
+%\usepackage[T1]{fontenc} %これを使うと、ギリシャ文字が出ない
+%\usepackage{textcomp}
+%\usepackage[scale=1.0]{tgheros} % Sans serif font
+%\usepackage[scaled]{beramono} % Monospace font
+%\usepackage{luatexja-otf}
+%\renewcommand{\kanjifamilydefault}{\gtdefault}
+%\usepackage[haranoaji]{luatexja-preset}
+
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} \hspace*{2ex} % new version without total frames
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdfauthor={資料作成: 田中鮎夢},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第19章: 実証研究の実施}
+\subtitle{Jeffrey Wooldridge (2016).\\
+Introductory Econometrics: A Modern Approach\\
+6rd ed.~Cengage Learning.}
+\author{資料作成: 田中鮎夢}
+\date{2025-04-04}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{19-1 問題の提起}\label{ux554fux984cux306eux63d0ux8d77}
+
+\begin{frame}{19-1 問題の提起}
+\phantomsection\label{ux554fux984cux306eux63d0ux8d77-1}
+成功する実証分析の基礎は、データで答えられる具体的な問題を提起することから始まる。
+
+明確な目標がなければ、データ収集は非効率的になり、重要な変数を見逃したり、不適切なサンプルを選択したりする可能性がある。
+
+問題を考える際にはデータの入手可能性やプロジェクトの期間を考慮する必要があるが、問題の具体性が最も重要である。
+\end{frame}
+
+\begin{frame}{研究テーマの選択}
+\phantomsection\label{ux7814ux7a76ux30c6ux30fcux30deux306eux9078ux629e}
+研究テーマは様々な経済分野から生まれる：
+
+\begin{itemize}
+\tightlist
+\item
+  労働経済学：教育の質、数学/科学の履修、身体的外見に基づく賃金格差
+\item
+  公共財政：税金やサービスが経済活動に与える影響
+\item
+  教育経済学：支出が成績に与える影響、学校選択の影響
+\item
+  マクロ経済学：集計時系列間の関係
+\end{itemize}
+\end{frame}
+
+\begin{frame}{研究論文を探すためのリソース}
+\phantomsection\label{ux7814ux7a76ux8ad6ux6587ux3092ux63a2ux3059ux305fux3081ux306eux30eaux30bdux30fcux30b9}
+\begin{itemize}
+\tightlist
+\item
+  Google Scholar \url{https://scholar.google.co.jp/}
+\item
+  Journal of Economic Literature (JEL) 分類システム
+\item
+  EconLitなどのインターネットサービス *今はあまり使われない
+\item
+  Social Sciences Citation Index　*今はあまり使われない
+\end{itemize}
+\end{frame}
+
+\begin{frame}{テーマ選択時の重要な考慮事項}
+\phantomsection\label{ux30c6ux30fcux30deux9078ux629eux6642ux306eux91cdux8981ux306aux8003ux616eux4e8bux9805}
+\begin{itemize}
+\tightlist
+\item
+  問題は広範な政策的含意ではなく、局所的な含意を持つこともある
+\item
+  標準的なマクロ経済集計データを用いた独創的研究は、短期間のプロジェクトでは困難である場合が多い
+\item
+  教育収益率のような既に研究されている問題でも、新しいデータや斬新な計量経済学的アプローチによって新たな知見が得られる
+\end{itemize}
+
+適切に定式化された研究問題は具体的であるべきだ。
+
+\begin{itemize}
+\tightlist
+\item
+  「犯罪に関する論文を書いている」というよりも、「米国の都市における地域警察活動が犯罪率に与える影響を研究している」のように具体的にすべきである。
+\end{itemize}
+\end{frame}
+
+\section{19-2 文献レビュー}\label{ux6587ux732eux30ecux30d3ux30e5ux30fc}
+
+\begin{frame}{19-2 文献レビュー}
+\phantomsection\label{ux6587ux732eux30ecux30d3ux30e5ux30fc-1}
+実証論文はたとえ短くても、関連文献のレビューを含むべきである。
+
+オンライン検索サービスにより、関連研究を見つけることが容易になった。
+
+検索の際は、キーワード検索では表示されない可能性のある関連トピックも考慮する必要がある。
+
+例えば、アルコールの影響に関する研究は、薬物使用の影響に関する研究に示唆を与えることがある。
+\end{frame}
+
+\begin{frame}{文献レビューの組み込み方}
+\phantomsection\label{ux6587ux732eux30ecux30d3ux30e5ux30fcux306eux7d44ux307fux8fbcux307fux65b9}
+研究者によって文献レビューの組み込み方は異なる：
+
+\begin{itemize}
+\tightlist
+\item
+  「文献レビュー」と題した独立したセクションとして
+\item
+  序論の一部として
+\item
+  広範なレビューの場合は独自のセクションが必要となる
+\end{itemize}
+\end{frame}
+
+\section{19-3 データ収集}\label{ux30c7ux30fcux30bfux53ceux96c6}
+
+\begin{frame}{19-3a 適切なデータセットの決定}
+\phantomsection\label{a-ux9069ux5207ux306aux30c7ux30fcux30bfux30bbux30c3ux30c8ux306eux6c7aux5b9a}
+データには様々な形態がある
+
+\begin{itemize}
+\tightlist
+\item
+  クロスセクション、時系列、プールドクロスセクション、パネルデータ。
+\end{itemize}
+
+選択は研究問題と利用可能なリソースに依存することが多い。
+
+個人や家族レベルの問題では、調査による単一のクロスセクションが一般的だが、十分な制御変数がなければ因果関係の確立は困難である。
+\end{frame}
+
+\begin{frame}{パネルデータ}
+\phantomsection\label{ux30d1ux30cdux30ebux30c7ux30fcux30bf}
+パネルデータセット（同一単位の複数の観測値を時間経過とともに収集）は観測されない効果をコントロールするのに役立つが、個人に関して入手するのは難しい。
+
+法人単位（学校、都市、州）のパネルデータは、これらの主体が存続する傾向があり、政府機関が定期的にそのような情報を収集するため、より容易に入手できる。
+\end{frame}
+
+\begin{frame}{19-3b データの入力と保存}
+\phantomsection\label{b-ux30c7ux30fcux30bfux306eux5165ux529bux3068ux4fddux5b58}
+データは印刷形式または電子形式で入手できる。
+
+電子データの場合、テキスト・ファイルが計量経済学ソフトウェアでの使用に最も柔軟性を提供する。
+
+データ編成は重要である：
+
+\begin{itemize}
+\tightlist
+\item
+  時系列の場合：最も古い期間を最初にした時系列順
+\item
+  プールドクロスセクションの場合：時間帯識別子を付けて時間帯ごとにグループ化
+\item
+  パネルデータの場合：各クロスセクション単位の観測値を時系列順に隣接させる
+\end{itemize}
+\end{frame}
+
+\begin{frame}{データの保存}
+\phantomsection\label{ux30c7ux30fcux30bfux306eux4fddux5b58}
+データ入力のオプション：
+
+\begin{itemize}
+\tightlist
+\item
+  テキストエディタを使用して生データファイルを作成
+\item
+  データ操作と整理のためのスプレッドシート
+\item
+  計量経済学ソフトウェアへの直接入力
+\end{itemize}
+
+田中注：現在では、Excelにデータを入力して、ExcelもしくはCSV形式で保存し、RやStataなどの統計ソフトで読み込むことが一般的である。
+\end{frame}
+
+\begin{frame}{19-3c データの検査、クリーニング、要約}
+\phantomsection\label{c-ux30c7ux30fcux30bfux306eux691cux67fbux30afux30eaux30fcux30cbux30f3ux30b0ux8981ux7d04}
+データ構造を理解することは非常に重要である。主な考慮事項は以下の通り：
+
+\begin{itemize}
+\tightlist
+\item
+  欠損値のコード化方法（できれば非数値文字を使用）
+\item
+  変数の性質（二値、順序、測定単位）
+\item
+  金銭的価値の場合、数字が名目値か実質値か
+\item
+  変数が変換されているかどうか
+\end{itemize}
+
+要約統計量を通じたエラーの検出は不可欠である。予期しない最小値/最大値、平均値、標準偏差を発見することで、コーディングエラーが明らかになる場合がある。
+
+時系列データの場合、季節調整と適切な順序付けを理解することが重要である。
+\end{frame}
+
+\section{19-4
+計量経済学的分析}\label{ux8a08ux91cfux7d4cux6e08ux5b66ux7684ux5206ux6790}
+
+\begin{frame}{19-4 計量経済学的分析}
+\phantomsection\label{ux8a08ux91cfux7d4cux6e08ux5b66ux7684ux5206ux6790-1}
+テーマを確立し適切なデータを収集した後、計量経済学的アプローチを決定する。
+
+最小二乗法（OLS）を使用する場合でも、以下の主要な仮定に対処することによりその適切性を正当化する必要がある：
+
+\begin{itemize}
+\tightlist
+\item
+  誤差項が説明変数と相関していないかどうか
+\item
+  内生性の潜在的源泉（測定誤差、同時性）
+\item
+  関数形式の決定（対数、レベル、交互作用）
+\end{itemize}
+\end{frame}
+
+\begin{frame}{注意}
+\phantomsection\label{ux6ce8ux610f}
+避けるべき一般的な間違い：
+
+\begin{itemize}
+\tightlist
+\item
+  カテゴリー変数の生の数値コード（例：職業コード）を含める
+\item
+  順序変数を量的意味を持つものとして扱う
+\end{itemize}
+
+クロスセクション分析では、分散不均一性を考慮し、適切な場合には頑健な統計を使用する。
+
+時系列アプリケーションでは、レベルと差分、トレンド、季節性、およびラグ構造に関する追加の注意が必要である。
+\end{frame}
+
+\begin{frame}{モデルの定式化と感度分析}
+\phantomsection\label{ux30e2ux30c7ux30ebux306eux5b9aux5f0fux5316ux3068ux611fux5ea6ux5206ux6790}
+モデルの誤特定の可能性については、誤特定分析を実施して可能なバイアスの方向を推定する。
+
+操作変数を使用する場合は、その妥当性を慎重に正当化する。
+
+優れた実証論文には感度分析が含まれる
+
+\begin{itemize}
+\tightlist
+\item
+  以下のようなモデルの合理的な修正に対して結論が頑健であるかをテストする：
+\item
+  代替変数定義
+\item
+  潜在的な外れ値の除外
+\item
+  異なる推定方法
+\end{itemize}
+\end{frame}
+
+\begin{frame}{パネルデータ}
+\phantomsection\label{ux30d1ux30cdux30ebux30c7ux30fcux30bf-1}
+パネルデータでは、複数のアプローチが利用可能：
+
+\begin{itemize}
+\tightlist
+\item
+  プールドOLS（時間不変の観測されない要素をコントロールしない）
+\item
+  ランダム効果（観測されない効果が条件付き平均値がゼロの場合に系列相関を修正）
+\item
+  ラグ付き従属変数の使用
+\item
+  固定効果変換（観測されない効果を除去）
+\end{itemize}
+
+データマイニング（有意な結果が見つかるまで様々なモデルを検索する慣行）には注意が必要である。ほとんどすべての研究者が異なる定式化を試すが、このプロセスを明示的に認め、結果を代表的に報告することが重要である。
+\end{frame}
+
+\section{19-5
+実証論文の執筆}\label{ux5b9fux8a3cux8ad6ux6587ux306eux57f7ux7b46}
+
+\begin{frame}{19-5a 序論}
+\phantomsection\label{a-ux5e8fux8ad6}
+序論では目的と重要性を確立し、通常は文献レビューも含む。効果的な序論には以下が含まれる：
+
+\begin{itemize}
+\tightlist
+\item
+  興味深いパターンを示す簡単な統計
+\item
+  これらのパターンに影響を与える要因をどのように検討するかの説明
+\item
+  読者を引き込むための主な発見の簡潔な要約
+\end{itemize}
+\end{frame}
+
+\begin{frame}{19-5b 概念的（または理論的）フレームワーク}
+\phantomsection\label{b-ux6982ux5ff5ux7684ux307eux305fux306fux7406ux8ad6ux7684ux30d5ux30ecux30fcux30e0ux30efux30fcux30af}
+このセクションでは、研究問題に答えるための一般的なアプローチを説明する。以下が含まれる場合がある：
+
+\begin{itemize}
+\tightlist
+\item
+  フォーマルな経済理論
+\item
+  概念的問題に関する直感的な議論
+\item
+  コントロールが必要な要因と関心のあるメカニズムの説明
+\end{itemize}
+\end{frame}
+
+\begin{frame}{19-5c 計量経済学的モデルと推定方法}
+\phantomsection\label{c-ux8a08ux91cfux7d4cux6e08ux5b66ux7684ux30e2ux30c7ux30ebux3068ux63a8ux5b9aux65b9ux6cd5}
+推定するモデルを表す方程式を含める。モデル（母集団の関係）と推定方法を区別する。例えば：
+
+\[
+\text{colGPA} = \beta_0 + \beta_1\text{alcohol} + \beta_2\text{hsGPA} + \beta_3\text{SAT} + \beta_4\text{female} + u
+\]
+
+このモデルは母集団の関係を表すため、「ハット」や特定の値を含まない点に注意。
+
+モデルを指定した後、適切な推定方法とその正当性について議論する。
+\end{frame}
+
+\begin{frame}{関数形式}
+\phantomsection\label{ux95a2ux6570ux5f62ux5f0f}
+関数形式を慎重に検討する：
+
+\begin{itemize}
+\tightlist
+\item
+  広範囲の変数に対する対数変換
+\item
+  ゼロになる可能性のある変数の適切な処理
+\item
+  率、パーセンテージ、比率の扱い
+\end{itemize}
+
+2SLSなどの高度な方法については、操作変数選択の慎重な正当化を提供する。
+\end{frame}
+
+\begin{frame}{19-5d データ}
+\phantomsection\label{d-ux30c7ux30fcux30bf}
+他者が作業を再現できるように、データソースを包括的に説明する。以下を含める：
+
+\begin{itemize}
+\tightlist
+\item
+  参考文献にすべての公開データソース
+\item
+  各変数の測定単位
+\item
+  変数定義の表
+\item
+  要約統計（最小値、最大値、平均値、標準偏差）
+\item
+  サンプルサイズと対象期間
+\end{itemize}
+\end{frame}
+
+\begin{frame}{19-5e 結果}
+\phantomsection\label{e-ux7d50ux679c}
+前述のモデルの推定値を提示し、複雑なものに進む前に簡単な定式化から始める場合もある。
+
+複数の変数を持つ複数のモデルの場合は、方程式ではなく表を使用する。
+
+解釈と有意性に焦点を当てる：
+
+\begin{itemize}
+\tightlist
+\item
+  係数は予想された符号を持つか
+\item
+  統計的に有意か
+\item
+  主要な効果の大きさはどの程度か
+\item
+  経済的有意性と統計的有意性を区別する
+\end{itemize}
+
+関連する仮説検定を提示し、定式化変更に対する結果の感度について議論する。
+\end{frame}
+
+\begin{frame}{19-5f 結論}
+\phantomsection\label{f-ux7d50ux8ad6}
+主な発見を簡潔に要約し、注意事項について議論し、さらなる研究の方向性を示唆する。
+
+読者がまず最初にこのセクションを確認して論文全体を読むかどうかを決めることを想定して、このセクションを執筆する。
+\end{frame}
+
+\begin{frame}{19-5g スタイルのヒント}
+\phantomsection\label{g-ux30b9ux30bfux30a4ux30ebux306eux30d2ux30f3ux30c8}
+\begin{itemize}
+\tightlist
+\item
+  記述的なタイトルを付け、あまり長くしない
+\item
+  名前、所属、および可能であれば要約を含む表紙を付ける
+\item
+  方程式は中央揃えにし、連続して番号を付ける
+\item
+  著者と年で論文を参照
+\item
+  表は変数を明確に定義して明瞭に書式設定する
+\item
+  小数点以下の桁数を制限する
+\item
+  必要に応じてデータと補足資料を付録にまとめる
+\end{itemize}
+\end{frame}
+
+\begin{frame}{まとめ}
+\phantomsection\label{ux307eux3068ux3081}
+成功する実証分析には、問題の定式化、文献レビュー、データ収集、計量経済学的定式化、および明確な発表に細心の注意を払うことが必要である。
+
+いかなる研究の質も、このプロセス全体を通じて投入された注意と努力に最終的に依存する。
+\end{frame}
+
+\end{document}
