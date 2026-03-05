@@ -1,6 +1,8 @@
 # Private folder
 text/
 
+.claude/
+
 CLAUDE.md
 GEMINI.md
 memo.md
