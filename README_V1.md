@@ -1,7 +1,7 @@
-# Wooldridge 計量経済学スライド
+# プロジェクト概要: Wooldridge 計量経済学スライド
 
 ## 概要
-このリポジトリは、**ジェフリー・ウルドリッジ著『Introductory Econometrics: A Modern Approach』** に基づく講義スライドを含んでいます。
+このリポジトリは、**ジェフリー・ウルドリッジ著『Introductory Econometrics: A Modern Approach』（邦題：『計量経済学』）** に基づく講義スライドおよび教育資料を含んでいます。資料は主に **日本語** で記述されています。
 
 このプロジェクトでは **R Markdown** を使用して **LaTeX Beamer** プレゼンテーションを生成しており、Rコードと計量経済学のデータセット（`wooldridge` パッケージ経由）をスライドに直接統合しています。
 
@@ -30,6 +30,7 @@
     *   `WooldridgeXX.Rmd`: スライドのメインソースファイルです。
     *   `WooldridgeXX.pdf`: コンパイル済みのプレゼンテーション（PDF）です。
     *   `header_beamer.tex`: スタイリング用のLaTeXヘッダーファイルです。
+*   **`text/`**: プライベートディレクトリ（gitでは無視されます）で、下書きや生のテキストが含まれている可能性があります。
 *   **`statafiles/`**: Stata形式（.dta）のデータセットが含まれています。
 
 ## 主要ファイルと設定
@@ -57,4 +58,7 @@ rmarkdown::render("Ch01/Wooldridge01.Rmd")
 
 または、RStudio 内で `.Rmd` ファイルを開き、**Knit** ボタンをクリックするだけです。
 
-
+## 規約・慣習
+*   **言語:** 日本語。
+*   **スライドテーマ:** Beamer の `Montpellier` テーマを使用。
+*   **コード例:** `wooldridge` パッケージのデータセットを使用した計量経済分析を実演するために、R コードチャンクが使用されています。
