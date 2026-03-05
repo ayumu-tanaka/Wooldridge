@@ -4,7 +4,7 @@ title: |
 subtitle: |
     | Jeffrey Wooldridge (2016).
     | Introductory Econometrics: A Modern Approach 
-    | 6rd ed. Cengage Learning.
+    | Seventh Edition. Cengage Learning.
 author: ""
 date: "2026-01-23"
 output:
