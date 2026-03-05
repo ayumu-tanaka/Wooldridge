@@ -32,4 +32,4 @@ GitHub Pages: [https://ayumu-tanaka.github.io/Wooldridge/](https://ayumu-tanaka.
 
 * * *
 
-出典：Jeffrey M. Wooldridge (2016). _Introductory Econometrics: A Modern Approach_. South-Western Cengage Learning.
+出典：Jeffrey M. Wooldridge (2018). _Introductory Econometrics: A Modern Approach_. South-Western Cengage Learning, Seventh Edition.
