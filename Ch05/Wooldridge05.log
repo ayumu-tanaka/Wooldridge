@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.11)  23 JAN 2026 17:01
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.11)  5 MAR 2026 17:29
  restricted system commands enabled.
 **Wooldridge05.tex
 (./Wooldridge05.tex
@@ -1324,40 +1324,40 @@ Package: xurl 2022/01/09 v 0.10 modify URL breaks
 Package: lltjp-array 2024-07-21 Patch to array for LuaTeX-ja
 )
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 184.
+h' as default language. on input line 183.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 184.
+(Font)              scaled to size 9.6222pt on input line 183.
 (./Wooldridge05.aux)
 \openout1 = Wooldridge05.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for JY3/mc/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
-LaTeX Font Info:    Checking defaults for JT3/mc/m/n on input line 184.
-LaTeX Font Info:    ... okay on input line 184.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for JY3/mc/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
+LaTeX Font Info:    Checking defaults for JT3/mc/m/n on input line 183.
+LaTeX Font Info:    ... okay on input line 183.
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 184.
+(Font)              scaled to size 10.53629pt on input line 183.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 184.
+(Font)              scaled to size 10.53629pt on input line 183.
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
 *geometry* verbose mode - [ preamble ] result:
@@ -1413,7 +1413,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 184.
+Package hyperref Info: Link coloring OFF on input line 183.
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-dicti
 onary-English.dict
@@ -1440,19 +1440,19 @@ tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 184.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 183.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 184.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 183.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 184.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 183.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 184.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 183.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 184.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 183.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 184.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 183.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 184.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 183.
 (load cache: extra_latinmodernmath-regular.luc)
 
 Package fontspec Info: 
@@ -1485,7 +1485,7 @@ Font={latinmodern-math.otf}].
 ;script=math;language=dflt;mathfontdimen=xetex;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 11.28015pt on input line 184.
+(Font)              scaled to size 11.28015pt on input line 183.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 1.03015890977869.
@@ -1530,18 +1530,18 @@ script=math;language=dflt;mathfontdimen=xetex;+ssty=1;"
 ;script=math;language=dflt;mathfontdimen=xetex;"
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 11.28015pt on input line 184.
+(Font)              scaled to size 11.28015pt on input line 183.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 184.
+(Font)              `operators' in the math version `normal' on input line 183.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 184.
+ line 183.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 184.
+(Font)              `operators' in the math version `bold' on input line 183.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 184.
+t line 183.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 1.03015890977869.
@@ -1587,15 +1587,15 @@ etex;mathfontdimen=tex2;+ssty=1;"
 ;script=math;language=dflt;mathfontdimen=xetex;mathfontdimen=tex2;"
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 184.
+(Font)              `symbols' in the math version `normal' on input line 183.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 184.
+t line 183.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 184.
+(Font)              `symbols' in the math version `bold' on input line 183.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 184.
+t line 183.
 
 Package fontspec Info: 
 (fontspec)             latinmodern-math scale = 1.03015890977869.
@@ -1642,65 +1642,65 @@ etex;mathfontdimen=tex3;+ssty=1;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-84.
+83.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 184.
+t line 183.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 184
+(Font)              `largesymbols' in the math version `bold' on input line 183
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 184.
+t line 183.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.8961pt on input line 184.
+(Font)              scaled to size 7.8961pt on input line 183.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.64008pt on input line 184.
+(Font)              scaled to size 5.64008pt on input line 183.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-84.
+83.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 11.28015pt on input line 184.
+(Font)              scaled to size 11.28015pt on input line 183.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.8961pt on input line 184.
+(Font)              scaled to size 7.8961pt on input line 183.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.64008pt on input line 184.
+(Font)              scaled to size 5.64008pt on input line 183.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.28015pt on input line 184.
+(Font)              scaled to size 11.28015pt on input line 183.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.8961pt on input line 184.
+(Font)              scaled to size 7.8961pt on input line 183.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.64008pt on input line 184.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 184
+(Font)              scaled to size 5.64008pt on input line 183.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 183
 .
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 184
+LaTeX Font Info:    Trying to load font information for U+msb on input line 183
 .
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 7.3754pt on input line 184.
+(Font)              scaled to size 7.3754pt on input line 183.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 5.26814pt on input line 184.
-LaTeX Info: Redefining \microtypecontext on input line 184.
-Package microtype Info: Applying patch `item' on input line 184.
-Package microtype Info: Applying patch `toc' on input line 184.
-Package microtype Info: Applying patch `eqnum' on input line 184.
-Package microtype Info: Applying patch `footnote' on input line 184.
-Package microtype Info: Applying patch `verbatim' on input line 184.
-LaTeX Info: Redefining \microtypesetup on input line 184.
+(Font)              scaled to size 5.26814pt on input line 183.
+LaTeX Info: Redefining \microtypecontext on input line 183.
+Package microtype Info: Applying patch `item' on input line 183.
+Package microtype Info: Applying patch `toc' on input line 183.
+Package microtype Info: Applying patch `eqnum' on input line 183.
+Package microtype Info: Applying patch `footnote' on input line 183.
+Package microtype Info: Applying patch `verbatim' on input line 183.
+LaTeX Info: Redefining \microtypesetup on input line 183.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 184.
+LaTeX Info: Redefining \showhyphens on input line 183.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of spacing.
 Package microtype Info: No adjustment of kerning.
@@ -1717,27 +1717,27 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 184.
+or `english'. on input line 183.
 (./Wooldridge05.nav)(load cache: extra_lmsans8-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 5.77332pt on input line 184.
+(Font)              scaled to size 5.77332pt on input line 183.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 5.77332pt on input line 184.
+(Font)              scaled to size 5.77332pt on input line 183.
 (load cache: extra_lmsans12-regular.luc)
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 185.
+(Font)              scaled to size 13.85594pt on input line 184.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 185.
+(Font)              scaled to size 13.85594pt on input line 184.
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 185.
+(Font)              scaled to size 7.69775pt on input line 184.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 185.
+(Font)              scaled to size 7.69775pt on input line 184.
 
 
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 3.84888pt on input line 185.
+(Font)              scaled to size 3.84888pt on input line 184.
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 3.84888pt on input line 185.
+(Font)              scaled to size 3.84888pt on input line 184.
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
@@ -1772,9 +1772,9 @@ LaTeX Font Info:    Font shape `JY3/gt/m/n' will be
 
 ]
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 7.3754pt on input line 243.
+(Font)              scaled to size 7.3754pt on input line 242.
 LaTeX Font Info:    Font shape `JT3/mc/m/n' will be
-(Font)              scaled to size 5.26814pt on input line 243.
+(Font)              scaled to size 5.26814pt on input line 242.
 
 
 [6
@@ -1826,7 +1826,7 @@ Package luatex.def Info: Wooldridge05_files/figure-beamer/unnamed-chunk-2-1.pdf
   used on input line 14.
 (luatex.def)             Requested size: 666.48837pt x 246.92188pt.
 )
-Overfull \vbox (39.8727pt too high) detected at line 352
+Overfull \vbox (39.8727pt too high) detected at line 351
  []
 
 
@@ -1868,32 +1868,32 @@ LaTeX Font Info:    Kanji font shape `JY3/mc/m/it' undefined
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.24121pt on input line 454.
+(Font)              scaled to size 8.24121pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.18091pt on input line 454.
+(Font)              scaled to size 6.18091pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.15076pt on input line 454.
+(Font)              scaled to size 5.15076pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.24121pt on input line 454.
+(Font)              scaled to size 8.24121pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.18091pt on input line 454.
+(Font)              scaled to size 6.18091pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.15076pt on input line 454.
+(Font)              scaled to size 5.15076pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.24121pt on input line 454.
+(Font)              scaled to size 8.24121pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.18091pt on input line 454.
+(Font)              scaled to size 6.18091pt on input line 453.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.15076pt on input line 454.
+(Font)              scaled to size 5.15076pt on input line 453.
 (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2025/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `JY3/mc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 454.
+(Font)              scaled to size 4.8111pt on input line 453.
 
-Overfull \vbox (7.43428pt too high) detected at line 454
+Overfull \vbox (7.43428pt too high) detected at line 453
  []
 
 
@@ -1968,7 +1968,7 @@ ntype/public/lm/lmsans10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/o
 pentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2025/texmf-dist/fonts
 /opentype/public/lm/lmsans8-regular.otf></usr/local/texlive/2025/texmf-dist/font
 s/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf>
-Output written on Wooldridge05.pdf (22 pages, 142943 bytes).
+Output written on Wooldridge05.pdf (22 pages, 141127 bytes).
 
 PDF statistics: 438 PDF objects out of 1000 (max. 8388607)
  265 compressed objects within 3 object streams

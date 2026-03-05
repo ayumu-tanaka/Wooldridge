@@ -1,6 +1,34 @@
 # Private folder
 text/
 
+CLAUDE.md
+GEMINI.md
+memo.md
+
+## 必須の補助ファイル
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+
+## 参考文献 (BibTeX/biber) を使う場合
+*.blg
+*.bbl
+*.run.xml
+*.bcf
+
+## 図やインデックスなど
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+
 
 # History files
 .Rhistory

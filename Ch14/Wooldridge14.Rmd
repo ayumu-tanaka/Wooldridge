@@ -1,0 +1,491 @@
+---
+title: |
+  | 第14章: 発展的なパネルデータ法
+subtitle: |
+    | Jeffrey Wooldridge (2016).
+    | Introductory Econometrics: A Modern Approach
+    | 6rd ed. Cengage Learning.
+author: ''
+date: "`r Sys.Date()`"
+output:
+  slidy_presentation: default
+  beamer_presentation:
+    theme: Montpellier
+    latex_engine: lualatex
+    keep_tex: true
+    includes:
+      in_header: ../Ch19/header_beamer.tex
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+```
+
+```{r packages, include=FALSE}
+library(wooldridge)
+library(plm)
+```
+
+# 準備
+
+## 必要なパッケージの読み込み
+
+* `wooldridge`パッケージの読み込み
+
+```r
+library(wooldridge)
+```
+
+* `plm`パッケージの読み込み（パネルデータ分析に使用）
+
+```r
+library(plm)
+```
+
+# 14-1 固定効果推定
+
+---
+
+## 固定効果変換 (Fixed Effects Transformation)
+
+- モデル: $y_{it} = \beta_1 x_{it} + a_i + u_{it}, \quad t = 1, 2, \dots, T$ \hfill [14.1]
+- 個体 $i$ に関して時間平均をとると：
+$$\bar{y}_i = \beta_1 \bar{x}_i + a_i + \bar{u}_i \hfill [14.2]$$
+- [14.1] から [14.2] を引く（**固定効果変換** / within変換）：
+$$\ddot{y}_{it} = \beta_1 \ddot{x}_{it} + \ddot{u}_{it}, \quad t = 1, 2, \dots, T \hfill [14.3]$$
+- $\ddot{y}_{it} = y_{it} - \bar{y}_i$：**時間平均除去データ** (time-demeaned data)
+- $a_i$ が消去される $\Rightarrow$ OLSで $\beta_1$ を一致推定できる
+
+---
+
+## 固定効果推定量の特性
+
+- [14.3] を Pooled OLS で推定したものが **固定効果推定量**（**within推定量**）
+- **時間不変の変数**（出生地、性別など）は時間平均除去によって消去され、推定不可能
+- 厳密外生性仮定（$\text{E}(u_{it}|\mathbf{X}_i, a_i) = 0$）のもとで不偏・一致
+- $a_i$ と $x_{it}$ が任意に相関していても構わない（第13章のFDと同じ強み）
+- 自由度: $df = NT - N - k = N(T-1) - k$（時間平均除去により個体ごとに自由度を1失う）
+
+---
+
+## 複数の説明変数への拡張
+
+- 一般的な観測不能効果モデル [14.4]:
+$$y_{it} = \beta_1 x_{it1} + \beta_2 x_{it2} + \cdots + \beta_k x_{itk} + a_i + u_{it}$$
+- 各変数を時間平均除去 $\Rightarrow$ [14.5]:
+$$\ddot{y}_{it} = \beta_1 \ddot{x}_{it1} + \beta_2 \ddot{x}_{it2} + \cdots + \beta_k \ddot{x}_{itk} + \ddot{u}_{it}$$
+- これをPooled OLSで推定する
+
+---
+
+## 例14.1: 職業訓練が不良品率に与える影響 (JTRAIN)
+
+- データ: 54社 × 3年（1987〜1989年）
+- 従属変数: $\log(scrap_{it})$（不良品率の対数）
+- 説明変数: 年ダミー $d88$, $d89$, 補助金 $grant$, ラグ補助金 $grant_{-1}$
+- $df = 54(3-1) - 4 = 104$
+
+\footnotesize
+```{r example141}
+data(jtrain)
+pdata_jt <- pdata.frame(jtrain, index = c("fcode", "year"))
+res_fe141 <- plm(lscrap ~ d88 + d89 + grant + grant_1,
+                 data = pdata_jt, model = "within",
+                 na.action = na.omit)
+summary(res_fe141)$coefficients
+```
+\normalsize
+
+---
+
+## 例14.1: 結果の解釈
+
+- $\hat{\beta}_{grant_{-1}} \approx -0.422$：前年に補助金を受けると不良品率が約34%低下
+  [$\exp(-0.422) - 1 \approx -0.344$]、5%水準で有意
+- $\hat{\beta}_{grant} \approx -0.252$：当年補助金は10%水準で有意（即時効果は小さい）
+- $d89$ の係数が負 $\Rightarrow$ 補助金とは無関係に1989年の生産性は上昇
+  $\Rightarrow$ 年ダミーを含めることの重要性
+
+---
+
+## 例14.2: 教育収益率の時間変化 (WAGEPAN)
+
+- データ: 545人 × 8年（1980〜1987年）、WAGEPAN
+- 固定効果では `educ`（時間不変）は推定不可 $\Rightarrow$ `educ × 年ダミー` の交差項を使用
+
+\footnotesize
+```{r example142}
+data(wagepan)
+pdata_wp <- pdata.frame(wagepan, index = c("nr", "year"))
+res_fe142 <- plm(lwage ~ married + union + exper + expersq +
+                   d81 + d82 + d83 + d84 + d85 + d86 + d87 +
+                   I(educ * d81) + I(educ * d82) + I(educ * d83) +
+                   I(educ * d84) + I(educ * d85) + I(educ * d86) +
+                   I(educ * d87),
+                 data = pdata_wp, model = "within")
+# 交差項の係数のみ表示
+coef(res_fe142)[grep("educ", names(coef(res_fe142)))]
+```
+\normalsize
+
+---
+
+## 例14.2: 解釈
+
+- $d87 \cdot educ$ の係数 $\approx 0.030$（$t \approx 2.48$）：最大
+- 1987年の教育収益率は基準年（1980年）より約3%ポイント高い
+- 交差項7本の結合有意性検定: $p値 \approx 0.28$（まとめて有意でない）
+- 教育収益率は1980〜1987年を通じてほぼ一定という結論
+
+# 14-1a ダミー変数回帰
+
+---
+
+## ダミー変数回帰 (Dummy Variable Regression)
+
+- $a_i$ を各個体のパラメータとして推定する伝統的な方法
+- $N$ 個の切片ダミー変数を説明変数に含めてOLS推定 $\Rightarrow$ **ダミー変数回帰**
+- **重要な性質**: ダミー変数回帰は固定効果推定量と**全く同じ** $\hat{\beta}_j$ を与える
+- 固定効果推定後、各個体の固定効果の推定値 [14.6]:
+$$\hat{a}_i = \bar{y}_i - \hat{\beta}_1 \bar{x}_{i1} - \cdots - \hat{\beta}_k \bar{x}_{ik}$$
+- $N$ が大きい場合、ダミー変数回帰は非実用的（変数が多すぎる）
+
+# 14-1b 固定効果 vs 1階差分
+
+---
+
+## 固定効果法 (FE) と 1階差分法 (FD) の比較
+
+| 特徴 | FE (固定効果) | FD (1階差分) |
+|------|--------------|-------------|
+| $T=2$ のとき | **同一** | **同一** |
+| $T \geq 3$ のとき | 異なる推定量 | 異なる推定量 |
+| $u_{it}$ が系列無相関 | **効率的** | 非効率 |
+| $u_{it}$ がランダムウォーク | 非効率 | **効率的** |
+| 測定誤差に対する感度 | 高い | 高い |
+
+- $T = 2$: FEとFDは同一 $\Rightarrow$ どちらでも良い
+- $T \geq 3$: $u_{it}$ の系列相関構造で選択
+  - 系列無相関 $\Rightarrow$ FEが優れる
+  - ランダムウォーク的正の系列相関 $\Rightarrow$ FDが優れる
+
+# 14-1c 不均衡パネル
+
+---
+
+## 不均衡パネルの固定効果推定
+
+- **不均衡パネル (unbalanced panel)**: 一部の個体で欠損期間がある
+- 個体 $i$ の観測期間数を $T_i$ とすると、総観測数 $= T_1 + T_2 + \cdots + T_N$
+- 時間平均除去は個体ごとに $T_i$ 期間の平均を使う
+- 固定効果推定は不均衡パネルでも同様に適用可能
+- 注意: 欠損が**自己選択的**（離脱が誤差項と相関）な場合はバイアスが生じる
+  - ただしFEは $a_i$ と選択指標の相関を許容するため、FDより頑健な場合がある
+
+---
+
+## 例14.3: 不均衡パネルでの職業訓練効果 (JTRAIN)
+
+- `sales`（売上の対数）と `employ`（従業員数の対数）を追加
+- 3社が完全に脱落、5観測が追加欠損 $\Rightarrow$ $n = 148$
+
+\footnotesize
+```{r example143}
+res_fe143 <- plm(lscrap ~ d88 + d89 + grant + grant_1 +
+                   lsales + lemploy,
+                 data = pdata_jt, model = "within",
+                 na.action = na.omit)
+summary(res_fe143)$coefficients[c("grant", "grant_1"), ]
+```
+\normalsize
+
+- $\hat{\beta}_{grant} \approx -0.297$、$\hat{\beta}_{grant_{-1}} \approx -0.536$：基本結果と整合的
+
+# 14-2 変量効果モデル
+
+---
+
+## 変量効果モデルの設定
+
+- 同じ不観測効果モデルから出発 [14.7]:
+$$y_{it} = \beta_0 + \beta_1 x_{it1} + \cdots + \beta_k x_{itk} + a_i + u_{it}$$
+- **変量効果 (RE) の仮定** [14.8]:
+$$\text{Cov}(x_{itj}, a_i) = 0, \quad t = 1, \dots, T;\ j = 1, \dots, k$$
+- $a_i$ がすべての説明変数と無相関と仮定 $\Rightarrow$ $a_i$ を誤差項に含める
+- **合成誤差項**: $v_{it} = a_i + u_{it}$
+- $a_i$ が各期間の誤差に入るため、$v_{it}$ は時間を通じて正の系列相関を持つ
+
+---
+
+## GLS変換（準時間平均除去）
+
+- 合成誤差の系列相関を除去するため一般化最小二乗法 (GLS) を適用
+- 変換パラメータ [14.10]:
+$$\theta = 1 - \left[\sigma_u^2 / (\sigma_u^2 + T\sigma_a^2)\right]^{1/2}$$
+- 変換後の方程式 [14.11]:
+$$y_{it} - \theta\bar{y}_i = \beta_0(1-\theta) + \beta_1(x_{it1} - \theta\bar{x}_{i1}) + \cdots + (v_{it} - \theta\bar{v}_i)$$
+- **quasi-demeaned（準時間平均除去）データ**に基づくPooled OLS $\Rightarrow$ **変量効果推定量**
+- $\theta = 0$: Pooled OLS と同一
+- $\theta = 1$: 固定効果推定量と同一
+
+---
+
+## 例14.4: 賃金方程式 (WAGEPAN)
+
+- 3手法（Pooled OLS, RE, FE）の比較
+
+\footnotesize
+```{r example144}
+# Pooled OLS（参考）
+res_pols <- plm(lwage ~ educ + black + hisp + exper + expersq +
+                  married + union +
+                  d81 + d82 + d83 + d84 + d85 + d86 + d87,
+                data = pdata_wp, model = "pooling")
+# 変量効果 (RE)
+res_re <- plm(lwage ~ educ + black + hisp + exper + expersq +
+                married + union +
+                d81 + d82 + d83 + d84 + d85 + d86 + d87,
+              data = pdata_wp, model = "random")
+# 固定効果 (FE)
+res_fe <- plm(lwage ~ expersq + married + union +
+                d81 + d82 + d83 + d84 + d85 + d86 + d87,
+              data = pdata_wp, model = "within")
+```
+\normalsize
+
+---
+
+## 例14.4: 結果の比較
+
+\footnotesize
+```{r example144b}
+# 時間変動変数の係数比較
+vars <- c("expersq", "married", "union")
+rbind(
+  POLS = coef(res_pols)[vars],
+  RE   = coef(res_re)[vars],
+  FE   = coef(res_fe)[vars]
+)
+```
+\normalsize
+
+---
+
+## 例14.4: 解釈
+
+- $\hat{\theta} \approx 0.643$：REはPooled OLSとFEの中間
+- `married` の係数: POLS(0.108) $>$ RE(0.064) $>$ FE(0.047)
+  - 能力の高い人が結婚しやすい $\Rightarrow$ POLS/REは上方バイアス
+- `union` の係数: POLS(0.182) $>$ RE(0.106) $>$ FE(0.080)
+  - 組合効果の一部は個人固有特性に起因
+- FEでは `educ`, `black`, `hispan` は時間不変のため推定不可
+
+# 14-2a 変量効果 vs Pooled OLS
+
+---
+
+## 変量効果とPooled OLSの選択
+
+- Breusch-Pagan (1980) 検定: $H_0: \sigma_a^2 = 0$（個体効果が存在しない）
+- $\sigma_a^2 = 0$ なら観測不能効果なし $\Rightarrow$ Pooled OLSが適切
+- ただし、この検定はあくまで $\sigma_a^2 > 0$ を確認するもの
+  - $\sigma_a^2 > 0$ でも $a_i$ が $x_{it}$ と相関していれば RE/POLS ともに不一致
+- **結論**: REはPooled OLSより常に好ましい
+  - 系列相関の除去により効率的
+  - $a_i$ の一部を誤差項から除去 $\Rightarrow$ バイアスを軽減
+
+# 14-2b 変量効果 vs 固定効果
+
+---
+
+## FE vs RE の選択基準
+
+- **FE**: $a_i$ と $x_{it}$ が相関していてもよい $\Rightarrow$ より頑健
+- **RE**: $a_i$ と $x_{it}$ が無相関という仮定が必要 $\Rightarrow$ 効率的（標準誤差が小さい）
+- **RE を選ぶ場合**: 主要な説明変数が時間不変（例: `educ`）$\Rightarrow$ FEでは推定不可
+- **Hausman (1978) 検定**: RE仮定 [14.8] が成立しているか検定
+
+$$H_0: \text{Cov}(x_{itj}, a_i) = 0 \quad \forall j$$
+
+---
+
+## Hausman検定の実施
+
+\footnotesize
+```{r hausman}
+# Hausman検定（同じ変数セットでFEとREを推定）
+res_re_h <- plm(lwage ~ expersq + married + union +
+                  d81 + d82 + d83 + d84 + d85 + d86 + d87,
+                data = pdata_wp, model = "random")
+res_fe_h <- plm(lwage ~ expersq + married + union +
+                  d81 + d82 + d83 + d84 + d85 + d86 + d87,
+                data = pdata_wp, model = "within")
+phtest(res_fe_h, res_re_h)
+```
+\normalsize
+
+- $p値$ が小さい $\Rightarrow$ RE仮定を棄却 $\Rightarrow$ FEを採用
+
+# 14-3 相関変量効果アプローチ
+
+---
+
+## CREアプローチの基本アイデア
+
+- $a_i$ が観測変数と相関することを明示的にモデル化
+- $a_i$ と $\{x_{it}\}$ の相関を、時間平均 $\bar{x}_i$ との線形関係で表す [14.12]:
+$$a_i = \alpha + \gamma \bar{x}_i + r_i, \quad \text{Cov}(\bar{x}_i, r_i) = 0$$
+- これを元のモデルに代入 [14.14]:
+$$y_{it} = \alpha + \beta x_{it} + \gamma \bar{x}_i + r_i + u_{it}$$
+- **$\bar{x}_i$ を追加してRE推定** $\Rightarrow$ **相関変量効果 (CRE) 推定量**
+
+---
+
+## CREとFEの等価性
+
+- **重要な結果** [14.16]: CRE推定量はFE推定量と**同一**
+$$\hat{\beta}_{CRE} = \hat{\beta}_{FE}$$
+- CREアプローチの利点:
+  1. **時間不変変数の係数**を推定できる（$\delta_j$ として）
+  2. **RE vs FE 検定**の形式的な枠組みを提供 ($H_0: \gamma = 0$)
+  3. 不均衡パネルへの拡張が容易
+
+---
+
+## CREの推定: WAGEPAN
+
+\footnotesize
+```{r cre}
+# 時間変動変数の個体平均を計算
+wagepan$mean_expersq <- ave(wagepan$expersq, wagepan$nr)
+wagepan$mean_married <- ave(wagepan$married, wagepan$nr)
+wagepan$mean_union   <- ave(wagepan$union, wagepan$nr)
+
+pdata_wp2 <- pdata.frame(wagepan, index = c("nr", "year"))
+
+res_cre <- plm(lwage ~ expersq + married + union +
+                 mean_expersq + mean_married + mean_union +
+                 d81 + d82 + d83 + d84 + d85 + d86 + d87,
+               data = pdata_wp2, model = "random")
+# 時間平均変数の係数（γの推定値）
+coef(res_cre)[c("mean_expersq", "mean_married", "mean_union")]
+```
+\normalsize
+
+---
+
+## CRE: RE vs FE の検定
+
+- $H_0: \gamma_1 = \gamma_2 = \cdots = \gamma_k = 0$（REで十分）[14.19]
+- 時間平均変数 $\bar{x}_{i1}, \dots, \bar{x}_{ik}$ が全て統計的に有意でなければ RE を採用
+
+\footnotesize
+```{r cre_test}
+# 時間平均変数の結合有意性検定（Wald検定）
+library(car)
+linearHypothesis(res_cre,
+                 c("mean_expersq = 0",
+                   "mean_married = 0",
+                   "mean_union = 0"))
+```
+\normalsize
+
+# 14-4 パネルデータを用いた政策分析
+
+---
+
+## 一般的な政策分析フレームワーク [14.22]
+
+$$y_{it} = \eta_1 + \alpha_2 d2_t + \cdots + \alpha_T dT_t + \beta w_{it} + \mathbf{x}_{it}\boldsymbol{\psi} + a_i + u_{it}$$
+
+- $w_{it}$: 介入指標（ $w_{it} = 0$ または $1$）
+- $\beta$: 政策効果（関心パラメータ）
+- $\mathbf{x}_{it}$: その他の時変コントロール変数
+- FEまたはFDで推定（$a_i$ と $w_{it}$ の相関を許容）
+- DiD（第13章）は $T = 2$ の特殊ケース
+
+---
+
+## 動的効果の推定 [14.24]
+
+- $t-1$、$t-2$ 期までのラグ効果を含む動的モデル:
+$$y_{it} = \eta_1 + \sum_{t=2}^{T}\alpha_t dt_t + \beta_0 w_{it} + \beta_1 w_{i,t-1} + \beta_2 w_{i,t-2} + \mathbf{x}_{it}\boldsymbol{\psi} + a_i + u_{it}$$
+- 長期効果: $\beta_0 + \beta_1 + \beta_2$
+
+---
+
+## 因果分析の注意点
+
+- $w_{it}$ が過去の誤差項に反応する場合（フィードバック）$\Rightarrow$ 厳密外生性違反
+- **検定方法**: $w_{i,t+1}$（次期の政策）を追加し、有意かどうかを確認 [14.25]
+  - 有意 $\Rightarrow$ フィードバックの存在、FE/FDの結果に注意が必要
+- **偽造検定 (Falsification Test)**: 例えば、今年の介入が去年の成果を予測すべきでない
+
+---
+
+## 異質トレンドモデル (Heterogeneous Trend Model) [14.26]
+
+- 個体固有の時間トレンド $g_i t$ が存在する場合:
+$$y_{it} = \eta_1 + \sum_{t=2}^T \alpha_t dt_t + \beta w_{it} + \mathbf{x}_{it}\boldsymbol{\psi} + a_i + g_i t + u_{it}$$
+- 1階差分で $a_i$ を除去 $\Rightarrow$ $g_i$ が残る [14.27]:
+$$\Delta y_{it} = \sum_{t=2}^T \alpha_t \Delta dt_t + \beta \Delta w_{it} + \Delta\mathbf{x}_{it}\boldsymbol{\psi} + g_i + \Delta u_{it}$$
+- FEを再度適用して $g_i$ を除去 $\Rightarrow$ 最低 $T \geq 3$ が必要
+
+# 14-5 他のデータ構造への応用
+
+---
+
+## マッチドペアとクラスターサンプル
+
+- パネルデータ手法は**時間**以外の構造にも応用可能
+- **マッチドペア** (matched pairs): 例) 兄弟・双子ペアの差分
+  - 家族固有効果 $a_f$ を消去
+  - 例: 十代妊娠が将来所得に与える影響（姉妹ペア差分）
+- **クラスターサンプル** (cluster sample): 個体がクラスター（学校、企業）から抽出
+  - クラスターが「個体」、クラスター内観測が「時点」に対応
+  - クラスター効果を固定効果または差分で除去
+
+---
+
+## クラスターサンプルにおける注意点
+
+- 政策変数 $w_{it}$ がクラスター**内**で変動しない場合（例: 教師の質の効果）
+  $\Rightarrow$ 固定効果は使えない $\Rightarrow$ 変量効果（または Pooled OLS + クラスター標準誤差）
+- クラスターを無視してOLSを使う場合 $\Rightarrow$ 標準誤差が過小（過信）
+  $\Rightarrow$ **クラスター頑健標準誤差 (cluster-robust SE)** を使う
+- Pooled OLSでクラスター頑健標準誤差を使うことで対処可能
+
+---
+
+## クラスター頑健標準誤差の適用場面
+
+- クラスタリングが正当化されるのは**真のクラスターサンプル**の場合
+  - 無作為サンプルをグループに事後分割しても正当化されない
+- **政策変数がグループレベルで変化する場合**（例: 最低賃金法）
+  - 処置の割り当て不確実性を考慮するためクラスタリングが適切
+
+# まとめ
+
+---
+
+## 第14章のまとめ
+
+| 手法 | $a_i$ と $x_{it}$ の相関 | 時間不変変数 | 効率性 |
+|------|--------------------------|------------|--------|
+| Pooled OLS | 不可 | 推定可 | 低 |
+| 固定効果 (FE) | 許容 | 推定不可 | 中 |
+| 1階差分 (FD) | 許容 | 推定不可 | 中 |
+| 変量効果 (RE) | 不可（仮定） | 推定可 | 高 |
+| 相関変量効果 (CRE) | 許容 | 推定可 | 中 |
+
+---
+
+## まとめ（続き）
+
+- **FE vs FD**: $u_{it}$ が系列無相関 $\Rightarrow$ FE優位；ランダムウォーク $\Rightarrow$ FD優位
+- **RE vs FE**: Hausman検定または CRE アプローチで選択
+- **CRE**: FE の点推定を維持しつつ、時間不変変数の係数と RE vs FE の検定を提供
+- **政策分析**: 処置指標を適切に定義すれば DiD はFEの特殊ケース；動的効果・フィードバック検定も重要
+- **他のデータ構造**: 兄弟ペア、クラスターサンプルにも同様の手法が適用可能

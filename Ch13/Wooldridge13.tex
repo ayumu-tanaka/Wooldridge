@@ -1,0 +1,387 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語を使う場合は必須
+%\usepackage[japanese]{babel}	
+%\usefonttheme[onlymath]{serif}
+%\usepackage[T1]{fontenc} %これを使うと、ギリシャ文字が出ない
+%\usepackage{textcomp}
+%\usepackage[scale=1.0]{tgheros} % Sans serif font
+%\usepackage[scaled]{beramono} % Monospace font
+%\usepackage{luatexja-otf}
+%\renewcommand{\kanjifamilydefault}{\gtdefault}
+%\usepackage[haranoaji]{luatexja-preset}
+
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} \hspace*{2ex} % new version without total frames
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第13章: 単純なパネルデータ}
+\subtitle{Jeffrey Wooldridge (2016).\\
+Introductory Econometrics: A Modern Approach\\
+6rd ed.~Cengage Learning.}
+\author{}
+\date{\vspace{-2.5em}2026-03-05}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{準備}\label{ux6e96ux5099}
+
+\begin{frame}[fragile]{必要なパッケージの読み込み}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wooldridge}パッケージの読み込み
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(wooldridge)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{plm}パッケージの読み込み（パネルデータ分析に使用）
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(plm)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\section{13-1
+独立した複数の横断面データの結合}\label{ux72ecux7acbux3057ux305fux8907ux6570ux306eux6a2aux65adux9762ux30c7ux30fcux30bfux306eux7d50ux5408}
+
+\begin{frame}{独立した横断面データの結合 (Pooled Cross Sections)}
+\phantomsection\label{ux72ecux7acbux3057ux305fux6a2aux65adux9762ux30c7ux30fcux30bfux306eux7d50ux5408-pooled-cross-sections}
+\begin{itemize}
+\tightlist
+\item
+  異なる時点 (\(t=1, 2, \dots\))
+  において、それぞれ独立に無作為抽出されたデータを結合したもの。
+\item
+  サンプルサイズが大きくなるため、推定の精度（標準誤差）が向上する。
+\item
+  重要なのは、\textbf{「時間とともに母集団の構造が変化しているか」}を考慮すること。
+\item
+  通常、各年ダミー変数を含めて推定する。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{例：賃金関数の年次変化 (\texttt{cps78\_85})}
+\phantomsection\label{ux4f8bux8cc3ux91d1ux95a2ux6570ux306eux5e74ux6b21ux5909ux5316-cps78_85}
+\begin{itemize}
+\tightlist
+\item
+  1978年と1985年のデータを結合。
+\item
+  モデル:
+  \(\log(wage) = \beta_0 + \delta_0 y85 + \beta_1 educ + \dots + u\)
+\item
+  \(\delta_0\)
+  は、他の条件を一定としたとき、1978年から1985年の間に実質賃金がどれだけ変化したかを表す。
+\end{itemize}
+\end{frame}
+
+\section{13-2 差の差法
+(Difference-in-Differences)}\label{ux5deeux306eux5deeux6cd5-difference-in-differences}
+
+\begin{frame}{政策評価と差の差法 (DiD)}
+\phantomsection\label{ux653fux7b56ux8a55ux4fa1ux3068ux5deeux306eux5deeux6cd5-did}
+\begin{itemize}
+\tightlist
+\item
+  自然実験（Natural Experiments）の評価に用いられる手法。
+\item
+  処置群（Treatment group）と対照群（Control
+  group）の2つのグループを、政策の前後で比較する。
+\item
+  \textbf{モデル:}
+  \(y = \beta_0 + \beta_1 \text{treated} + \delta_0 \text{after} + \delta_1 (\text{treated} \cdot \text{after}) + u\)
+\item
+  \textbf{DiD推定量:}
+  \(\hat{\delta}_1 = (\bar{y}_{T,A} - \bar{y}_{T,B}) - (\bar{y}_{C,A} - \bar{y}_{C,B})\)
+\item
+  交差項の係数 \(\hat{\delta}_1\) が政策の因果的効果を表す。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{DiDの例 (\texttt{kielmc})}
+\phantomsection\label{didux306eux4f8b-kielmc}
+\begin{itemize}
+\tightlist
+\item
+  1978年と1981年の住宅価格。
+\item
+  1981年にゴミ焼却炉が建設される予定の地域 (\texttt{nearinc})
+  の住宅価格がどう変化したか。
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(kielmc)}
+\CommentTok{\# y81: 1981年ダミー, nearinc: 焼却炉近隣ダミー}
+\NormalTok{res\_did }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(rprice }\SpecialCharTok{\textasciitilde{}}\NormalTok{ nearinc }\SpecialCharTok{+}\NormalTok{ y81 }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(nearinc }\SpecialCharTok{*}\NormalTok{ y81), }\AttributeTok{data =}\NormalTok{ kielmc)}
+\FunctionTok{summary}\NormalTok{(res\_did)}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Estimate Std. Error   t value     Pr(>|t|)
+## (Intercept)       82517.23   2726.910 30.260341 1.709246e-95
+## nearinc          -18824.37   4875.322 -3.861154 1.368017e-04
+## y81               18790.29   4050.065  4.639502 5.116892e-06
+## I(nearinc * y81) -11863.90   7456.646 -1.591051 1.125948e-01
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\section{13-3
+2期間のパネルデータ}\label{ux671fux9593ux306eux30d1ux30cdux30ebux30c7ux30fcux30bf}
+
+\begin{frame}{パネルデータ (Panel Data) とは}
+\phantomsection\label{ux30d1ux30cdux30ebux30c7ux30fcux30bf-panel-data-ux3068ux306f}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{同じ個体} (\(i\)) を、\textbf{異なる時点} (\(t\))
+  にわたって追跡したデータ。
+\item
+  独立した横断面データの結合とは異なり、個体の固有の特性（能力、性格、歴史など）をコントロールできる。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{個体固定効果モデル}
+\phantomsection\label{ux500bux4f53ux56faux5b9aux52b9ux679cux30e2ux30c7ux30eb}
+\begin{itemize}
+\tightlist
+\item
+  \(y_{it} = \beta_0 + \delta_0 d2_t + \beta_1 x_{it} + a_i + u_{it}\)
+\item
+  \(a_i\) : \textbf{個体固有の効果}（Unobserved
+  heterogeneity）。時間を通じて一定。
+\item
+  \(u_{it}\) : 攪乱項。時間とともに変化する。
+\item
+  もし \(a_i\) が \(x_{it}\) と相関している場合、通常のOLS（Pooled
+  OLS）はバイアスが生じる。
+\end{itemize}
+\end{frame}
+
+\section{13-4 1階差分法
+(First-Differencing)}\label{ux968eux5deeux5206ux6cd5-first-differencing}
+
+\begin{frame}{1階差分法 (First-Differencing, FD)}
+\phantomsection\label{ux968eux5deeux5206ux6cd5-first-differencing-fd}
+\begin{itemize}
+\tightlist
+\item
+  2期間のパネルデータにおいて、個体固有の効果 \(a_i\) を消去する手法。
+\item
+  \(t=2\) の式から \(t=1\) の式を引く：
+\item
+  \((y_{i2} - y_{i1}) = \delta_0 + \beta_1 (x_{i2} - x_{i1}) + (u_{i2} - u_{i1})\)
+\item
+  \(\Delta y_i = \delta_0 + \beta_1 \Delta x_i + \Delta u_i\)
+\item
+  これにより、\(a_i\) が \(x_{it}\)
+  と相関していても（内生性があっても）、\(\beta_1\) を一致推定できる。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{FDの例 (\texttt{crime4})}
+\phantomsection\label{fdux306eux4f8b-crime4}
+\begin{itemize}
+\tightlist
+\item
+  郡 (county) ごとの犯罪率に対する逮捕率の影響。
+\item
+  \(a_i\) は郡固有の地理的、文化的要因（時間不変）。
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(crime4)}
+\CommentTok{\# 1981年と1982年に絞る}
+\NormalTok{d8182 }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(crime4, year }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{81}\NormalTok{, }\DecValTok{82}\NormalTok{))}
+\CommentTok{\# crmrte: 犯罪率(log), prbarr: 逮捕率(log)}
+\CommentTok{\# plmパッケージを使ってデータをパネル形式に変換}
+\NormalTok{pdata }\OtherTok{\textless{}{-}} \FunctionTok{pdata.frame}\NormalTok{(d8182, }\AttributeTok{index =} \FunctionTok{c}\NormalTok{(}\StringTok{"county"}\NormalTok{, }\StringTok{"year"}\NormalTok{))}
+\CommentTok{\# 1階差分モデルの推定}
+\NormalTok{res\_fd }\OtherTok{\textless{}{-}} \FunctionTok{plm}\NormalTok{(crmrte }\SpecialCharTok{\textasciitilde{}}\NormalTok{ prbarr, }\AttributeTok{data =}\NormalTok{ pdata, model}
+ \OtherTok{=} \StringTok{"fd"}\NormalTok{)}
+\FunctionTok{summary}\NormalTok{(res\_fd)}\SpecialCharTok{$}\NormalTok{coefficients}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  Estimate   Std. Error     t-value  Pr(>|t|)
+## (Intercept) -3.112476e-05 0.0004228138 -0.07361341 0.9414851
+## prbarr      -5.663059e-03 0.0039700288 -1.42645298 0.1572758
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}{まとめ}
+\phantomsection\label{ux307eux3068ux3081}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{結合した横断面データ:}
+  サンプルサイズの拡大と時間的変化の分析。
+\item
+  \textbf{DiD:} 政策介入の効果を、処置群と対照群の「変化の差」で測定。
+\item
+  \textbf{パネルデータ:} 個体固有の観測不能な要因 (\(a_i\))
+  を考慮できる。
+\item
+  \textbf{1階差分法:} \(a_i\) を引き算で消去し、因果関係を特定する。
+\end{itemize}
+\end{frame}
+
+\end{document}

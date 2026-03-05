@@ -1,0 +1,390 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語を使う場合は必須
+%\usepackage[japanese]{babel}	
+%\usefonttheme[onlymath]{serif}
+%\usepackage[T1]{fontenc} %これを使うと、ギリシャ文字が出ない
+%\usepackage{textcomp}
+%\usepackage[scale=1.0]{tgheros} % Sans serif font
+%\usepackage[scaled]{beramono} % Monospace font
+%\usepackage{luatexja-otf}
+%\renewcommand{\kanjifamilydefault}{\gtdefault}
+%\usepackage[haranoaji]{luatexja-preset}
+
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} \hspace*{2ex} % new version without total frames
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdfauthor={資料作成: 田中 鮎夢},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第7章: 多重回帰分析：質的情報}
+\subtitle{Jeffrey Wooldridge (2016).\\
+Introductory Econometrics: A Modern Approach\\
+6rd ed.~Cengage Learning.}
+\author{資料作成: 田中 鮎夢}
+\date{2026-03-05}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{準備}\label{ux6e96ux5099}
+
+\begin{frame}[fragile]{必要なパッケージの読み込み}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wooldridge}パッケージの読み込み
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(wooldridge)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\section{7-1
+ダミー変数の基礎}\label{ux30c0ux30dfux30fcux5909ux6570ux306eux57faux790e}
+
+\begin{frame}{質的情報 (Qualitative Information)}
+\phantomsection\label{ux8ceaux7684ux60c5ux5831-qualitative-information}
+\begin{itemize}
+\tightlist
+\item
+  これまでは、所得、教育年数、価格などの\textbf{量的変数}を扱ってきた。
+\item
+  現実には、性別、人種、業界、地域、政策の有無などの\textbf{質的情報}も重要である。
+\item
+  これを0と1で表したものを\textbf{ダミー変数}（または二値変数, Binary
+  variables）と呼ぶ。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{ダミー変数の定義}
+\phantomsection\label{ux30c0ux30dfux30fcux5909ux6570ux306eux5b9aux7fa9}
+\begin{itemize}
+\tightlist
+\item
+  例：女性であれば1、男性であれば0をとる変数 \texttt{female}
+\item
+  モデル:
+  \(\text{wage} = \beta_0 + \delta_0 \text{female} + \beta_1 \text{educ} + u\)
+\item
+  男性の期待値 (\(female=0\)):
+  \(E(\text{wage} | female=0, \text{educ}) = \beta_0 + \beta_1 \text{educ}\)
+\item
+  女性の期待値 (\(female=1\)):
+  \(E(\text{wage} | female=1, \text{educ}) = (\beta_0 + \delta_0) + \beta_1 \text{educ}\)
+\item
+  \(\delta_0\) は、教育年数が同じ男女間の賃金格差を表す。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ダミー変数の罠 (Dummy Variable Trap)}
+\phantomsection\label{ux30c0ux30dfux30fcux5909ux6570ux306eux7f60-dummy-variable-trap}
+\begin{itemize}
+\tightlist
+\item
+  カテゴリが \(G\) 個ある場合、含めるダミー変数は \(G-1\)
+  個にする必要がある。
+\item
+  すべてのカテゴリのダミー変数と定数項を同時に入れると、完全な多重共線性が発生する。
+\item
+  入れなかったカテゴリが\textbf{基準グループ}（Benchmark/Reference
+  group）となる。
+\end{itemize}
+\end{frame}
+
+\section{7-2
+複数のカテゴリを持つダミー変数}\label{ux8907ux6570ux306eux30abux30c6ux30b4ux30eaux3092ux6301ux3064ux30c0ux30dfux30fcux5909ux6570}
+
+\begin{frame}[fragile]{例：学歴レベル}
+\phantomsection\label{ux4f8bux5b66ux6b74ux30ecux30d9ux30eb}
+\begin{itemize}
+\tightlist
+\item
+  「中卒」「高卒」「大卒」の3カテゴリがある場合。
+\item
+  ダミー変数: \texttt{highschool}, \texttt{university} の2つを作成。
+\item
+  基準グループ: 「中卒」
+\item
+  モデル:
+  \(y = \beta_0 + \delta_1 \text{highschool} + \delta_2 \text{university} + \dots + u\)
+\item
+  \(\delta_2\) は「中卒」と比較した「大卒」の効果。
+\item
+  「高卒」と「大卒」の差を検定するには、\(\delta_2 - \delta_1 = 0\)
+  かどうかを調べる。
+\end{itemize}
+\end{frame}
+
+\section{7-3
+交差項とダミー変数}\label{ux4ea4ux5deeux9805ux3068ux30c0ux30dfux30fcux5909ux6570}
+
+\begin{frame}[fragile]{ダミー変数同士の交差項}
+\phantomsection\label{ux30c0ux30dfux30fcux5909ux6570ux540cux58ebux306eux4ea4ux5deeux9805}
+\begin{itemize}
+\tightlist
+\item
+  例：性別 (\texttt{female}) と 既婚 (\texttt{married})
+\item
+  4つのグループ（独身男性、独身女性、既婚男性、既婚女性）の差を表現できる。
+\item
+  \texttt{female\ *\ married}
+  という交差項を入れることで、結婚の効果が男女で異なるかどうかを検証できる。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{量的変数とダミー変数の交差項}
+\phantomsection\label{ux91cfux7684ux5909ux6570ux3068ux30c0ux30dfux30fcux5909ux6570ux306eux4ea4ux5deeux9805}
+\begin{itemize}
+\tightlist
+\item
+  モデル:
+  \(\log(\text{wage}) = \beta_0 + \delta_0 \text{female} + \beta_1 \text{educ} + \delta_1 (\text{female} \cdot \text{educ}) + u\)
+\item
+  男性の教育効果: \(\beta_1\)
+\item
+  女性の教育効果: \(\beta_1 + \delta_1\)
+\item
+  \(\delta_1 \neq 0\) であれば、教育の収益率に男女差があることになる。
+\end{itemize}
+\end{frame}
+
+\section{7-4 線形確率モデル
+(LPM)}\label{ux7ddaux5f62ux78baux7387ux30e2ux30c7ux30eb-lpm}
+
+\begin{frame}{従属変数がダミー変数の場合}
+\phantomsection\label{ux5f93ux5c5eux5909ux6570ux304cux30c0ux30dfux30fcux5909ux6570ux306eux5834ux5408}
+\begin{itemize}
+\tightlist
+\item
+  例：就業の有無、住宅ローンの承認、政策の効果。
+\item
+  従属変数 \(y\) が 0 または 1 をとるモデル。
+\item
+  \(P(y=1 | x) = E(y | x) = \beta_0 + \beta_1 x_1 + \dots + \beta_k x_k\)
+\item
+  係数 \(\beta_j\) は、\(x_j\) が1単位変化したときの \textbf{\(y=1\)
+  となる確率の変化}を表す。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{LPMの利点と欠点}
+\phantomsection\label{lpmux306eux5229ux70b9ux3068ux6b20ux70b9}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{利点:} 解釈が非常に容易である。
+\item
+  \textbf{欠点:}
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    予測値 \(\hat{y}\) が 0 未満や 1 を超えることがある。
+  \item
+    誤差項に不均一分散が必ず発生する。
+  \item
+    限界効果が常に一定という仮定が不自然な場合がある。
+  \end{enumerate}
+\item
+  （より高度な手法として Logit や Probit モデルがある）
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{LPMの推定例 (\texttt{mroz})}
+\phantomsection\label{lpmux306eux63a8ux5b9aux4f8b-mroz}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(mroz)}
+\CommentTok{\# 既婚女性の労働供給 (inlf=1: 労働市場に参加)}
+\NormalTok{res\_lpm }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(inlf }\SpecialCharTok{\textasciitilde{}}\NormalTok{ nwifeinc }\SpecialCharTok{+}\NormalTok{ educ }\SpecialCharTok{+}\NormalTok{ exper }\SpecialCharTok{+}\NormalTok{ age }\SpecialCharTok{+}\NormalTok{ kidslt6, }\AttributeTok{data=}\NormalTok{mroz)}
+\FunctionTok{summary}\NormalTok{(res\_lpm)}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Estimate  Std. Error   t value     Pr(>|t|)
+## (Intercept)  0.769832596 0.135006985  5.702169 1.703869e-08
+## nwifeinc    -0.003258636 0.001455510 -2.238827 2.546088e-02
+## educ         0.039128569 0.007363805  5.313635 1.419779e-07
+## exper        0.022210504 0.002144369 10.357595 1.394203e-23
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\section{7-5
+政策評価とプログラム評価}\label{ux653fux7b56ux8a55ux4fa1ux3068ux30d7ux30edux30b0ux30e9ux30e0ux8a55ux4fa1}
+
+\begin{frame}[fragile]{処置効果 (Treatment Effect)}
+\phantomsection\label{ux51e6ux7f6eux52b9ux679c-treatment-effect}
+\begin{itemize}
+\tightlist
+\item
+  政策やプログラム（処置）に参加したことの効果を測定する。
+\item
+  \(y = \beta_0 + \delta_0 \text{prog} + \dots + u\)
+\item
+  ここで \texttt{prog} は参加した人に対して 1 をとるダミー変数。
+\item
+  理想的には、参加がランダムに割り当てられていれば、\(\delta_0\)
+  は因果関係を表す。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{まとめ}
+\phantomsection\label{ux307eux3068ux3081}
+\begin{itemize}
+\tightlist
+\item
+  ダミー変数は質的情報を回帰モデルに取り込むための強力なツール。
+\item
+  解釈の際は常に「基準グループ」を意識する。
+\item
+  交差項を用いることで、グループ間の傾きの違いを表現できる。
+\item
+  従属変数がダミー変数の場合は線形確率モデル (LPM)
+  として扱うことができる。
+\end{itemize}
+\end{frame}
+
+\end{document}

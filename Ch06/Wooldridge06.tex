@@ -1,0 +1,462 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語を使う場合は必須
+%\usepackage[japanese]{babel}	
+%\usefonttheme[onlymath]{serif}
+%\usepackage[T1]{fontenc} %これを使うと、ギリシャ文字が出ない
+%\usepackage{textcomp}
+%\usepackage[scale=1.0]{tgheros} % Sans serif font
+%\usepackage[scaled]{beramono} % Monospace font
+%\usepackage{luatexja-otf}
+%\renewcommand{\kanjifamilydefault}{\gtdefault}
+%\usepackage[haranoaji]{luatexja-preset}
+
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} \hspace*{2ex} % new version without total frames
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第6章: 多変量回帰：発展}
+\subtitle{Jeffrey Wooldridge (2016).\\
+Introductory Econometrics: A Modern Approach\\
+6rd ed.~Cengage Learning.}
+\author{}
+\date{\vspace{-2.5em}2026-03-05}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{準備}\label{ux6e96ux5099}
+
+\begin{frame}[fragile]{必要なパッケージの読み込み}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wooldridge}パッケージの読み込み
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(wooldridge)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\section{6-1
+データのスケーリングとOLS統計量}\label{ux30c7ux30fcux30bfux306eux30b9ux30b1ux30fcux30eaux30f3ux30b0ux3068olsux7d71ux8a08ux91cf}
+
+\begin{frame}{単位の変更の影響}
+\phantomsection\label{ux5358ux4f4dux306eux5909ux66f4ux306eux5f71ux97ff}
+\begin{itemize}
+\tightlist
+\item
+  従属変数 \(y\) や独立変数 \(x\)
+  の単位を変更（スケーリング）した場合、OLS推定量や統計量はどのように変化するか？
+\item
+  \textbf{例：} \(y\) を円から千円にする（1000で割る）、\(x\)
+  をマイルからキロメートルにするなど。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{従属変数 \(y\) のスケーリング}
+\phantomsection\label{ux5f93ux5c5eux5909ux6570-y-ux306eux30b9ux30b1ux30fcux30eaux30f3ux30b0}
+\begin{itemize}
+\tightlist
+\item
+  \(y\) を定数 \(c\) 倍（例えば \(y^* = cy\)）した場合：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    係数 \(\hat{\beta}_j\) はすべて \(c\) 倍になる。
+  \item
+    標準誤差 \(\text{se}(\hat{\beta}_j)\) も \(c\) 倍になる。
+  \item
+    \textbf{t統計量は変化しない。}
+  \item
+    \textbf{決定係数 \(R^2\) は変化しない。}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{独立変数 \(x_j\) のスケーリング}
+\phantomsection\label{ux72ecux7acbux5909ux6570-x_j-ux306eux30b9ux30b1ux30fcux30eaux30f3ux30b0}
+\begin{itemize}
+\tightlist
+\item
+  独立変数 \(x_k\) を定数 \(c\) 倍（例えば \(x_k^* = cx_k\)）した場合：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    該当する係数 \(\hat{\beta}_k\) は \(1/c\) 倍になる。
+  \item
+    他の係数 \(\hat{\beta}_j\) (\(j \neq k\)) は変化しない。
+  \item
+    標準誤差も同様に変化するため、\textbf{t統計量は変化しない。}
+  \item
+    \textbf{決定係数 \(R^2\) は変化しない。}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{標準化係数 (Beta Coefficients)}
+\phantomsection\label{ux6a19ux6e96ux5316ux4fc2ux6570-beta-coefficients}
+\begin{itemize}
+\tightlist
+\item
+  変数の単位に依存しない係数比較を行いたい場合、変数を\textbf{標準化}（平均を引いて標準偏差で割る）する。
+\item
+  すべての変数を標準化して回帰を行うと、得られる係数は\textbf{標準化係数}（Beta
+  Coefficients）と呼ばれる。
+\item
+  「\(x\) が1標準偏差変化したとき、\(y\)
+  が何標準偏差変化するか」を表す。
+\end{itemize}
+\end{frame}
+
+\section{6-2
+関数形式のさらなる検討}\label{ux95a2ux6570ux5f62ux5f0fux306eux3055ux3089ux306aux308bux691cux8a0e}
+
+\begin{frame}{対数形式 (Log Forms)}
+\phantomsection\label{ux5bfeux6570ux5f62ux5f0f-log-forms}
+\begin{itemize}
+\tightlist
+\item
+  対数形式をとることで、非線形な関係を線形モデルで扱える。
+\item
+  対数の差は近似的に変化率（パーセント）を表す。
+\end{itemize}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+モデル
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+従属変数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+独立変数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+解釈 (\(\beta_1\))
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+Level-Level & \(y\) & \(x\) & \(\Delta y = \beta_1 \Delta x\) \\
+Level-Log & \(y\) & \(\log(x)\) &
+\(\Delta y \approx (\beta_1/100) \% \Delta x\) \\
+Log-Level & \(\log(y)\) & \(x\) &
+\(\% \Delta y \approx (100 \beta_1) \Delta x\) \\
+Log-Log & \(\log(y)\) & \(\log(x)\) &
+\(\% \Delta y \approx \beta_1 \% \Delta x\) (弾力性) \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}{対数形式の利点}
+\phantomsection\label{ux5bfeux6570ux5f62ux5f0fux306eux5229ux70b9}
+\begin{enumerate}
+\tightlist
+\item
+  係数が変化率（弾力性）として解釈しやすくなる。
+\item
+  変数の分布が右に裾を引いている場合（所得など）、対数をとることで正規分布に近づき、外れ値の影響を緩和できる。
+\item
+  不均一分散を緩和することが多い。
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{2次形式 (Quadratic Forms)}
+\phantomsection\label{ux6b21ux5f62ux5f0f-quadratic-forms}
+\begin{itemize}
+\tightlist
+\item
+  限界効果が一定でない場合に使用。
+\item
+  モデル: \(y = \beta_0 + \beta_1 x + \beta_2 x^2 + u\)
+\item
+  限界効果: \(\frac{\partial y}{\partial x} = \beta_1 + 2\beta_2 x\)
+\item
+  \(\beta_2 > 0\): 下に凸（U字型）
+\item
+  \(\beta_2 < 0\): 上に凸（逆U字型）
+\item
+  頂点（極値）: \(x^* = -\beta_1 / (2\beta_2)\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{2次形式の例 (\texttt{hprice1})}
+\phantomsection\label{ux6b21ux5f62ux5f0fux306eux4f8b-hprice1}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(hprice1)}
+\CommentTok{\# 住宅面積(sqrft)の2次形式}
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(price }\SpecialCharTok{\textasciitilde{}}\NormalTok{ lotsize }\SpecialCharTok{+}\NormalTok{ sqrft }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(sqrft}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ bdrms, }\AttributeTok{data=}\NormalTok{hprice1)}
+\FunctionTok{summary}\NormalTok{(res)}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{3}\SpecialCharTok{:}\DecValTok{4}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Estimate   Std. Error    t value   Pr(>|t|)
+## sqrft      -8.622611e-03 6.953558e-02 -0.1240029 0.90161283
+## I(sqrft^2)  2.741764e-05 1.425207e-05  1.9237662 0.05781174
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}{交差項 (Interaction Terms)}
+\phantomsection\label{ux4ea4ux5deeux9805-interaction-terms}
+\begin{itemize}
+\tightlist
+\item
+  ある独立変数の効果が、別の独立変数の値に依存する場合。
+\item
+  モデル:
+  \(y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 (x_1 x_2) + u\)
+\item
+  \(x_1\) の限界効果:
+  \(\frac{\partial y}{\partial x_1} = \beta_1 + \beta_3 x_2\)
+\item
+  \(x_2\) の値によって \(x_1\) の効果が変化することを表現できる。
+\end{itemize}
+\end{frame}
+
+\section{\texorpdfstring{6-3 決定係数 \(R^2\) と自由度修正決定係数
+\(\bar{R}^2\)}{6-3 決定係数 R\^{}2 と自由度修正決定係数 \textbackslash bar\{R\}\^{}2}}\label{ux6c7aux5b9aux4fc2ux6570-r2-ux3068ux81eaux7531ux5ea6ux4feeux6b63ux6c7aux5b9aux4fc2ux6570-barr2}
+
+\begin{frame}{通常の \(R^2\) の問題点}
+\phantomsection\label{ux901aux5e38ux306e-r2-ux306eux554fux984cux70b9}
+\begin{itemize}
+\tightlist
+\item
+  モデルに独立変数を追加すると、たとえその変数に説明力がなくても、\(R^2\)
+  は決して減少せず、通常は増加する。
+\item
+  モデルの複雑さを考慮した指標が必要。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{自由度修正決定係数 (Adjusted R-squared)}
+\phantomsection\label{ux81eaux7531ux5ea6ux4feeux6b63ux6c7aux5b9aux4fc2ux6570-adjusted-r-squared}
+\begin{itemize}
+\tightlist
+\item
+  推定に要した自由度を考慮した決定係数：
+  \[ \bar{R}^2 = 1 - \frac{SSR / (n - k - 1)}{SST / (n - 1)} = 1 - \frac{\hat{\sigma}^2}{SST / (n-1)} \]
+\item
+  変数を追加しても、\(\hat{\sigma}^2\)（誤差分散の推定値）が減少しなければ
+  \(\bar{R}^2\) は増加しない。
+\item
+  \(\bar{R}^2\) は負になることもある。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{モデル選択における注意}
+\phantomsection\label{ux30e2ux30c7ux30ebux9078ux629eux306bux304aux3051ux308bux6ce8ux610f}
+\begin{itemize}
+\tightlist
+\item
+  \(R^2\) や \(\bar{R}^2\)
+  を最大化することだけが、モデル選択の目的ではない。
+\item
+  重要なのは、理論的背景や、内生性（\(E[u|x]=0\)）の排除である。
+\item
+  非線形な変換（例：\(y\) vs \(\log(y)\)）をしたモデル同士の \(R^2\)
+  を直接比較してはいけない。
+\end{itemize}
+\end{frame}
+
+\section{6-4
+予測と残差分析}\label{ux4e88ux6e2cux3068ux6b8bux5deeux5206ux6790}
+
+\begin{frame}[fragile]{予測 (Prediction)}
+\phantomsection\label{ux4e88ux6e2c-prediction}
+\begin{itemize}
+\tightlist
+\item
+  推定されたモデルを用いて、与えられた \(x\) の値に対する \(y\)
+  の期待値を推定する。
+\item
+  \texttt{predict()} 関数を使用して計算可能。
+\item
+  信頼区間 (Confidence Interval) と予測区間 (Prediction Interval)
+  の違いに注意。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{残差分析 (Residual Analysis)}
+\phantomsection\label{ux6b8bux5deeux5206ux6790-residual-analysis}
+\begin{itemize}
+\tightlist
+\item
+  推定された残差 \(\hat{u} = y - \hat{y}\)
+  を観察することで、モデルの妥当性をチェックする。
+\item
+  特定のサンプル（アウトライヤー）が結果に大きな影響を与えていないか確認する。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{まとめ}
+\phantomsection\label{ux307eux3068ux3081}
+\begin{itemize}
+\tightlist
+\item
+  スケーリングは係数の値を変化させるが、t統計量や \(R^2\)
+  には影響しない。
+\item
+  対数、2次形式、交差項により、現実的な非線形関係をモデル化できる。
+\item
+  \(\bar{R}^2\) はモデルの複雑さを考慮するが、過信は禁物。
+\item
+  予測と残差分析は、モデルの実用性と妥当性の検証に不可欠。
+\end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,156 @@
+---
+title: |
+  | 第13章: 単純なパネルデータ
+subtitle: |
+    | Jeffrey Wooldridge (2016).
+    | Introductory Econometrics: A Modern Approach 
+    | 6rd ed. Cengage Learning.
+author: ''
+date: "`r Sys.Date()`"
+output:
+  slidy_presentation: default
+#  ioslides_presentation: default
+  beamer_presentation:
+    theme: Montpellier
+    latex_engine: lualatex
+    keep_tex: true
+    includes:
+      in_header: header_beamer.tex
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE,
+                      warning = FALSE)
+```
+
+
+```{r packages, include=FALSE}
+library(wooldridge)
+library(plm)
+```
+
+# 準備
+
+## 必要なパッケージの読み込み
+
+* `wooldridge`パッケージの読み込み
+
+```r
+library(wooldridge)
+```
+
+* `plm`パッケージの読み込み（パネルデータ分析に使用）
+```r
+library(plm)
+```
+
+
+# 13-1 独立した複数の横断面データの結合
+
+---
+
+## 独立した横断面データの結合 (Pooled Cross Sections)
+
+- 異なる時点 ($t=1, 2, \dots$) において、それぞれ独立に無作為抽出されたデータを結合したもの。
+- サンプルサイズが大きくなるため、推定の精度（標準誤差）が向上する。
+- 重要なのは、**「時間とともに母集団の構造が変化しているか」**を考慮すること。
+- 通常、各年ダミー変数を含めて推定する。
+
+---
+
+## 例：賃金関数の年次変化 (`cps78_85`)
+
+- 1978年と1985年のデータを結合。
+- モデル: $\log(wage) = \beta_0 + \delta_0 y85 + \beta_1 educ + \dots + u$
+- $\delta_0$ は、他の条件を一定としたとき、1978年から1985年の間に実質賃金がどれだけ変化したかを表す。
+
+# 13-2 差の差法 (Difference-in-Differences)
+
+---
+
+## 政策評価と差の差法 (DiD)
+
+- 自然実験（Natural Experiments）の評価に用いられる手法。
+- 処置群（Treatment group）と対照群（Control group）の2つのグループを、政策の前後で比較する。
+- **モデル:** $y = \beta_0 + \beta_1 \text{treated} + \delta_0 \text{after} + \delta_1 (\text{treated} \cdot \text{after}) + u$
+- **DiD推定量:** $\hat{\delta}_1 = (\bar{y}_{T,A} - \bar{y}_{T,B}) - (\bar{y}_{C,A} - \bar{y}_{C,B})$
+- 交差項の係数 $\hat{\delta}_1$ が政策の因果的効果を表す。
+
+---
+
+## DiDの例 (`kielmc`)
+
+- 1978年と1981年の住宅価格。
+- 1981年にゴミ焼却炉が建設される予定の地域 (`nearinc`) の住宅価格がどう変化したか。
+
+\footnotesize
+```{r}
+data(kielmc)
+# y81: 1981年ダミー, nearinc: 焼却炉近隣ダミー
+res_did <- lm(rprice ~ nearinc + y81 + I(nearinc * y81), data = kielmc)
+summary(res_did)$coefficients[1:4, ]
+```
+\normalsize
+
+# 13-3 2期間のパネルデータ
+
+---
+
+## パネルデータ (Panel Data) とは
+
+- **同じ個体** ($i$) を、**異なる時点** ($t$) にわたって追跡したデータ。
+- 独立した横断面データの結合とは異なり、個体の固有の特性（能力、性格、歴史など）をコントロールできる。
+
+---
+
+## 個体固定効果モデル
+
+- $y_{it} = \beta_0 + \delta_0 d2_t + \beta_1 x_{it} + a_i + u_{it}$
+- $a_i$ : **個体固有の効果**（Unobserved heterogeneity）。時間を通じて一定。
+- $u_{it}$ : 攪乱項。時間とともに変化する。
+- もし $a_i$ が $x_{it}$ と相関している場合、通常のOLS（Pooled OLS）はバイアスが生じる。
+
+# 13-4 1階差分法 (First-Differencing)
+
+---
+
+## 1階差分法 (First-Differencing, FD)
+
+- 2期間のパネルデータにおいて、個体固有の効果 $a_i$ を消去する手法。
+- $t=2$ の式から $t=1$ の式を引く：
+- $(y_{i2} - y_{i1}) = \delta_0 + \beta_1 (x_{i2} - x_{i1}) + (u_{i2} - u_{i1})$
+- $\Delta y_i = \delta_0 + \beta_1 \Delta x_i + \Delta u_i$
+- これにより、$a_i$ が $x_{it}$ と相関していても（内生性があっても）、$\beta_1$ を一致推定できる。
+
+---
+
+## FDの例 (`crime4`)
+
+- 郡 (county) ごとの犯罪率に対する逮捕率の影響。
+- $a_i$ は郡固有の地理的、文化的要因（時間不変）。
+
+\footnotesize
+```{r}
+data(crime4)
+# 1981年と1982年に絞る
+d8182 <- subset(crime4, year %in% c(81, 82))
+# crmrte: 犯罪率(log), prbarr: 逮捕率(log)
+# plmパッケージを使ってデータをパネル形式に変換
+pdata <- pdata.frame(d8182, index = c("county", "year"))
+# 1階差分モデルの推定
+res_fd <- plm(crmrte ~ prbarr, data = pdata, model
+ = "fd")
+summary(res_fd)$coefficients
+```
+\normalsize
+
+---
+
+## まとめ
+
+- **結合した横断面データ:** サンプルサイズの拡大と時間的変化の分析。
+- **DiD:** 政策介入の効果を、処置群と対照群の「変化の差」で測定。
+- **パネルデータ:** 個体固有の観測不能な要因 ($a_i$) を考慮できる。
+- **1階差分法:** $a_i$ を引き算で消去し、因果関係を特定する。
+

@@ -1,0 +1,421 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  ignorenonframetext,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
+\usepackage{luatexja}% 日本語を使う場合は必須
+%\usepackage[japanese]{babel}	
+%\usefonttheme[onlymath]{serif}
+%\usepackage[T1]{fontenc} %これを使うと、ギリシャ文字が出ない
+%\usepackage{textcomp}
+%\usepackage[scale=1.0]{tgheros} % Sans serif font
+%\usepackage[scaled]{beramono} % Monospace font
+%\usepackage{luatexja-otf}
+%\renewcommand{\kanjifamilydefault}{\gtdefault}
+%\usepackage[haranoaji]{luatexja-preset}
+
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\makeatletter
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} \hspace*{2ex} % new version without total frames
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+% スライド番号の表示 %%%%%%%%%%%%%%%%%%%
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第8章: 多重回帰分析：不均一分散}
+\subtitle{Jeffrey Wooldridge (2016).\\
+Introductory Econometrics: A Modern Approach\\
+6rd ed.~Cengage Learning.}
+\author{}
+\date{\vspace{-2.5em}2026-03-05}
+
+\begin{document}
+\frame{\titlepage}
+
+\section{準備}\label{ux6e96ux5099}
+
+\begin{frame}[fragile]{必要なパッケージの読み込み}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{wooldridge}パッケージの読み込み
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(wooldridge)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sandwich}パッケージの読み込み（頑健な標準誤差の計算に使用）
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(sandwich)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{lmtest}パッケージの読み込み（モデルの定式化の検定などに使用）
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lmtest)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\section{8-1
+不均一分散の含意}\label{ux4e0dux5747ux4e00ux5206ux6563ux306eux542bux610f}
+
+\begin{frame}{不均一分散 (Heteroskedasticity) とは}
+\phantomsection\label{ux4e0dux5747ux4e00ux5206ux6563-heteroskedasticity-ux3068ux306f}
+\begin{itemize}
+\tightlist
+\item
+  これまでのガウス＝マルコフ仮定（MLR.5）では、説明変数 \(x\)
+  の値に関わらず、誤差項 \(u\) の分散が一定であることを仮定していた。
+\item
+  \(Var(u|x) = \sigma^2\) （等分散性, Homoskedasticity）
+\item
+  これが満たされない場合（\(Var(u|x) = \sigma^2(x)\)）、\textbf{不均一分散}と呼ぶ。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{不均一分散がOLSに与える影響}
+\phantomsection\label{ux4e0dux5747ux4e00ux5206ux6563ux304colsux306bux4e0eux3048ux308bux5f71ux97ff}
+\begin{enumerate}
+\tightlist
+\item
+  \textbf{不偏性・一致性には影響しない。}
+  OLS推定量は依然として不偏かつ一致である。
+\item
+  \textbf{OLSはもはや最良線形不偏推定量 (BLUE) ではない。}
+  より効率的な推定量が存在し得る。
+\item
+  \textbf{標準誤差の推定が正しくなくなる。} 通常の \(t\) 統計量や \(F\)
+  統計量を用いた仮説検定が妥当ではなくなる。
+\end{enumerate}
+\end{frame}
+
+\section{8-2
+不均一分散に頑健な推論}\label{ux4e0dux5747ux4e00ux5206ux6563ux306bux9811ux5065ux306aux63a8ux8ad6}
+
+\begin{frame}{頑健な標準誤差 (Robust Standard Errors)}
+\phantomsection\label{ux9811ux5065ux306aux6a19ux6e96ux8aa4ux5dee-robust-standard-errors}
+\begin{itemize}
+\tightlist
+\item
+  不均一分散が存在しても、適切な修正を加えることで妥当な推論（\(t\)
+  検定など）が可能になる。
+\item
+  ホワイトの頑健な標準誤差（White standard
+  errors）や、不均一分散に頑健な標準誤差（Heteroskedasticity-robust
+  standard errors）と呼ばれる。
+\item
+  大規模標本において、誤差項の分散の形を知らなくても正当化される。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Rでの実装例 (\texttt{gpa3})}
+\phantomsection\label{rux3067ux306eux5b9fux88c5ux4f8b-gpa3}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(gpa3)}
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(cumgpa }\SpecialCharTok{\textasciitilde{}}\NormalTok{ sat }\SpecialCharTok{+}\NormalTok{ hsperc }\SpecialCharTok{+}\NormalTok{ tothrs }\SpecialCharTok{+}\NormalTok{ female }\SpecialCharTok{+}\NormalTok{ black }\SpecialCharTok{+}\NormalTok{ white, }
+          \AttributeTok{data =}\NormalTok{ gpa3, }\AttributeTok{subset =}\NormalTok{ (spring }\SpecialCharTok{==} \DecValTok{1}\NormalTok{))}
+
+\CommentTok{\# 通常の標準誤差}
+\CommentTok{\# summary(res)$coefficients[1:3, 1:2]}
+
+\CommentTok{\# 頑健な標準誤差 (sandwichパッケージを使用)}
+\FunctionTok{coeftest}\NormalTok{(res, }\AttributeTok{vcov =} \FunctionTok{vcovHC}\NormalTok{(res, }\AttributeTok{type =} \StringTok{"HC1"}\NormalTok{))[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Estimate   Std. Error
+## (Intercept)  1.470064766 0.2206802109
+## sat          0.001140728 0.0001915317
+## hsperc      -0.008566358 0.0014179275
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\section{8-3
+不均一分散の検定}\label{ux4e0dux5747ux4e00ux5206ux6563ux306eux691cux5b9a}
+
+\begin{frame}{ブロイシュ＝ペーガン検定 (Breusch-Pagan Test)}
+\phantomsection\label{ux30d6ux30edux30a4ux30b7ux30e5ux30daux30fcux30acux30f3ux691cux5b9a-breusch-pagan-test}
+\begin{itemize}
+\tightlist
+\item
+  \(H_0: Var(u|x_1, \dots, x_k) = \sigma^2\) （等分散）
+\item
+  手順：
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    OLS残差 \(\hat{u}\) を求める。
+  \item
+    残差の2乗 \(\hat{u}^2\) を独立変数 \(x_j\) で回帰する（補助回帰）。
+  \item
+    その回帰の \(F\) 統計量または \(LM = n \cdot R^2\)
+    を用いて検定する。
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ホワイト検定 (White Test)}
+\phantomsection\label{ux30dbux30efux30a4ux30c8ux691cux5b9a-white-test}
+\begin{itemize}
+\tightlist
+\item
+  BP検定よりも一般的な不均一分散（非線形な形態など）を検出できる。
+\item
+  手順：残差の2乗 \(\hat{u}^2\)
+  を、独立変数、その2乗、および交差項で回帰する。
+\item
+  変数が多いと自由度が急激に減少するため、予測値 \(\hat{y}\) とその2乗
+  \(\hat{y}^2\) を用いる簡略版がよく使われる。
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{検定の実装例}
+\phantomsection\label{ux691cux5b9aux306eux5b9fux88c5ux4f8b}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# BP検定 (lmtestパッケージ)}
+\FunctionTok{bptest}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  studentized Breusch-Pagan test
+## 
+## data:  res
+## BP = 44.557, df = 6, p-value = 5.732e-08
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ホワイト検定（簡略版）}
+\CommentTok{\# 手動計算: 残差2乗を予測値とその2乗で回帰}
+\NormalTok{u2 }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(res)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{yhat }\OtherTok{\textless{}{-}} \FunctionTok{fitted}\NormalTok{(res)}
+\NormalTok{white\_reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(u2 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ yhat }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(yhat}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\CommentTok{\# LM統計量 (n * R2) と p値}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(u2)}
+\NormalTok{lm\_stat }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{summary}\NormalTok{(white\_reg)}\SpecialCharTok{$}\NormalTok{r.squared}
+\NormalTok{p\_val }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(lm\_stat, }\AttributeTok{df =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{LM =}\NormalTok{ lm\_stat, }\AttributeTok{p\_value =}\NormalTok{ p\_val)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         LM   p_value
+## 1 1.264452 0.5314075
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\section{8-4 加重最小二乗法
+(WLS)}\label{ux52a0ux91cdux6700ux5c0fux4e8cux4e57ux6cd5-wls}
+
+\begin{frame}{加重最小二乗法 (Weighted Least Squares)}
+\phantomsection\label{ux52a0ux91cdux6700ux5c0fux4e8cux4e57ux6cd5-weighted-least-squares}
+\begin{itemize}
+\tightlist
+\item
+  不均一分散の構造 \(Var(u|x) = \sigma^2 h(x)\)
+  が既知である場合、OLSよりも効率的な推定が可能。
+\item
+  各観測値を \(1/\sqrt{h(x)}\)
+  倍して重み付けし、変換されたモデルにOLSを適用する。
+\item
+  これを\textbf{一般化最小二乗法 (GLS)} の一種と呼ぶ。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{実行可能な一般化最小二乗法 (FGLS)}
+\phantomsection\label{ux5b9fux884cux53efux80fdux306aux4e00ux822cux5316ux6700ux5c0fux4e8cux4e57ux6cd5-fgls}
+\begin{itemize}
+\tightlist
+\item
+  関数 \(h(x)\) の形が未知の場合、データから \(h(x)\)
+  を推定してWLSを行う。
+\item
+  一般的な手順：
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    \(\log(\hat{u}^2)\) を独立変数で回帰し、予測値 \(\hat{g}\) を得る。
+  \item
+    重み \(\hat{h} = \exp(\hat{g})\) を計算する。
+  \item
+    重み \(1/\hat{h}\) を用いてWLSを実行する。
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{まとめ}
+\phantomsection\label{ux307eux3068ux3081}
+\begin{itemize}
+\tightlist
+\item
+  不均一分散下では、OLS推定量は不偏だが効率的ではなく、通常の検定が使えない。
+\item
+  \textbf{解決策1:} 頑健な標準誤差を用いる（最も一般的）。
+\item
+  \textbf{解決策2:}
+  不均一分散の検定を行い、必要に応じてWLS/FGLSで効率性を高める。
+\item
+  実証分析では、まずは頑健な標準誤差で結果を確認するのが定石である。
+\end{itemize}
+\end{frame}
+
+\end{document}
