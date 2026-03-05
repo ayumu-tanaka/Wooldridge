@@ -57,4 +57,6 @@ rmarkdown::render("Ch01/Wooldridge01.Rmd")
 
 または、RStudio 内で `.Rmd` ファイルを開き、**Knit** ボタンをクリックするだけです。
 
+* * *
 
+出典：Jeffrey M. Wooldridge (2016). _Introductory Econometrics: A Modern Approach_. South-Western Cengage Learning.
