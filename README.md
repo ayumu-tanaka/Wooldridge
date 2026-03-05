@@ -5,6 +5,9 @@
 
 このプロジェクトでは **R Markdown** を使用して **LaTeX Beamer** プレゼンテーションを生成しており、Rコードと計量経済学のデータセット（`wooldridge` パッケージ経由）をスライドに直接統合しています。
 
+GitHub Pages: [https://ayumu-tanaka.github.io/Wooldridge/](https://ayumu-tanaka.github.io/Wooldridge/)
+
+
 ## スライド一覧
 
 | 章 | タイトル | PDF | HTML |
@@ -30,7 +33,7 @@
     *   `WooldridgeXX.Rmd`: スライドのメインソースファイルです。
     *   `WooldridgeXX.pdf`: コンパイル済みのプレゼンテーション（PDF）です。
     *   `header_beamer.tex`: スタイリング用のLaTeXヘッダーファイルです。
-*   **`statafiles/`**: Stata形式（.dta）のデータセットが含まれています。
+*   **`statafiles/`**: Stata形式（.dta）のデータセットが含まれています。詳細は [data.md](./data.md) を参照してください。
 
 ## 主要ファイルと設定
 *   **`ChXX/WooldridgeXX.Rmd`**: R Markdownソースです。日本語文字をサポートするために、エンジンとして `lualatex` を指定しています。
