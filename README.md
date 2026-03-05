@@ -24,7 +24,8 @@ GitHub Pages: [https://ayumu-tanaka.github.io/Wooldridge/](https://ayumu-tanaka.
 | 10 | 第13章: 単純なパネルデータ | [PDF](./Ch13/Wooldridge13.pdf) | [HTML](./Ch13/Wooldridge13.html) | [RMD](./Ch13/Wooldridge13.Rmd) |
 | 11 | 第14章: 発展的なパネルデータ法 | [PDF](./Ch14/Wooldridge14.pdf) | [HTML](./Ch14/Wooldridge14.html) | [RMD](./Ch14/Wooldridge14.Rmd) |
 | 12 | 第15章: 操作変数法と二段階最小二乗法 | [PDF](./Ch15/Wooldridge15.pdf) | [HTML](./Ch15/Wooldridge15.html) | [RMD](./Ch15/Wooldridge15.Rmd) |
-| 13 | 第19章: 実証研究の実施 | [PDF](./Ch19/Wooldridge19.pdf) | [HTML](./Ch19/Wooldridge19.html) | [RMD](./Ch19/Wooldridge19.Rmd) |
+| 13 | 第17章: 制限従属変数モデルと標本選択修正 | [PDF](./Ch17/Wooldridge17.pdf) | [HTML](./Ch17/Wooldridge17.html) | [RMD](./Ch17/Wooldridge17.Rmd) |
+| 14 | 第19章: 実証研究の実施 | [PDF](./Ch19/Wooldridge19.pdf) | [HTML](./Ch19/Wooldridge19.html) | [RMD](./Ch19/Wooldridge19.Rmd) |
 
 ## データ
 
