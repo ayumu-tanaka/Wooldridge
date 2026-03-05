@@ -1,16 +1,18 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
-\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% remove section numbering
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -19,19 +21,16 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{section title}
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,21 +43,19 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
 \usetheme[]{Montpellier}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -75,6 +72,14 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -86,13 +91,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -100,7 +105,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -109,7 +114,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -124,22 +129,21 @@
 \makeatother
 \usepackage{graphicx}
 \makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
+\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -164,27 +168,25 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \title{第2章: 単回帰モデル}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
+Seventh Edition. Cengage Learning.}
 \author{}
 \date{\vspace{-2.5em}2026-01-23}
 
 \begin{document}
 \frame{\titlepage}
 
-\section{準備}\label{ux6e96ux5099}
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -210,11 +212,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{Shaded}
 \end{frame}
 
+\hypertarget{ux5358ux56deux5e30ux30e2ux30c7ux30ebux306eux5b9aux7fa9}{%
 \section{2-1
-単回帰モデルの定義}\label{ux5358ux56deux5e30ux30e2ux30c7ux30ebux306eux5b9aux7fa9}
+単回帰モデルの定義}\label{ux5358ux56deux5e30ux30e2ux30c7ux30ebux306eux5b9aux7fa9}}
 
 \begin{frame}{単回帰モデル}
-\phantomsection\label{ux5358ux56deux5e30ux30e2ux30c7ux30eb}
+\protect\hypertarget{ux5358ux56deux5e30ux30e2ux30c7ux30eb}{}
 \begin{itemize}
 \tightlist
 \item
@@ -240,7 +243,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{誤差項 \(u\) について}
-\phantomsection\label{ux8aa4ux5deeux9805-u-ux306bux3064ux3044ux3066}
+\protect\hypertarget{ux8aa4ux5deeux9805-u-ux306bux3064ux3044ux3066}{}
 \begin{itemize}
 \tightlist
 \item
@@ -255,7 +258,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{ゼロ条件付き平均の仮定}
-\phantomsection\label{ux30bcux30edux6761ux4ef6ux4ed8ux304dux5e73ux5747ux306eux4eeeux5b9a}
+\protect\hypertarget{ux30bcux30edux6761ux4ef6ux4ed8ux304dux5e73ux5747ux306eux4eeeux5b9a}{}
 \begin{itemize}
 \tightlist
 \item
@@ -277,11 +280,12 @@ Introductory Econometrics: A Modern Approach\\
 \[ E(y|x) = \beta_0 + \beta_1 x \]
 \end{frame}
 
+\hypertarget{ux901aux5e38ux6700ux5c0fux4e8cux4e57ux6cd5olsux306eux5c0eux51fa}{%
 \section{2-2
-通常最小二乗法（OLS）の導出}\label{ux901aux5e38ux6700ux5c0fux4e8cux4e57ux6cd5olsux306eux5c0eux51fa}
+通常最小二乗法（OLS）の導出}\label{ux901aux5e38ux6700ux5c0fux4e8cux4e57ux6cd5olsux306eux5c0eux51fa}}
 
 \begin{frame}{OLS推定量}
-\phantomsection\label{olsux63a8ux5b9aux91cf}
+\protect\hypertarget{olsux63a8ux5b9aux91cf}{}
 \begin{itemize}
 \tightlist
 \item
@@ -306,7 +310,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{OLS推定量の公式}
-\phantomsection\label{olsux63a8ux5b9aux91cfux306eux516cux5f0f}
+\protect\hypertarget{olsux63a8ux5b9aux91cfux306eux516cux5f0f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -325,11 +329,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
+\hypertarget{rux306bux3088ux308bux5358ux56deux5e30ux5206ux6790ux306eux5b9fux88c5}{%
 \section{2-3
-Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30ux5206ux6790ux306eux5b9fux88c5}
+Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30ux5206ux6790ux306eux5b9fux88c5}}
 
 \begin{frame}[fragile]{例: CEOの給与と自己資本利益率 (\texttt{ceosal1})}
-\phantomsection\label{ux4f8b-ceoux306eux7d66ux4e0eux3068ux81eaux5df1ux8cc7ux672cux5229ux76caux7387-ceosal1}
+\protect\hypertarget{ux4f8b-ceoux306eux7d66ux4e0eux3068ux81eaux5df1ux8cc7ux672cux5229ux76caux7387-ceosal1}{}
 \begin{itemize}
 \tightlist
 \item
@@ -341,7 +346,7 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{frame}
 
 \begin{frame}[fragile]{データの確認}
-\phantomsection\label{ux30c7ux30fcux30bfux306eux78baux8a8d}
+\protect\hypertarget{ux30c7ux30fcux30bfux306eux78baux8a8d}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# データの読み込みと確認}
@@ -362,7 +367,7 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{frame}
 
 \begin{frame}[fragile]{回帰分析の実行 (\texttt{lm}関数)}
-\phantomsection\label{ux56deux5e30ux5206ux6790ux306eux5b9fux884c-lmux95a2ux6570}
+\protect\hypertarget{ux56deux5e30ux5206ux6790ux306eux5b9fux884c-lmux95a2ux6570}{}
 \begin{itemize}
 \tightlist
 \item
@@ -378,7 +383,7 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{frame}
 
 \begin{frame}[fragile]{}
-\phantomsection\label{section}
+\protect\hypertarget{section}{}
 \scriptsize
 
 \begin{Shaded}
@@ -411,7 +416,7 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{frame}
 
 \begin{frame}{結果の解釈}
-\phantomsection\label{ux7d50ux679cux306eux89e3ux91c8}
+\protect\hypertarget{ux7d50ux679cux306eux89e3ux91c8}{}
 \begin{itemize}
 \tightlist
 \item
@@ -431,7 +436,7 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{frame}
 
 \begin{frame}[fragile]{散布図と回帰直線のプロット}
-\phantomsection\label{ux6563ux5e03ux56f3ux3068ux56deux5e30ux76f4ux7ddaux306eux30d7ux30edux30c3ux30c8}
+\protect\hypertarget{ux6563ux5e03ux56f3ux3068ux56deux5e30ux76f4ux7ddaux306eux30d7ux30edux30c3ux30c8}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(ceosal1}\SpecialCharTok{$}\NormalTok{roe, ceosal1}\SpecialCharTok{$}\NormalTok{salary, }
@@ -442,14 +447,15 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{Wooldridge02_files/figure-beamer/unnamed-chunk-4-1.pdf}}
+\includegraphics{Wooldridge02_files/figure-beamer/unnamed-chunk-4-1.pdf}
 \end{frame}
 
+\hypertarget{ux9069ux5408ux5ea6ux3068ux6c7aux5b9aux4fc2ux6570}{%
 \section{2-4
-適合度と決定係数}\label{ux9069ux5408ux5ea6ux3068ux6c7aux5b9aux4fc2ux6570}
+適合度と決定係数}\label{ux9069ux5408ux5ea6ux3068ux6c7aux5b9aux4fc2ux6570}}
 
 \begin{frame}{決定係数 (\(R^2\))}
-\phantomsection\label{ux6c7aux5b9aux4fc2ux6570-r2}
+\protect\hypertarget{ux6c7aux5b9aux4fc2ux6570-r2}{}
 \begin{itemize}
 \tightlist
 \item
@@ -472,7 +478,7 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{frame}
 
 \begin{frame}[fragile]{\texttt{ceosal1} の \(R^2\)}
-\phantomsection\label{ceosal1-ux306e-r2}
+\protect\hypertarget{ceosal1-ux306e-r2}{}
 \begin{itemize}
 \tightlist
 \item
@@ -486,11 +492,12 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux95a2ux6570ux5f62ux5bfeux6570ux3092ux7528ux3044ux305fux30e2ux30c7ux30eb}{%
 \section{2-5
-関数形：対数を用いたモデル}\label{ux95a2ux6570ux5f62ux5bfeux6570ux3092ux7528ux3044ux305fux30e2ux30c7ux30eb}
+関数形：対数を用いたモデル}\label{ux95a2ux6570ux5f62ux5bfeux6570ux3092ux7528ux3044ux305fux30e2ux30c7ux30eb}}
 
 \begin{frame}{対数モデルの利点}
-\phantomsection\label{ux5bfeux6570ux30e2ux30c7ux30ebux306eux5229ux70b9}
+\protect\hypertarget{ux5bfeux6570ux30e2ux30c7ux30ebux306eux5229ux70b9}{}
 \begin{itemize}
 \tightlist
 \item
@@ -500,18 +507,12 @@ Rによる単回帰分析の実装}\label{rux306bux3088ux308bux5358ux56deux5e30u
 \end{itemize}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1188}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3762}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5050}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-モデル
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-方程式
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-解釈
-\end{minipage} \\
-\midrule\noalign{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.12}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.38}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.50}}@{}}
+\toprule
+モデル & 方程式 & 解釈 \\
+\midrule
 \endhead
 Level-level & \(y = \beta_0 + \beta_1 x\) &
 \(\Delta y = \beta_1 \Delta x\) \\
@@ -521,12 +522,12 @@ Level-log & \(y = \beta_0 + \beta_1 \log(x)\) &
 \(\Delta y \approx (\beta_1 / 100) \% \Delta x\) \\
 Log-log & \(\log(y) = \beta_0 + \beta_1 \log(x)\) &
 \(\% \Delta y \approx \beta_1 \% \Delta x\) (弾力性) \\
-\bottomrule\noalign{}
+\bottomrule
 \end{longtable}
 \end{frame}
 
 \begin{frame}[fragile]{例: 賃金方程式 (\texttt{wage1})}
-\phantomsection\label{ux4f8b-ux8cc3ux91d1ux65b9ux7a0bux5f0f-wage1}
+\protect\hypertarget{ux4f8b-ux8cc3ux91d1ux65b9ux7a0bux5f0f-wage1}{}
 \begin{itemize}
 \tightlist
 \item
@@ -545,7 +546,7 @@ Log-log & \(\log(y) = \beta_0 + \beta_1 \log(x)\) &
 \end{frame}
 
 \begin{frame}[fragile]{}
-\phantomsection\label{section-1}
+\protect\hypertarget{section-1}{}
 \scriptsize
 
 \begin{Shaded}
@@ -562,7 +563,7 @@ Log-log & \(\log(y) = \beta_0 + \beta_1 \log(x)\) &
 \end{frame}
 
 \begin{frame}{結果の解釈（賃金方程式）}
-\phantomsection\label{ux7d50ux679cux306eux89e3ux91c8ux8cc3ux91d1ux65b9ux7a0bux5f0f}
+\protect\hypertarget{ux7d50ux679cux306eux89e3ux91c8ux8cc3ux91d1ux65b9ux7a0bux5f0f}{}
 \[ \widehat{\log(wage)} = 0.584 + 0.083 \cdot educ \]
 
 \begin{itemize}
@@ -577,10 +578,11 @@ Log-log & \(\log(y) = \beta_0 + \beta_1 \log(x)\) &
 \end{itemize}
 \end{frame}
 
-\section{まとめ}\label{ux307eux3068ux3081}
+\hypertarget{ux307eux3068ux3081}{%
+\section{まとめ}\label{ux307eux3068ux3081}}
 
 \begin{frame}{まとめ}
-\phantomsection\label{ux307eux3068ux3081-1}
+\protect\hypertarget{ux307eux3068ux3081-1}{}
 \begin{itemize}
 \tightlist
 \item

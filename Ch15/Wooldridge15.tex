@@ -1,16 +1,18 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
-\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% remove section numbering
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -19,19 +21,16 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{section title}
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,21 +43,19 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
 \usetheme[]{Montpellier}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -75,6 +72,14 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -86,13 +91,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -100,7 +105,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -109,7 +114,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -125,6 +130,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -149,27 +155,25 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \title{第15章: 操作変数法と二段階最小二乗法}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
+Seventh Edition. Cengage Learning.}
 \author{}
-\date{\vspace{-2.5em}2026-03-05}
+\date{\vspace{-2.5em}2026-03-06}
 
 \begin{document}
 \frame{\titlepage}
 
-\section{準備}\label{ux6e96ux5099}
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -208,11 +212,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{Shaded}
 \end{frame}
 
+\hypertarget{ux52d5ux6a5f-ux7701ux7565ux5909ux6570ux3068ux64cdux4f5cux5909ux6570}{%
 \section{15-1 動機:
-省略変数と操作変数}\label{ux52d5ux6a5f-ux7701ux7565ux5909ux6570ux3068ux64cdux4f5cux5909ux6570}
+省略変数と操作変数}\label{ux52d5ux6a5f-ux7701ux7565ux5909ux6570ux3068ux64cdux4f5cux5909ux6570}}
 
 \begin{frame}{内生変数問題の背景}
-\phantomsection\label{ux5185ux751fux5909ux6570ux554fux984cux306eux80ccux666f}
+\protect\hypertarget{ux5185ux751fux5909ux6570ux554fux984cux306eux80ccux666f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -242,7 +247,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{単純回帰モデルでの問題設定}
-\phantomsection\label{ux5358ux7d14ux56deux5e30ux30e2ux30c7ux30ebux3067ux306eux554fux984cux8a2dux5b9a}
+\protect\hypertarget{ux5358ux7d14ux56deux5e30ux30e2ux30c7ux30ebux3067ux306eux554fux984cux8a2dux5b9a}{}
 \begin{itemize}
 \tightlist
 \item
@@ -257,7 +262,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{操作変数 (Instrumental Variable) の条件}
-\phantomsection\label{ux64cdux4f5cux5909ux6570-instrumental-variable-ux306eux6761ux4ef6}
+\protect\hypertarget{ux64cdux4f5cux5909ux6570-instrumental-variable-ux306eux6761ux4ef6}{}
 変数 \(z\) が \(x\) の操作変数になるための2条件:
 
 \begin{enumerate}
@@ -273,20 +278,11 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{操作変数の候補例（賃金方程式）}
-\phantomsection\label{ux64cdux4f5cux5909ux6570ux306eux5019ux88dcux4f8bux8cc3ux91d1ux65b9ux7a0bux5f0f}
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-IV候補
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-外生性
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-関連性
-\end{minipage} \\
-\midrule\noalign{}
+\protect\hypertarget{ux64cdux4f5cux5909ux6570ux306eux5019ux88dcux4f8bux8cc3ux91d1ux65b9ux7a0bux5f0f}{}
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+IV候補 & 外生性 & 関連性 \\
+\midrule
 \endhead
 父親の教育年数 (\texttt{fatheduc}) &
 ある程度成立（能力との無相関を仮定） &
@@ -296,12 +292,12 @@ IV候補
 誕生四半期 (\texttt{frstqrt}) & 主張される（季節と能力は無関係） &
 わずかな相関（問題あり） \\
 IQ & 外生性を欠く（abilの代理変数） & --- \\
-\bottomrule\noalign{}
+\bottomrule
 \end{longtable}
 \end{frame}
 
 \begin{frame}{IV推定量の導出}
-\phantomsection\label{ivux63a8ux5b9aux91cfux306eux5c0eux51fa}
+\protect\hypertarget{ivux63a8ux5b9aux91cfux306eux5c0eux51fa}{}
 \begin{itemize}
 \tightlist
 \item
@@ -318,7 +314,7 @@ IQ & 外生性を欠く（abilの代理変数） & --- \\
 \end{frame}
 
 \begin{frame}{IV推定量の性質}
-\phantomsection\label{ivux63a8ux5b9aux91cfux306eux6027ux8cea}
+\protect\hypertarget{ivux63a8ux5b9aux91cfux306eux6027ux8cea}{}
 \begin{itemize}
 \tightlist
 \item
@@ -340,11 +336,12 @@ IQ & 外生性を欠く（abilの代理変数） & --- \\
 \end{itemize}
 \end{frame}
 
+\hypertarget{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7684ux63a8ux8ad6}{%
 \section{15-1a
-IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7684ux63a8ux8ad6}
+IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7684ux63a8ux8ad6}}
 
 \begin{frame}[fragile]{例15.1: 既婚女性の教育収益率 (MROZ)}
-\phantomsection\label{ux4f8b15.1-ux65e2ux5a5aux5973ux6027ux306eux6559ux80b2ux53ceux76caux7387-mroz}
+\protect\hypertarget{ux4f8b15.1-ux65e2ux5a5aux5973ux6027ux306eux6559ux80b2ux53ceux76caux7387-mroz}{}
 \begin{itemize}
 \tightlist
 \item
@@ -377,7 +374,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}[fragile]{例15.1: OLS vs IV の比較}
-\phantomsection\label{ux4f8b15.1-ols-vs-iv-ux306eux6bd4ux8f03}
+\protect\hypertarget{ux4f8b15.1-ols-vs-iv-ux306eux6bd4ux8f03}{}
 \footnotesize
 
 \begin{Shaded}
@@ -414,7 +411,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}[fragile]{例15.2: 男性の教育収益率 (WAGE2)}
-\phantomsection\label{ux4f8b15.2-ux7537ux6027ux306eux6559ux80b2ux53ceux76caux7387-wage2}
+\protect\hypertarget{ux4f8b15.2-ux7537ux6027ux306eux6559ux80b2ux53ceux76caux7387-wage2}{}
 \begin{itemize}
 \tightlist
 \item
@@ -463,11 +460,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{itemize}
 \end{frame}
 
+\hypertarget{b-ux5f31ux3044ux64cdux4f5cux5909ux6570ux306eux554fux984c}{%
 \section{15-1b
-弱い操作変数の問題}\label{b-ux5f31ux3044ux64cdux4f5cux5909ux6570ux306eux554fux984c}
+弱い操作変数の問題}\label{b-ux5f31ux3044ux64cdux4f5cux5909ux6570ux306eux554fux984c}}
 
 \begin{frame}{不良操作変数の漸近バイアス {[}15.19{]}}
-\phantomsection\label{ux4e0dux826fux64cdux4f5cux5909ux6570ux306eux6f38ux8fd1ux30d0ux30a4ux30a2ux30b9-15.19}
+\protect\hypertarget{ux4e0dux826fux64cdux4f5cux5909ux6570ux306eux6f38ux8fd1ux30d0ux30a4ux30a2ux30b9-15.19}{}
 \[\text{plim}\, \hat{\beta}_1^{IV} = \beta_1 + \frac{\text{Corr}(z, u)}{\text{Corr}(z, x)} \cdot \frac{\sigma_u}{\sigma_x}\]
 
 \begin{itemize}
@@ -489,7 +487,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 
 \begin{frame}[fragile]{例15.3: 喫煙と出生時体重 (BWGHT) ---
 悪い操作変数}
-\phantomsection\label{ux4f8b15.3-ux55abux7159ux3068ux51faux751fux6642ux4f53ux91cd-bwght-ux60aaux3044ux64cdux4f5cux5909ux6570}
+\protect\hypertarget{ux4f8b15.3-ux55abux7159ux3068ux51faux751fux6642ux4f53ux91cd-bwght-ux60aaux3044ux64cdux4f5cux5909ux6570}{}
 \begin{itemize}
 \tightlist
 \item
@@ -529,11 +527,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux91cdux56deux5e30ux30e2ux30c7ux30ebux3078ux306eivux62e1ux5f35}{%
 \section{15-2
-重回帰モデルへのIV拡張}\label{ux91cdux56deux5e30ux30e2ux30c7ux30ebux3078ux306eivux62e1ux5f35}
+重回帰モデルへのIV拡張}\label{ux91cdux56deux5e30ux30e2ux30c7ux30ebux3078ux306eivux62e1ux5f35}}
 
 \begin{frame}{構造方程式と外生変数・内生変数}
-\phantomsection\label{ux69cbux9020ux65b9ux7a0bux5f0fux3068ux5916ux751fux5909ux6570ux5185ux751fux5909ux6570}
+\protect\hypertarget{ux69cbux9020ux65b9ux7a0bux5f0fux3068ux5916ux751fux5909ux6570ux5185ux751fux5909ux6570}{}
 \begin{itemize}
 \tightlist
 \item
@@ -558,7 +557,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}{縮約型方程式と識別条件}
-\phantomsection\label{ux7e2eux7d04ux578bux65b9ux7a0bux5f0fux3068ux8b58ux5225ux6761ux4ef6}
+\protect\hypertarget{ux7e2eux7d04ux578bux65b9ux7a0bux5f0fux3068ux8b58ux5225ux6761ux4ef6}{}
 \begin{itemize}
 \tightlist
 \item
@@ -580,7 +579,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}[fragile]{例15.4: 大学近接性を教育のIVとして使用 (CARD)}
-\phantomsection\label{ux4f8b15.4-ux5927ux5b66ux8fd1ux63a5ux6027ux3092ux6559ux80b2ux306eivux3068ux3057ux3066ux4f7fux7528-card}
+\protect\hypertarget{ux4f8b15.4-ux5927ux5b66ux8fd1ux63a5ux6027ux3092ux6559ux80b2ux306eivux3068ux3057ux3066ux4f7fux7528-card}{}
 \begin{itemize}
 \tightlist
 \item
@@ -616,7 +615,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}{例15.4: 結果の解釈}
-\phantomsection\label{ux4f8b15.4-ux7d50ux679cux306eux89e3ux91c8}
+\protect\hypertarget{ux4f8b15.4-ux7d50ux679cux306eux89e3ux91c8}{}
 \begin{itemize}
 \tightlist
 \item
@@ -633,11 +632,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux4e8cux6bb5ux968eux6700ux5c0fux4e8cux4e57ux6cd5-2sls}{%
 \section{15-3 二段階最小二乗法
-(2SLS)}\label{ux4e8cux6bb5ux968eux6700ux5c0fux4e8cux4e57ux6cd5-2sls}
+(2SLS)}\label{ux4e8cux6bb5ux968eux6700ux5c0fux4e8cux4e57ux6cd5-2sls}}
 
 \begin{frame}{2SLSのアイデア: 複数の操作変数}
-\phantomsection\label{slsux306eux30a2ux30a4ux30c7ux30a2-ux8907ux6570ux306eux64cdux4f5cux5909ux6570}
+\protect\hypertarget{slsux306eux30a2ux30a4ux30c7ux30a2-ux8907ux6570ux306eux64cdux4f5cux5909ux6570}{}
 \begin{itemize}
 \tightlist
 \item
@@ -658,7 +658,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}[fragile]{例15.5: 既婚女性の教育収益率 (MROZ) --- 2SLS}
-\phantomsection\label{ux4f8b15.5-ux65e2ux5a5aux5973ux6027ux306eux6559ux80b2ux53ceux76caux7387-mroz-2sls}
+\protect\hypertarget{ux4f8b15.5-ux65e2ux5a5aux5973ux6027ux306eux6559ux80b2ux53ceux76caux7387-mroz-2sls}{}
 \begin{itemize}
 \tightlist
 \item
@@ -698,7 +698,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}[fragile]{例15.5: 2SLS推定}
-\phantomsection\label{ux4f8b15.5-2slsux63a8ux5b9a}
+\protect\hypertarget{ux4f8b15.5-2slsux63a8ux5b9a}{}
 \footnotesize
 
 \begin{Shaded}
@@ -730,11 +730,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{itemize}
 \end{frame}
 
+\hypertarget{c-ux5f31ux3044ux64cdux4f5cux5909ux6570ux306eux691cux51fa}{%
 \section{15-3c
-弱い操作変数の検出}\label{c-ux5f31ux3044ux64cdux4f5cux5909ux6570ux306eux691cux51fa}
+弱い操作変数の検出}\label{c-ux5f31ux3044ux64cdux4f5cux5909ux6570ux306eux691cux51fa}}
 
 \begin{frame}[fragile]{Stock-Yogo (2005) の弱操作変数検定}
-\phantomsection\label{stock-yogo-2005-ux306eux5f31ux64cdux4f5cux5909ux6570ux691cux5b9a}
+\protect\hypertarget{stock-yogo-2005-ux306eux5f31ux64cdux4f5cux5909ux6570ux691cux5b9a}{}
 \begin{itemize}
 \tightlist
 \item
@@ -771,7 +772,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}{次数条件と階数条件}
-\phantomsection\label{ux6b21ux6570ux6761ux4ef6ux3068ux968eux6570ux6761ux4ef6}
+\protect\hypertarget{ux6b21ux6570ux6761ux4ef6ux3068ux968eux6570ux6761ux4ef6}{}
 \begin{itemize}
 \tightlist
 \item
@@ -798,11 +799,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux6e2cux5b9aux8aa4ux5deeux554fux984cux3078ux306eivux5fdcux7528}{%
 \section{15-4
-測定誤差問題へのIV応用}\label{ux6e2cux5b9aux8aa4ux5deeux554fux984cux3078ux306eivux5fdcux7528}
+測定誤差問題へのIV応用}\label{ux6e2cux5b9aux8aa4ux5deeux554fux984cux3078ux306eivux5fdcux7528}}
 
 \begin{frame}{古典的測定誤差とIV}
-\phantomsection\label{ux53e4ux5178ux7684ux6e2cux5b9aux8aa4ux5deeux3068iv}
+\protect\hypertarget{ux53e4ux5178ux7684ux6e2cux5b9aux8aa4ux5deeux3068iv}{}
 \begin{itemize}
 \tightlist
 \item
@@ -824,7 +826,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 
 \begin{frame}[fragile]{例15.6: 能力の指標としての2つのテストスコア
 (WAGE2)}
-\phantomsection\label{ux4f8b15.6-ux80fdux529bux306eux6307ux6a19ux3068ux3057ux3066ux306e2ux3064ux306eux30c6ux30b9ux30c8ux30b9ux30b3ux30a2-wage2}
+\protect\hypertarget{ux4f8b15.6-ux80fdux529bux306eux6307ux6a19ux3068ux3057ux3066ux306e2ux3064ux306eux30c6ux30b9ux30c8ux30b9ux30b3ux30a2-wage2}{}
 \begin{itemize}
 \tightlist
 \item
@@ -861,11 +863,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux5185ux751fux6027ux691cux5b9aux3068ux904eux5270ux8b58ux5225ux5236ux7d04ux306eux691cux5b9a}{%
 \section{15-5
-内生性検定と過剰識別制約の検定}\label{ux5185ux751fux6027ux691cux5b9aux3068ux904eux5270ux8b58ux5225ux5236ux7d04ux306eux691cux5b9a}
+内生性検定と過剰識別制約の検定}\label{ux5185ux751fux6027ux691cux5b9aux3068ux904eux5270ux8b58ux5225ux5236ux7d04ux306eux691cux5b9a}}
 
 \begin{frame}[fragile]{15-5a 内生性検定}
-\phantomsection\label{a-ux5185ux751fux6027ux691cux5b9a}
+\protect\hypertarget{a-ux5185ux751fux6027ux691cux5b9a}{}
 \begin{itemize}
 \tightlist
 \item
@@ -907,7 +910,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}{内生性検定の結果解釈}
-\phantomsection\label{ux5185ux751fux6027ux691cux5b9aux306eux7d50ux679cux89e3ux91c8}
+\protect\hypertarget{ux5185ux751fux6027ux691cux5b9aux306eux7d50ux679cux89e3ux91c8}{}
 \begin{itemize}
 \tightlist
 \item
@@ -921,7 +924,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}[fragile]{15-5b 過剰識別制約の検定}
-\phantomsection\label{b-ux904eux5270ux8b58ux5225ux5236ux7d04ux306eux691cux5b9a}
+\protect\hypertarget{b-ux904eux5270ux8b58ux5225ux5236ux7d04ux306eux691cux5b9a}{}
 \begin{itemize}
 \tightlist
 \item
@@ -978,7 +981,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{frame}
 
 \begin{frame}{過剰識別検定の解釈}
-\phantomsection\label{ux904eux5270ux8b58ux5225ux691cux5b9aux306eux89e3ux91c8}
+\protect\hypertarget{ux904eux5270ux8b58ux5225ux691cux5b9aux306eux89e3ux91c8}{}
 \begin{itemize}
 \tightlist
 \item
@@ -993,11 +996,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux4e0dux5747ux4e00ux5206ux6563ux30682sls}{%
 \section{15-6
-不均一分散と2SLS}\label{ux4e0dux5747ux4e00ux5206ux6563ux30682sls}
+不均一分散と2SLS}\label{ux4e0dux5747ux4e00ux5206ux6563ux30682sls}}
 
 \begin{frame}[fragile]{不均一分散頑健な2SLS推定}
-\phantomsection\label{ux4e0dux5747ux4e00ux5206ux6563ux9811ux5065ux306a2slsux63a8ux5b9a}
+\protect\hypertarget{ux4e0dux5747ux4e00ux5206ux6563ux9811ux5065ux306a2slsux63a8ux5b9a}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1030,11 +1034,12 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 \normalsize
 \end{frame}
 
+\hypertarget{ux6642ux7cfbux5217ux30d1ux30cdux30ebux30c7ux30fcux30bfux3078ux306eux5fdcux7528}{%
 \section{15-7/15-8
-時系列・パネルデータへの応用}\label{ux6642ux7cfbux5217ux30d1ux30cdux30ebux30c7ux30fcux30bfux3078ux306eux5fdcux7528}
+時系列・パネルデータへの応用}\label{ux6642ux7cfbux5217ux30d1ux30cdux30ebux30c7ux30fcux30bfux3078ux306eux5fdcux7528}}
 
 \begin{frame}{時系列データへの2SLS適用}
-\phantomsection\label{ux6642ux7cfbux5217ux30c7ux30fcux30bfux3078ux306e2slsux9069ux7528}
+\protect\hypertarget{ux6642ux7cfbux5217ux30c7ux30fcux30bfux3078ux306e2slsux9069ux7528}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1062,7 +1067,7 @@ IV推定量の統計的推論}\label{a-ivux63a8ux5b9aux91cfux306eux7d71ux8a08ux7
 
 \begin{frame}[fragile]{例15.10: 職業訓練と労働者生産性 (JTRAIN) --- FD +
 IV}
-\phantomsection\label{ux4f8b15.10-ux8077ux696dux8a13ux7df4ux3068ux52b4ux50cdux8005ux751fux7523ux6027-jtrain-fd-iv}
+\protect\hypertarget{ux4f8b15.10-ux8077ux696dux8a13ux7df4ux3068ux52b4ux50cdux8005ux751fux7523ux6027-jtrain-fd-iv}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1096,7 +1101,7 @@ IV}
 \end{frame}
 
 \begin{frame}{例15.10: 結果の解釈}
-\phantomsection\label{ux4f8b15.10-ux7d50ux679cux306eux89e3ux91c8}
+\protect\hypertarget{ux4f8b15.10-ux7d50ux679cux306eux89e3ux91c8}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1110,7 +1115,7 @@ IV}
 \end{frame}
 
 \begin{frame}{結合横断面・パネルデータへの2SLS}
-\phantomsection\label{ux7d50ux5408ux6a2aux65adux9762ux30d1ux30cdux30ebux30c7ux30fcux30bfux3078ux306e2sls}
+\protect\hypertarget{ux7d50ux5408ux6a2aux65adux9762ux30d1ux30cdux30ebux30c7ux30fcux30bfux3078ux306e2sls}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1131,16 +1136,17 @@ IV}
 \end{itemize}
 \end{frame}
 
-\section{まとめ}\label{ux307eux3068ux3081}
+\hypertarget{ux307eux3068ux3081}{%
+\section{まとめ}\label{ux307eux3068ux3081}}
 
 \begin{frame}[fragile]{第15章のまとめ}
-\phantomsection\label{ux7b2c15ux7ae0ux306eux307eux3068ux3081}
+\protect\hypertarget{ux7b2c15ux7ae0ux306eux307eux3068ux3081}{}
 \footnotesize
 
 \begin{longtable}[]{@{}lll@{}}
-\toprule\noalign{}
+\toprule
 手法 & 状況 & R関数 \\
-\midrule\noalign{}
+\midrule
 \endhead
 IV (1変数) & 内生変数1個、IV1個 &
 \texttt{ivreg(y\ \textasciitilde{}\ x\ \textbackslash{}\textbar{}\ z)} \\
@@ -1148,14 +1154,14 @@ IV (1変数) & 内生変数1個、IV1個 &
 \texttt{ivreg(y\ \textasciitilde{}\ x+w\ \textbackslash{}\textbar{}\ z+w)} \\
 2SLS（複数内生） & 内生変数複数 & \texttt{ivreg()} \\
 頑健SE付き2SLS & 不均一分散 & \texttt{coeftest(,\ vcovHC())} \\
-\bottomrule\noalign{}
+\bottomrule
 \end{longtable}
 
 \normalsize
 \end{frame}
 
 \begin{frame}{まとめ（続き）}
-\phantomsection\label{ux307eux3068ux3081ux7d9aux304d}
+\protect\hypertarget{ux307eux3068ux3081ux7d9aux304d}{}
 \begin{itemize}
 \tightlist
 \item

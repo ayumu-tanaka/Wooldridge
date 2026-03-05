@@ -1,16 +1,18 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
-\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% remove section numbering
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -19,19 +21,16 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{section title}
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,21 +43,19 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
 \usetheme[]{Montpellier}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -75,6 +72,14 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -86,13 +91,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -100,7 +105,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -109,7 +114,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -118,6 +123,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -142,28 +148,25 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  pdfauthor={資料作成: 田中 鮎夢},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \title{第7章: 多重回帰分析：質的情報}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
-\author{資料作成: 田中 鮎夢}
-\date{2026-03-05}
+Seventh Edition. Cengage Learning.}
+\author{}
+\date{\vspace{-2.5em}2026-03-06}
 
 \begin{document}
 \frame{\titlepage}
 
-\section{準備}\label{ux6e96ux5099}
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -177,11 +180,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{Shaded}
 \end{frame}
 
+\hypertarget{ux30c0ux30dfux30fcux5909ux6570ux306eux57faux790e}{%
 \section{7-1
-ダミー変数の基礎}\label{ux30c0ux30dfux30fcux5909ux6570ux306eux57faux790e}
+ダミー変数の基礎}\label{ux30c0ux30dfux30fcux5909ux6570ux306eux57faux790e}}
 
 \begin{frame}{質的情報 (Qualitative Information)}
-\phantomsection\label{ux8ceaux7684ux60c5ux5831-qualitative-information}
+\protect\hypertarget{ux8ceaux7684ux60c5ux5831-qualitative-information}{}
 \begin{itemize}
 \tightlist
 \item
@@ -195,7 +199,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{ダミー変数の定義}
-\phantomsection\label{ux30c0ux30dfux30fcux5909ux6570ux306eux5b9aux7fa9}
+\protect\hypertarget{ux30c0ux30dfux30fcux5909ux6570ux306eux5b9aux7fa9}{}
 \begin{itemize}
 \tightlist
 \item
@@ -215,7 +219,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{ダミー変数の罠 (Dummy Variable Trap)}
-\phantomsection\label{ux30c0ux30dfux30fcux5909ux6570ux306eux7f60-dummy-variable-trap}
+\protect\hypertarget{ux30c0ux30dfux30fcux5909ux6570ux306eux7f60-dummy-variable-trap}{}
 \begin{itemize}
 \tightlist
 \item
@@ -229,11 +233,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux8907ux6570ux306eux30abux30c6ux30b4ux30eaux3092ux6301ux3064ux30c0ux30dfux30fcux5909ux6570}{%
 \section{7-2
-複数のカテゴリを持つダミー変数}\label{ux8907ux6570ux306eux30abux30c6ux30b4ux30eaux3092ux6301ux3064ux30c0ux30dfux30fcux5909ux6570}
+複数のカテゴリを持つダミー変数}\label{ux8907ux6570ux306eux30abux30c6ux30b4ux30eaux3092ux6301ux3064ux30c0ux30dfux30fcux5909ux6570}}
 
 \begin{frame}[fragile]{例：学歴レベル}
-\phantomsection\label{ux4f8bux5b66ux6b74ux30ecux30d9ux30eb}
+\protect\hypertarget{ux4f8bux5b66ux6b74ux30ecux30d9ux30eb}{}
 \begin{itemize}
 \tightlist
 \item
@@ -253,11 +258,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux4ea4ux5deeux9805ux3068ux30c0ux30dfux30fcux5909ux6570}{%
 \section{7-3
-交差項とダミー変数}\label{ux4ea4ux5deeux9805ux3068ux30c0ux30dfux30fcux5909ux6570}
+交差項とダミー変数}\label{ux4ea4ux5deeux9805ux3068ux30c0ux30dfux30fcux5909ux6570}}
 
 \begin{frame}[fragile]{ダミー変数同士の交差項}
-\phantomsection\label{ux30c0ux30dfux30fcux5909ux6570ux540cux58ebux306eux4ea4ux5deeux9805}
+\protect\hypertarget{ux30c0ux30dfux30fcux5909ux6570ux540cux58ebux306eux4ea4ux5deeux9805}{}
 \begin{itemize}
 \tightlist
 \item
@@ -271,7 +277,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{量的変数とダミー変数の交差項}
-\phantomsection\label{ux91cfux7684ux5909ux6570ux3068ux30c0ux30dfux30fcux5909ux6570ux306eux4ea4ux5deeux9805}
+\protect\hypertarget{ux91cfux7684ux5909ux6570ux3068ux30c0ux30dfux30fcux5909ux6570ux306eux4ea4ux5deeux9805}{}
 \begin{itemize}
 \tightlist
 \item
@@ -286,11 +292,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux7ddaux5f62ux78baux7387ux30e2ux30c7ux30eb-lpm}{%
 \section{7-4 線形確率モデル
-(LPM)}\label{ux7ddaux5f62ux78baux7387ux30e2ux30c7ux30eb-lpm}
+(LPM)}\label{ux7ddaux5f62ux78baux7387ux30e2ux30c7ux30eb-lpm}}
 
 \begin{frame}{従属変数がダミー変数の場合}
-\phantomsection\label{ux5f93ux5c5eux5909ux6570ux304cux30c0ux30dfux30fcux5909ux6570ux306eux5834ux5408}
+\protect\hypertarget{ux5f93ux5c5eux5909ux6570ux304cux30c0ux30dfux30fcux5909ux6570ux306eux5834ux5408}{}
 \begin{itemize}
 \tightlist
 \item
@@ -306,7 +313,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{LPMの利点と欠点}
-\phantomsection\label{lpmux306eux5229ux70b9ux3068ux6b20ux70b9}
+\protect\hypertarget{lpmux306eux5229ux70b9ux3068ux6b20ux70b9}{}
 \begin{itemize}
 \tightlist
 \item
@@ -329,7 +336,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{LPMの推定例 (\texttt{mroz})}
-\phantomsection\label{lpmux306eux63a8ux5b9aux4f8b-mroz}
+\protect\hypertarget{lpmux306eux63a8ux5b9aux4f8b-mroz}{}
 \footnotesize
 
 \begin{Shaded}
@@ -352,11 +359,12 @@ Introductory Econometrics: A Modern Approach\\
 \normalsize
 \end{frame}
 
+\hypertarget{ux653fux7b56ux8a55ux4fa1ux3068ux30d7ux30edux30b0ux30e9ux30e0ux8a55ux4fa1}{%
 \section{7-5
-政策評価とプログラム評価}\label{ux653fux7b56ux8a55ux4fa1ux3068ux30d7ux30edux30b0ux30e9ux30e0ux8a55ux4fa1}
+政策評価とプログラム評価}\label{ux653fux7b56ux8a55ux4fa1ux3068ux30d7ux30edux30b0ux30e9ux30e0ux8a55ux4fa1}}
 
 \begin{frame}[fragile]{処置効果 (Treatment Effect)}
-\phantomsection\label{ux51e6ux7f6eux52b9ux679c-treatment-effect}
+\protect\hypertarget{ux51e6ux7f6eux52b9ux679c-treatment-effect}{}
 \begin{itemize}
 \tightlist
 \item
@@ -372,7 +380,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{まとめ}
-\phantomsection\label{ux307eux3068ux3081}
+\protect\hypertarget{ux307eux3068ux3081}{}
 \begin{itemize}
 \tightlist
 \item

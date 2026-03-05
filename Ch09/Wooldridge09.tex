@@ -1,16 +1,18 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
-\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% remove section numbering
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -19,19 +21,16 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{section title}
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,21 +43,19 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
 \usetheme[]{Montpellier}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -75,6 +72,14 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -86,13 +91,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -100,7 +105,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -109,7 +114,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -118,6 +123,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -142,27 +148,25 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \title{第9章: 定式化とデータの問題}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
+Seventh Edition. Cengage Learning.}
 \author{}
-\date{\vspace{-2.5em}2026-03-05}
+\date{\vspace{-2.5em}2026-03-06}
 
 \begin{document}
 \frame{\titlepage}
 
-\section{準備}\label{ux6e96ux5099}
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -178,7 +182,7 @@ Introductory Econometrics: A Modern Approach\\
 \begin{itemize}
 \tightlist
 \item
-  \texttt{lmtest}パッケージの読み込み（モデルの定式化の検定などに使用）
+  \texttt{lmtest}パッケージの読み込み
 \end{itemize}
 
 \begin{Shaded}
@@ -188,11 +192,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{Shaded}
 \end{frame}
 
+\hypertarget{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functional-form-misspecification}{%
 \section{9-1 関数形式の誤設定 (Functional Form
-Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functional-form-misspecification}
+Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functional-form-misspecification}}
 
 \begin{frame}{定式化の誤りとは}
-\phantomsection\label{ux5b9aux5f0fux5316ux306eux8aa4ux308aux3068ux306f}
+\protect\hypertarget{ux5b9aux5f0fux5316ux306eux8aa4ux308aux3068ux306f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -205,7 +210,7 @@ Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functi
 \end{frame}
 
 \begin{frame}{RESET検定 (Ramsey RESET Test)}
-\phantomsection\label{resetux691cux5b9a-ramsey-reset-test}
+\protect\hypertarget{resetux691cux5b9a-ramsey-reset-test}{}
 \begin{itemize}
 \tightlist
 \item
@@ -227,7 +232,7 @@ Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functi
 \end{frame}
 
 \begin{frame}[fragile]{RESET検定の例 (\texttt{hprice1})}
-\phantomsection\label{resetux691cux5b9aux306eux4f8b-hprice1}
+\protect\hypertarget{resetux691cux5b9aux306eux4f8b-hprice1}{}
 \footnotesize
 
 \begin{Shaded}
@@ -251,11 +256,12 @@ Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functi
 \normalsize
 \end{frame}
 
+\hypertarget{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux7528-proxy-variables}{%
 \section{9-2 観測不可能な変数の代用 (Proxy
-Variables)}\label{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux7528-proxy-variables}
+Variables)}\label{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux7528-proxy-variables}}
 
 \begin{frame}{代理変数 (Proxy Variables)}
-\phantomsection\label{ux4ee3ux7406ux5909ux6570-proxy-variables}
+\protect\hypertarget{ux4ee3ux7406ux5909ux6570-proxy-variables}{}
 \begin{itemize}
 \tightlist
 \item
@@ -271,11 +277,12 @@ Variables)}\label{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux6e2cux5b9aux8aa4ux5dee-measurement-error}{%
 \section{9-3 測定誤差 (Measurement
-Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}
+Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}}
 
 \begin{frame}{従属変数の測定誤差}
-\phantomsection\label{ux5f93ux5c5eux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}
+\protect\hypertarget{ux5f93ux5c5eux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}{}
 \begin{itemize}
 \tightlist
 \item
@@ -289,7 +296,7 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}
 \end{frame}
 
 \begin{frame}{独立変数の測定誤差}
-\phantomsection\label{ux72ecux7acbux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}
+\protect\hypertarget{ux72ecux7acbux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}{}
 \begin{itemize}
 \tightlist
 \item
@@ -305,11 +312,12 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux6b20ux640dux30c7ux30fcux30bfux3068ux975eux30e9ux30f3ux30c0ux30e0ux6a19ux672c}{%
 \section{9-4
-欠損データと非ランダム標本}\label{ux6b20ux640dux30c7ux30fcux30bfux3068ux975eux30e9ux30f3ux30c0ux30e0ux6a19ux672c}
+欠損データと非ランダム標本}\label{ux6b20ux640dux30c7ux30fcux30bfux3068ux975eux30e9ux30f3ux30c0ux30e0ux6a19ux672c}}
 
 \begin{frame}{データの欠損}
-\phantomsection\label{ux30c7ux30fcux30bfux306eux6b20ux640d}
+\protect\hypertarget{ux30c7ux30fcux30bfux306eux6b20ux640d}{}
 \begin{itemize}
 \tightlist
 \item
@@ -326,7 +334,7 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}
 \end{frame}
 
 \begin{frame}{外れ値 (Outliers)}
-\phantomsection\label{ux5916ux308cux5024-outliers}
+\protect\hypertarget{ux5916ux308cux5024-outliers}{}
 \begin{itemize}
 \tightlist
 \item
@@ -337,7 +345,7 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}
 \end{frame}
 
 \begin{frame}{まとめ}
-\phantomsection\label{ux307eux3068ux3081}
+\protect\hypertarget{ux307eux3068ux3081}{}
 \begin{itemize}
 \tightlist
 \item

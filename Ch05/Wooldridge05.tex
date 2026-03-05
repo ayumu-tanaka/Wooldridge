@@ -1,16 +1,18 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
-\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% remove section numbering
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -19,19 +21,16 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{section title}
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,21 +43,19 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
 \usetheme[]{Montpellier}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -75,6 +72,14 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -86,13 +91,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -100,7 +105,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -109,7 +114,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -117,22 +122,21 @@
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
+\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -166,27 +170,25 @@
 \NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
 \newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
 \newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
 \title{第5章: 多重回帰分析：OLS漸近特性}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
+Seventh Edition. Cengage Learning.}
 \author{}
 \date{\vspace{-2.5em}2026-01-23}
 
 \begin{document}
 \frame{\titlepage}
 
-\section{準備}\label{ux6e96ux5099}
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -200,10 +202,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{Shaded}
 \end{frame}
 
-\section{5-1 一致性 (Consistency)}\label{ux4e00ux81f4ux6027-consistency}
+\hypertarget{ux4e00ux81f4ux6027-consistency}{%
+\section{5-1 一致性
+(Consistency)}\label{ux4e00ux81f4ux6027-consistency}}
 
 \begin{frame}{標本数と推定量}
-\phantomsection\label{ux6a19ux672cux6570ux3068ux63a8ux5b9aux91cf}
+\protect\hypertarget{ux6a19ux672cux6570ux3068ux63a8ux5b9aux91cf}{}
 \begin{itemize}
 \tightlist
 \item
@@ -220,7 +224,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{OLS推定量の一致性}
-\phantomsection\label{olsux63a8ux5b9aux91cfux306eux4e00ux81f4ux6027}
+\protect\hypertarget{olsux63a8ux5b9aux91cfux306eux4e00ux81f4ux6027}{}
 \begin{itemize}
 \tightlist
 \item
@@ -242,7 +246,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{不偏性と一致性の違い}
-\phantomsection\label{ux4e0dux504fux6027ux3068ux4e00ux81f4ux6027ux306eux9055ux3044}
+\protect\hypertarget{ux4e0dux504fux6027ux3068ux4e00ux81f4ux6027ux306eux9055ux3044}{}
 \begin{itemize}
 \tightlist
 \item
@@ -260,11 +264,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux6f38ux8fd1ux6b63ux898fux6027ux3068ux5927ux898fux6a21ux6a19ux672cux3067ux306eux63a8ux8ad6}{%
 \section{5-2
-漸近正規性と大規模標本での推論}\label{ux6f38ux8fd1ux6b63ux898fux6027ux3068ux5927ux898fux6a21ux6a19ux672cux3067ux306eux63a8ux8ad6}
+漸近正規性と大規模標本での推論}\label{ux6f38ux8fd1ux6b63ux898fux6027ux3068ux5927ux898fux6a21ux6a19ux672cux3067ux306eux63a8ux8ad6}}
 
 \begin{frame}{漸近正規性 (Asymptotic Normality)}
-\phantomsection\label{ux6f38ux8fd1ux6b63ux898fux6027-asymptotic-normality}
+\protect\hypertarget{ux6f38ux8fd1ux6b63ux898fux6027-asymptotic-normality}{}
 \begin{itemize}
 \tightlist
 \item
@@ -287,7 +292,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{実証分析における含意}
-\phantomsection\label{ux5b9fux8a3cux5206ux6790ux306bux304aux3051ux308bux542bux610f}
+\protect\hypertarget{ux5b9fux8a3cux5206ux6790ux306bux304aux3051ux308bux542bux610f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -297,11 +302,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
+\hypertarget{rux306bux3088ux308bux30b7ux30dfux30e5ux30ecux30fcux30b7ux30e7ux30f3}{%
 \section{5-3
-Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5ux30ecux30fcux30b7ux30e7ux30f3}
+Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5ux30ecux30fcux30b7ux30e7ux30f3}}
 
 \begin{frame}[fragile]{正規分布でない誤差項を持つモデル}
-\phantomsection\label{ux6b63ux898fux5206ux5e03ux3067ux306aux3044ux8aa4ux5deeux9805ux3092ux6301ux3064ux30e2ux30c7ux30eb}
+\protect\hypertarget{ux6b63ux898fux5206ux5e03ux3067ux306aux3044ux8aa4ux5deeux9805ux3092ux6301ux3064ux30e2ux30c7ux30eb}{}
 \begin{itemize}
 \tightlist
 \item
@@ -329,7 +335,7 @@ Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5u
 \end{frame}
 
 \begin{frame}[fragile]{推定量の分布の確認}
-\phantomsection\label{ux63a8ux5b9aux91cfux306eux5206ux5e03ux306eux78baux8a8d}
+\protect\hypertarget{ux63a8ux5b9aux91cfux306eux5206ux5e03ux306eux78baux8a8d}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# ヒストグラムと正規分布曲線の重ね書き}
@@ -341,7 +347,7 @@ Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5u
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{Wooldridge05_files/figure-beamer/unnamed-chunk-2-1.pdf}}
+\includegraphics{Wooldridge05_files/figure-beamer/unnamed-chunk-2-1.pdf}
 
 \begin{itemize}
 \tightlist
@@ -350,11 +356,12 @@ Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5u
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux5927ux898fux6a21ux6a19ux672cux3067ux306eux30e9ux30b0ux30e9ux30f3ux30b8ux30e5ux4e57ux6570ux691cux5b9a-lmux691cux5b9a}{%
 \section{5-4 大規模標本でのラグランジュ乗数検定
-(LM検定)}\label{ux5927ux898fux6a21ux6a19ux672cux3067ux306eux30e9ux30b0ux30e9ux30f3ux30b8ux30e5ux4e57ux6570ux691cux5b9a-lmux691cux5b9a}
+(LM検定)}\label{ux5927ux898fux6a21ux6a19ux672cux3067ux306eux30e9ux30b0ux30e9ux30f3ux30b8ux30e5ux4e57ux6570ux691cux5b9a-lmux691cux5b9a}}
 
 \begin{frame}{LM検定 (Lagrange Multiplier Statistic)}
-\phantomsection\label{lmux691cux5b9a-lagrange-multiplier-statistic}
+\protect\hypertarget{lmux691cux5b9a-lagrange-multiplier-statistic}{}
 \begin{itemize}
 \tightlist
 \item
@@ -369,7 +376,7 @@ Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5u
 \end{frame}
 
 \begin{frame}{LM検定の手順}
-\phantomsection\label{lmux691cux5b9aux306eux624bux9806}
+\protect\hypertarget{lmux691cux5b9aux306eux624bux9806}{}
 \begin{enumerate}
 \tightlist
 \item
@@ -388,7 +395,7 @@ Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5u
 \end{frame}
 
 \begin{frame}[fragile]{LM検定の例 (\texttt{crime1})}
-\phantomsection\label{lmux691cux5b9aux306eux4f8b-crime1}
+\protect\hypertarget{lmux691cux5b9aux306eux4f8b-crime1}{}
 \begin{itemize}
 \tightlist
 \item
@@ -414,7 +421,7 @@ Rによるシミュレーション}\label{rux306bux3088ux308bux30b7ux30dfux30e5u
 \end{frame}
 
 \begin{frame}{}
-\phantomsection\label{section}
+\protect\hypertarget{section}{}
 \scriptsize
 
 \begin{table}
@@ -453,7 +460,7 @@ RMSE & 0.84 & 0.84 \\
 \end{frame}
 
 \begin{frame}[fragile]{LM検定の計算}
-\phantomsection\label{lmux691cux5b9aux306eux8a08ux7b97}
+\protect\hypertarget{lmux691cux5b9aux306eux8a08ux7b97}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 3 \& 4. LM統計量の計算}
@@ -468,7 +475,7 @@ RMSE & 0.84 & 0.84 \\
 \end{frame}
 
 \begin{frame}[fragile]{LM検定の判定}
-\phantomsection\label{lmux691cux5b9aux306eux5224ux5b9a}
+\protect\hypertarget{lmux691cux5b9aux306eux5224ux5b9a}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 5. p値の計算 (自由度 q = 2)}
@@ -490,10 +497,11 @@ RMSE & 0.84 & 0.84 \\
 \end{itemize}
 \end{frame}
 
-\section{まとめ}\label{ux307eux3068ux3081}
+\hypertarget{ux307eux3068ux3081}{%
+\section{まとめ}\label{ux307eux3068ux3081}}
 
 \begin{frame}{まとめ}
-\phantomsection\label{ux307eux3068ux3081-1}
+\protect\hypertarget{ux307eux3068ux3081-1}{}
 \begin{itemize}
 \tightlist
 \item
