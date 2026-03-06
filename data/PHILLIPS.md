@@ -6,17 +6,17 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1948-1996 |
-| unem | civilian unemployment rate |
-| inf | CPI inflation rate |
-| unem_1 | unem lagged once |
-| inf_1 | inf lagged once |
-| unem_2 | unem lagged twice |
-| inf_2 | inf lagged twice |
-| cunem | unem - unem_1 |
-| cinf | inf - inf_1 |
-| cunem_1 | cunem lagged once |
-| cinf_1 | cinf lagged once |
+| year | 1948〜1996年 |
+| unem | 民間失業率 |
+| inf | CPI（消費者物価指数）インフレ率 |
+| unem_1 | 失業率の1期ラグ |
+| inf_1 | インフレ率の1期ラグ |
+| unem_2 | 失業率の2期ラグ |
+| inf_2 | インフレ率の2期ラグ |
+| cunem | 失業率の変化 |
+| cinf | インフレ率の変化 |
+| cunem_1 | cunемの1期ラグ |
+| cinf_1 | cinfの1期ラグ |
 
 * * *
 

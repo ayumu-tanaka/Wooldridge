@@ -6,30 +6,30 @@
 
 | 変数名 | 説明 |
 |------|------|
-| gfr | births per 1000 women 15-44 |
-| pe | real value pers. exemption, $ |
-| year | 1913 to 1984 |
-| t | time trend, t=1,...,72 |
+| gfr | 15〜44歳の女性1000人当たりの出生数 |
+| pe | 個人免除の実質価値（ドル） |
+| year | 1913〜1984年 |
+| t | 時間トレンド（t=1〜72） |
 | tsq | tの二乗 |
-| pe_1 | pe[t-1] |
-| pe_2 | pe[t-2] |
-| pe_3 | pe[t-3] |
-| pe_4 | pe[t-4] |
+| pe_1 | 株価収益率（1期ラグ） |
+| pe_2 | 株価収益率（2期ラグ） |
+| pe_3 | 株価収益率（3期ラグ） |
+| pe_4 | 株価収益率（4期ラグ） |
 | pill | year >= 1963 の場合1 |
-| ww2 | =1, 1941 to 1945 |
-| tcu | t^3 |
+| ww2 | 1941〜1945年の場合1 |
+| tcu | 時間トレンドの三乗 |
 | cgfr | gfr:  gfr - gfr_1の変化 |
-| cpe | pe - pe_1 |
-| cpe_1 | cpe[t-1] |
-| cpe_2 | cpe[t-2] |
-| cpe_3 | cpe[t-3] |
-| cpe_4 | cpe[t-4] |
-| gfr_1 | gfr[t-1] |
-| cgfr_1 | cgfr[t-1] |
-| cgfr_2 | cgfr[t-2] |
-| cgfr_3 | cgfr[t-3] |
-| cgfr_4 | cgfr[t-4] |
-| gfr_2 | gfr[t-2] |
+| cpe | 株価収益率の変化 |
+| cpe_1 | cpe（1期ラグ） |
+| cpe_2 | cpe（2期ラグ） |
+| cpe_3 | cpe（3期ラグ） |
+| cpe_4 | cpe（4期ラグ） |
+| gfr_1 | 出生率（1期ラグ） |
+| cgfr_1 | cgfr（1期ラグ） |
+| cgfr_2 | cgfr（2期ラグ） |
+| cgfr_3 | cgfr（3期ラグ） |
+| cgfr_4 | cgfr（4期ラグ） |
+| gfr_2 | 出生率（2期ラグ） |
 
 * * *
 

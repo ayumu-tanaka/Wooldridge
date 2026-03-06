@@ -6,28 +6,28 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1981 to 1989 |
-| totacc | statewide total accidents |
-| fatacc | statewide fatal accidents |
-| injacc | statewide injury accidents |
-| pdoacc | property damage only accidents |
-| ntotacc | noninterstate total acc. |
-| nfatacc | noninterstate fatal acc. |
-| ninjacc | noninterstate injur acc. |
-| npdoacc | noninterstate property acc. |
-| rtotacc | total acc. on rural 65 mph roads |
-| rfatacc | fatal acc. on rural 65 mph roads |
-| rinjacc | injury acc. on rural 65 mph roads |
-| rpdoacc | property acc. on rural 65 mph roads |
-| ushigh | acc. on U.S. highways |
-| cntyrds | acc. on county roads |
-| strtes | acc. on state routes |
+| year | 1981〜1989年 |
+| totacc | 州全体の総事故数 |
+| fatacc | 州全体の致死事故数 |
+| injacc | 州全体の負傷事故数 |
+| pdoacc | 物損のみの事故 |
+| ntotacc | 非州間高速道路の総事故 |
+| nfatacc | 非州間高速道路の致死事故 |
+| ninjacc | 非州間高速道路の負傷事故 |
+| npdoacc | 非州間高速道路の物損事故 |
+| rtotacc | 農村65マイル道路上の総事故 |
+| rfatacc | 農村65マイル道路上の致死事故 |
+| rinjacc | 農村65マイル道路上の負傷事故 |
+| rpdoacc | 農村65マイル道路上の物損事故 |
+| ushigh | 米国高速道路上の事故 |
+| cntyrds | 郡道上の事故 |
+| strtes | 州道上の事故 |
 | t | 時間トレンド |
 | tsq | tの二乗 |
-| unem | state unemployment rate |
-| spdlaw | =1 after 65 mph in effect |
-| beltlaw | =1 after seatbelt law |
-| wkends | # weekends in month |
+| unem | 州の失業率 |
+| spdlaw | 時速65マイル制限施行後の場合1 |
+| beltlaw | シートベルト法施行後の場合1 |
+| wkends | 月内の週末日数 |
 | feb | month is Feb. の場合1 |
 | mar | （説明なし） |
 | apr | （説明なし） |
@@ -41,19 +41,19 @@
 | dec | （説明なし） |
 | ltotacc | totaccの対数 |
 | lfatacc | fataccの対数 |
-| prcfat | 100*(fatacc/totacc) |
-| prcrfat | 100*(rfatacc/rtotacc) |
+| prcfat | 致死的事故割合（%） |
+| prcrfat | 農村致死的事故割合（%） |
 | lrtotacc | rtotaccの対数 |
 | lrfatacc | rfataccの対数 |
 | lntotacc | ntotaccの対数 |
 | lnfatacc | nfataccの対数 |
-| prcnfat | 100*(nfatacc/ntotacc) |
+| prcnfat | 非致死的事故割合（%） |
 | lushigh | ushighの対数 |
 | lcntyrds | cntyrdsの対数 |
 | lstrtes | strtesの対数 |
-| spdt | spdlaw*t |
-| beltt | beltlaw*t |
-| prcfat_1 | prcfat[t-1] |
+| spdt | 速度制限法×時間トレンド |
+| beltt | シートベルト法×時間トレンド |
+| prcfat_1 | 致死事故割合（1期ラグ） |
 
 * * *
 

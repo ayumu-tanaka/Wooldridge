@@ -6,23 +6,23 @@
 
 | 変数名 | 説明 |
 |------|------|
-| date | 1947.01 to 1993.06 |
-| sp500 | S&P 500 index |
-| divyld | dividend yield, annualized rate |
-| i3 | 3 mo. T-bill annualized rate |
-| ip | index of industrial production |
-| pcsp | pct chg, sp500, ann rate |
-| rsp500 | return on sp500: pcsp + divyld |
-| pcip | pct chg, IP, ann. rate |
-| ci3 | i3 - i3[t-1] |
-| ci3_1 | ci3[t-1] |
-| ci3_2 | ci3[t-2] |
-| pcip_1 | pcip[t-1] |
-| pcip_2 | pcip[t-2] |
-| pcip_3 | pcip[t-3] |
-| pcsp_1 | pcip[t-1] |
-| pcsp_2 | pcip[t-2] |
-| pcsp_3 | pcip[t-3] |
+| date | 1947年1月〜1993年6月 |
+| sp500 | S&P500指数 |
+| divyld | 配当利回り（年率） |
+| i3 | 3ヶ月T-bill年率 |
+| ip | 産業生産指数 |
+| pcsp | S&P500変化率（年率） |
+| rsp500 | S&P500のリターン（株価上昇＋配当利回り） |
+| pcip | 鉱工業生産の変化率（年率） |
+| ci3 | 3ヶ月金利の変化 |
+| ci3_1 | ci3（1期ラグ） |
+| ci3_2 | ci3（2期ラグ） |
+| pcip_1 | pcip（1期ラグ） |
+| pcip_2 | pcip（2期ラグ） |
+| pcip_3 | pcip（3期ラグ） |
+| pcsp_1 | pcip（1期ラグ） |
+| pcsp_2 | pcip（2期ラグ） |
+| pcsp_3 | pcip（3期ラグ） |
 
 * * *
 

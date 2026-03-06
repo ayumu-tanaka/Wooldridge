@@ -6,23 +6,23 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1978, 1981 |
-| age | age of house |
-| agesq | 年齢の二乗 |
-| nbh | neighborhood, 1 to 6 |
-| cbd | dist. to central bus. dstrct, feet |
+| year | 1978、1981年 |
+| age | 住宅の築年数 |
+| agesq | ageの二乗 |
+| nbh | 近隣番号（1〜6） |
+| cbd | 中央業務地区までの距離（フィート） |
 | inst | 州間高速道路までの距離（フィート） |
 | linst | instの対数 |
-| price | selling price |
+| price | 売却価格 |
 | rooms | 住宅の部屋数 |
-| area | square footage of house |
-| land | square footage lot |
+| area | 住宅面積（平方フィート） |
+| land | 敷地面積（平方フィート） |
 | baths | 浴室数 |
-| dist | dist. from house to incin., feet |
-| ldist | 距離の対数 |
-| lprice | 価格の対数 |
+| dist | 住宅から焼却炉までの距離（フィート） |
+| ldist | distの対数 |
+| lprice | priceの対数 |
 | y81 | year = 1981 の場合1 |
-| larea | 面積の対数 |
+| larea | areaの対数 |
 | lland | landの対数 |
 | linstsq | linstの二乗 |
 

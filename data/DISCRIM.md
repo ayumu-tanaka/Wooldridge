@@ -6,43 +6,43 @@
 
 | 変数名 | 説明 |
 |------|------|
-| psoda | of medium soda, 1st wave |
-| pfries | of small fries, 1st wave |
-| pentree | entree (burger or chicken), 1st wave |
-| wagest | wage, 1st wave |
-| nmgrs | of managers, 1st wave |
-| nregs | of registers, 1st wave |
-| hrsopen | open, 1st wave |
-| emp | of employees, 1st wave |
-| psoda2 | of medium soday, 2nd wave |
-| pfries2 | of small fries, 2nd wave |
-| pentree2 | entree, 2nd wave |
-| wagest2 | wage, 2nd wave |
-| nmgrs2 | of managers, 2nd wave |
-| nregs2 | of registers, 2nd wave |
-| hrsopen2 | open, 2nd wave |
-| emp2 | of employees, 2nd wave |
-| compown | if company owned |
-| chain | = 1, KFC = 2, Roy Rogers = 3, Wendy's = 4 |
-| density | density, town |
-| crmrte | rate, town |
-| state | = 1, PA = 2 |
-| prpblck | black, zipcode |
-| prppov | in poverty, zipcode |
-| prpncar | no car, zipcode |
-| hseval | housing value, zipcode |
-| nstores | of stores, zipcode |
-| income | family income, zipcode |
-| county | label |
+| psoda | 中サイズのソーダの価格（第1波） |
+| pfries | スモールフライの価格（第1波） |
+| pentree | メインメニュー（バーガーまたはチキン）第1波 |
+| wagest | 賃金（第1波） |
+| nmgrs | 管理職数（第1波） |
+| nregs | レジ台数（第1波） |
+| hrsopen | 営業時間（第1波） |
+| emp | 従業員数（第1波） |
+| psoda2 | 中サイズのソーダの価格（第2波） |
+| pfries2 | スモールフライの価格（第2波） |
+| pentree2 | メインメニュー（第2波） |
+| wagest2 | 賃金（第2波） |
+| nmgrs2 | 管理職数（第2波） |
+| nregs2 | レジ台数（第2波） |
+| hrsopen2 | 営業時間（第2波） |
+| emp2 | 従業員数（第2波） |
+| compown | 企業所有の場合 |
+| chain | レストラン種別（1=バーガーキング、2=KFC、3=ロイ・ロジャーズ、4=ウェンディーズ） |
+| density | 都市の人口密度 |
+| crmrte | 都市の税率 |
+| state | 1=NJ、2=PA |
+| prpblck | 郵便番号区域の黒人人口割合 |
+| prppov | 郵便番号区域の貧困割合 |
+| prpncar | 郵便番号区域の自動車なし世帯割合 |
+| hseval | 郵便番号区域の住宅価格 |
+| nstores | 郵便番号区域の店舗数 |
+| income | 郵便番号区域の家族収入 |
+| county | ラベル |
 | lpsoda | psodaの対数 |
 | lpfries | pfriesの対数 |
 | lhseval | hsevalの対数 |
-| lincome | 所得の対数 |
-| ldensity | 人口密度の対数 |
-| NJ | for New Jersey |
-| BK | if Burger King |
-| KFC | if Kentucky Fried Chicken |
-| RR | if Roy Rogers |
+| lincome | incomeの対数 |
+| ldensity | densityの対数 |
+| NJ | ニュージャージー州の場合 |
+| BK | バーガーキングの場合 |
+| KFC | KFCの場合 |
+| RR | ロイ・ロジャーズの場合 |
 
 * * *
 

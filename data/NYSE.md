@@ -7,13 +7,13 @@
 | 変数名 | 説明 |
 |------|------|
 | price | ニューヨーク証券取引所株価指数 |
-| return | 100*(p - p(-1])/p(-1)) |
-| return_1 | lagged return |
-| t | time trend:  1 to 691 |
-| price_1 | price(-1) |
-| price_2 | price(-2) |
-| cprice | price - price_1 |
-| cprice_1 | cprice(-1) |
+| return | 価格変化率（%） |
+| return_1 | リターンのラグ |
+| t | 時間トレンド（1〜691） |
+| price_1 | 価格（1期ラグ） |
+| price_2 | 価格（2期ラグ） |
+| cprice | 価格の変化 |
+| cprice_1 | 価格（1期ラグ） |
 
 * * *
 

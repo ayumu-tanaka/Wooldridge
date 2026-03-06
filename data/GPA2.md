@@ -6,17 +6,17 @@
 
 | 変数名 | 説明 |
 |------|------|
-| sat | combined SAT score |
-| tothrs | total hours through fall semest |
-| colgpa | GPA after fall semester |
+| sat | SAT合計スコア |
+| tothrs | 秋学期を通じた総単位時間 |
+| colgpa | 秋学期後のGPA |
 | athlete | athlete の場合1 |
-| verbmath | verbal/math SAT score |
-| hsize | size graduating class, 100s |
-| hsrank | rank in graduating class |
-| hsperc | 100*(hsrank/hssize) |
-| female | 女性の場合1 |
-| white | 白人の場合1 |
-| black | 黒人の場合1 |
+| verbmath | SAT口語/数学スコア |
+| hsize | 卒業クラスの規模（百人） |
+| hsrank | 卒業クラスでの順位 |
+| hsperc | 高校卒業クラスでの順位（%） |
+| female | female の場合1 |
+| white | white の場合1 |
+| black | black の場合1 |
 | hsizesq | hsizeの二乗 |
 
 * * *

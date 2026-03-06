@@ -7,59 +7,59 @@
 | 変数名 | 説明 |
 |------|------|
 | distid | 識別子 |
-| intid | school district |
-| lunch | eligible for free lunch |
-| enrol | enrollment |
-| ptr | 1995-98 |
-| found | grant, $:  1995-98 |
-| expp | per pupil |
-| revpp | per pupil |
-| avgsal | teacher salary |
-| drop | school dropout rate, % |
-| grad | school grad. rate, % |
-| math4 | satisfactory, 4th grade math |
-| math7 | satisfactory, 7th grade math |
-| choice | choice students |
-| psa | public school academy studs. |
-| year | 1992-1998 |
-| staff | per 1000 students |
-| avgben | teacher fringe benefits |
-| y92 | if year == 1992 |
-| y93 | if year == 1993 |
-| y94 | if year == 1994 |
-| y95 | if year == 1995 |
-| y96 | if year == 1996 |
-| y97 | if year == 1997 |
-| y98 | if year == 1998 |
+| intid | 学区 |
+| lunch | 無料給食の対象となる場合 |
+| enrol | 在籍者数 |
+| ptr | 1995〜1998年 |
+| found | 補助金（ドル、1995〜1998年） |
+| expp | 生徒一人当たり |
+| revpp | 生徒一人当たり |
+| avgsal | 教員給与 |
+| drop | 退学率（%） |
+| grad | 卒業率（%） |
+| math4 | 4年生数学で合格した割合 |
+| math7 | 7年生数学で合格した割合 |
+| choice | 選択スクールの生徒数 |
+| psa | 公立スクールアカデミーの学生数 |
+| year | 1992〜1998年 |
+| staff | 生徒1000人当たり |
+| avgben | 教員の福利厚生 |
+| y92 | 1992年の場合 |
+| y93 | 1993年の場合 |
+| y94 | 1994年の場合 |
+| y95 | 1995年の場合 |
+| y96 | 1996年の場合 |
+| y97 | 1997年の場合 |
+| y98 | 1998年の場合 |
 | lexpp | exppの対数 |
 | lfound | foundの対数 |
-| lexpp_1 | lexpp[_n-1] |
-| lfnd_1 | lfnd[_n-1] |
+| lexpp_1 | lexpp（1期ラグ） |
+| lfnd_1 | lfnd（1期ラグ） |
 | lenrol | enrolの対数 |
 | lenrolsq | lenrolの二乗 |
 | lunchsq | lunchの二乗 |
 | lfndsq | lfndの二乗 |
-| math4_1 | math4[_n-1] |
+| math4_1 | math4（1期ラグ） |
 | cmath4 | - math4_1 |
 | gexpp | - lexpp_1 |
-| gexpp_1 | gexpp[_n-1 |
+| gexpp_1 | gexpp（1期ラグ） |
 | w1 | - gexpp |
 | gfound | - lfnd_1 |
-| gfnd_1 | gfound[_n-1] |
-| clunch | - lunch[_n-1] |
-| clnchsq | - lunchsq[_n-1] |
-| genrol | - lenrol[_n-1] |
+| gfnd_1 | gfound（1期ラグ） |
+| clunch | - lunch[t-1] |
+| clnchsq | - lunchsq[t-1] |
+| genrol | - lenrol[t-1] |
 | genrolsq | genrolの二乗 |
-| expp92 | in 1992 |
+| expp92 | 1992年 |
 | lexpp92 | expp92の対数 |
-| math4_92 | in 1992 |
-| cpi | price index |
-| rexpp | spending per pupil, 1997$ |
+| math4_92 | 1992年 |
+| cpi | 価格指数 |
+| rexpp | 生徒一人当たりの支出（1997年ドル） |
 | lrexpp | rexppの対数 |
-| lrexpp_1 | lrexpp[_n-1] |
+| lrexpp_1 | lrexpp（1期ラグ） |
 | grexpp | - lrexpp_1 |
 | z1 | - lrexpp |
-| grexpp_1 | grexpp[_n-1] |
+| grexpp_1 | grexpp（1期ラグ） |
 
 * * *
 

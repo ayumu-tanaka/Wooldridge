@@ -11,32 +11,32 @@
 | unem | 失業率 |
 | officers | 警察官数 |
 | pcinc | 一人当たり所得 |
-| west | 西部の都市の場合1 |
-| nrtheast | 北東部の都市の場合1 |
-| south | 南部の都市の場合1 |
-| year | 82または87（年） |
+| west | city in west の場合1 |
+| nrtheast | city in NE の場合1 |
+| south | city in south の場合1 |
+| year | 82または87年 |
 | area | 土地面積（平方マイル） |
-| d87 | 1987年の場合1 |
+| d87 | year = 87 の場合1 |
 | popden | 1平方マイルあたりの人口 |
 | crmrte | 1000人あたりの犯罪件数 |
 | offarea | 1平方マイルあたりの警察官数 |
 | lawexpc | 法執行費用（一人当たり、ドル） |
 | polpc | 1000人あたりの警察官数 |
-| lpop | 人口の対数 |
-| loffic | 警察官数の対数 |
-| lpcinc | 一人当たり所得の対数 |
-| llawexpc | 法執行費用の対数 |
-| lpopden | 人口密度の対数 |
-| lcrimes | 犯罪数の対数 |
-| larea | 面積の対数 |
-| lcrmrte | 犯罪率の対数 |
-| clcrimes | lcrimes（犯罪数対数）の変化 |
-| clpop | lpop（人口対数）の変化 |
-| clcrmrte | lcrmrte（犯罪率対数）の変化 |
+| lpop | popの対数 |
+| loffic | officersの対数 |
+| lpcinc | pcincの対数 |
+| llawexpc | lawexpcの対数 |
+| lpopden | popdenの対数 |
+| lcrimes | crimesの対数 |
+| larea | areaの対数 |
+| lcrmrte | crmrteの対数 |
+| clcrimes | lcrimesの変化 |
+| clpop | lpopの変化 |
+| clcrmrte | lcrmrteの変化 |
 | lpolpc | polpcの対数 |
 | clpolpc | lpolpcの変化 |
 | cllawexp | llawexpの変化 |
-| cunem | 失業率の変化 |
+| cunem | unemの変化 |
 | clpopden | lpopdenの変化 |
 | lcrmrt_1 | lcrmrteのラグ |
 | ccrmrte | crmrteの変化 |

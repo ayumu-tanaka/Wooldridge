@@ -10,12 +10,12 @@
 | pcsalary | 給与変化率（%、1989-90年） |
 | sales | 企業売上高（百万ドル、1990年） |
 | roe | 自己資本利益率（1988-90年平均） |
-| pcroe | 自己資本利益率変化率（%、1988-90年） |
+| pcroe | 自己資本利益率の変化率（%、1988-90年） |
 | ros | 株式収益率（1988-90年） |
-| indus | 製造業企業の場合1 |
-| finance | 金融企業の場合1 |
-| consprod | 消費財企業の場合1 |
-| utility | 運輸・公益事業企業の場合1 |
+| indus | industrial firm の場合1 |
+| finance | financial firm の場合1 |
+| consprod | consumer product firm の場合1 |
+| utility | transport. or utilties の場合1 |
 | lsalary | 給与の自然対数 |
 | lsales | 売上高の自然対数 |
 

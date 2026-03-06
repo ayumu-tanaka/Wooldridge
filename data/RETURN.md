@@ -6,16 +6,16 @@
 
 | 変数名 | 説明 |
 |------|------|
-| roe | return on equity, 1990 |
-| rok | return on capital, 1990 |
-| dkr | debt/capital, 1990 |
-| eps | earnings per share, 1990 |
-| netinc | net income, 1990 (millions $) |
-| sp90 | stock price, end 1990 |
-| sp94 | stock price, end 1994 |
-| salary | CEO salary, 1990 (thousands $) |
-| return | % change stock price, 90-94 |
-| lsalary | 給与の対数 |
+| roe | 自己資本利益率（1990年） |
+| rok | 資本利益率（1990年） |
+| dkr | 負債資本比率（1990年） |
+| eps | 一株当たり収益（1990年） |
+| netinc | 純収益（百万ドル、1990年） |
+| sp90 | 株価（1990年末） |
+| sp94 | 株価（1994年末） |
+| salary | CEO給与（千ドル、1990年） |
+| return | 株価変化率（%、1990-94年） |
+| lsalary | salaryの対数 |
 | lsp90 | sp90の対数 |
 
 * * *

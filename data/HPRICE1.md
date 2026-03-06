@@ -6,16 +6,16 @@
 
 | 変数名 | 説明 |
 |------|------|
-| price | price, $1000s |
-| assess | value, $1000s |
-| bdrms | of bdrms |
-| lotsize | of lot in square feet |
-| sqrft | of house in square feet |
-| colonial | if home is colonial style |
-| lprice | 価格の対数 |
+| price | 価格（千ドル） |
+| assess | 価値（千ドル） |
+| bdrms | 寝室数 |
+| lotsize | 敷地面積（平方フィート） |
+| sqrft | 住宅面積（平方フィート） |
+| colonial | コロニアルスタイルの住宅の場合 |
+| lprice | priceの対数 |
 | lassess | log(assess |
-| llotsize | 敷地面積の対数 |
-| lsqrft | 住宅面積の対数 |
+| llotsize | lotsizeの対数 |
+| lsqrft | sqrftの対数 |
 
 * * *
 

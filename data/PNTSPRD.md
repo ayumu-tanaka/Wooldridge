@@ -6,16 +6,16 @@
 
 | 変数名 | 説明 |
 |------|------|
-| favscr | favored team's score |
-| undscr | underdog's score |
-| spread | Las Vegas spread |
+| favscr | ファボリットチームのスコア |
+| undscr | アンダードッグのスコア |
+| spread | ラスベガスのポイントスプレッド |
 | favhome | favored team at home の場合1 |
 | neutral | neutral site の場合1 |
 | fav25 | favored team in top 25 の場合1 |
 | und25 | underdog in top 25 の場合1 |
-| fregion | favorite's region of country |
-| uregion | underdog's region of country |
-| scrdiff | favscr - undscr |
+| fregion | ファボリットチームの地域 |
+| uregion | アンダードッグチームの地域 |
+| scrdiff | ファボリット得点 - アンダードッグ得点 |
 | sprdcvr | spread covered の場合1 |
 | favwin | favored team wins の場合1 |
 

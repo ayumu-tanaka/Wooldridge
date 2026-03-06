@@ -6,20 +6,20 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1947-1988 |
-| inv | real housing invest., millions $ |
-| pop | population, 1000s |
-| price | housing price index; 1982 = 1 |
+| year | 1947〜1988年 |
+| inv | 実質住宅投資（百万ドル） |
+| pop | 人口（千人） |
+| price | 住宅価格指数（1982年=1） |
 | linv | invの対数 |
-| lpop | 人口の対数 |
-| lprice | 価格の対数 |
-| t | time trend: t=1,...,42 |
-| invpc | per capita invest., inv/pop |
+| lpop | popの対数 |
+| lprice | priceの対数 |
+| t | 時間トレンド（t=1〜42） |
+| invpc | 一人当たり投資 |
 | linvpc | invpcの対数 |
-| lprice_1 | lprice[t-1] |
-| linvpc_1 | linvpc[t-1] |
-| gprice | lprice - lprice_1 |
-| ginvpc | linvpc - linvpc_1 |
+| lprice_1 | 価格（対数、1期ラグ） |
+| linvpc_1 | linvpc（1期ラグ） |
+| gprice | 価格（対数）の変化 |
+| ginvpc | linvpcの変化 |
 
 * * *
 

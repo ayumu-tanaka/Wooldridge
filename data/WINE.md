@@ -7,10 +7,10 @@
 | 変数名 | 説明 |
 |------|------|
 | country | （説明なし） |
-| alcohol | alcohol from wine, per capita |
-| deaths | per 100,000 |
-| heart | disease dths per 100,000 |
-| liver | disease dths per 100,000 |
+| alcohol | ワインからのアルコール消費量（一人当たり） |
+| deaths | 10万人当たり |
+| heart | 疾病死亡率（10万人当たり） |
+| liver | 疾病死亡率（10万人当たり） |
 
 * * *
 

@@ -16,9 +16,9 @@
 | qemp86 | 1986年の就業四半期数 |
 | inc86 | 合法収入（百ドル、1986年） |
 | durat | 直近の失業期間 |
-| black | 黒人の場合1 |
-| hispan | ヒスパニック系の場合1 |
-| born60 | 1960年生まれの場合1 |
+| black | black の場合1 |
+| hispan | Hispanic の場合1 |
+| born60 | born in 1960 の場合1 |
 | pcnvsq | pcnvの二乗 |
 | pt86sq | ptime86の二乗 |
 | inc86sq | inc86の二乗 |

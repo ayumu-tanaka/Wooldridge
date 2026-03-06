@@ -6,29 +6,29 @@
 
 | 変数名 | 説明 |
 |------|------|
-| wage | wage, 1991 |
-| abil | measure, not standardized |
-| educ | grade completed by 1991 |
-| ne | if in northeast, 1991 |
-| nc | if in nrthcntrl, 1991 |
-| west | if in west, 1991 |
-| south | if in south, 1991 |
-| exper | experience |
-| motheduc | grade, mother |
-| fatheduc | grade, father |
-| brkhme14 | if broken home, age 14 |
-| sibs | of siblings |
-| urban | if in urban area, 1991 |
-| ne18 | if in NE, age 18 |
-| nc18 | if in NC, age 18 |
-| south18 | if in south, age 18 |
-| west18 | if in west, age 18 |
-| urban18 | if in urban area, age 18 |
-| tuit17 | tuition, age 17 |
-| tuit18 | tuition, age 18 |
-| lwage | 賃金の対数 |
-| expersq | 経験年数の二乗 |
-| ctuit | - tuit17 |
+| wage | 賃金（1991年） |
+| abil | 測定値（標準化なし） |
+| educ | 1991年までに修了した学年 |
+| ne | 1991年に北東部にいる場合 |
+| nc | 1991年に北中部にいる場合 |
+| west | 1991年に西部にいる場合 |
+| south | 1991年に南部にいる場合 |
+| exper | 経験年数 |
+| motheduc | 母親の最終学年 |
+| fatheduc | 父親の最終学年 |
+| brkhme14 | 14歳時に家庭が壊れていた場合 |
+| sibs | 兄弟姉妹の数 |
+| urban | 1991年に都市部にいる場合 |
+| ne18 | 18歳時に北東部にいた場合 |
+| nc18 | 18歳時にノースカロライナ州にいた場合 |
+| south18 | 18歳時に南部にいた場合 |
+| west18 | 18歳時に西部にいた場合 |
+| urban18 | 18歳時に都市部にいた場合 |
+| tuit17 | 17歳時の授業料 |
+| tuit18 | 18歳時の授業料 |
+| lwage | wageの対数 |
+| expersq | experの二乗 |
+| ctuit | - 17歳時の授業料 |
 
 * * *
 

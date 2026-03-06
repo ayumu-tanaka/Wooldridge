@@ -6,25 +6,25 @@
 
 | 変数名 | 説明 |
 |------|------|
-| train | if assigned to job training |
-| age | in 1977 |
-| educ | of education |
-| black | if black |
-| hisp | if Hispanic |
+| train | 職業訓練に割り当てられた場合 |
+| age | 1977年 |
+| educ | 就学年数 |
+| black | 黒人の場合 |
+| hisp | ヒスパニック系の場合 |
 | married | 既婚の場合 |
-| nodegree | if no high school degree |
-| mosinex | mnths prior to 1/78 in expmnt |
-| re74 | earns., 1974, $1000s |
-| re75 | earns., 1975, $1000s |
-| re78 | earns., 1978, $1000s |
-| unem74 | if unem. all of 1974 |
-| unem75 | if unem. all of 1975 |
-| unem78 | if unem. all of 1978 |
-| lre74 | zero if re74 == 0 |
-| lre75 | zero if re75 == 0 |
-| lre78 | zero if re78 == 0 |
-| agesq | 年齢の二乗 |
-| mostrn | in training |
+| nodegree | 高校を卒業していない場合 |
+| mosinex | 1978年1月以前の実験参加月数 |
+| re74 | 収益（千ドル、1974年） |
+| re75 | 収益（千ドル、1975年） |
+| re78 | 収益（千ドル、1978年） |
+| unem74 | 1974年全体を失業していた場合 |
+| unem75 | 1975年全体を失業していた場合 |
+| unem78 | 1978年全体を失業していた場合 |
+| lre74 | 1974年実験後収益が0の場合0 |
+| lre75 | 1975年実験後収益が0の場合0 |
+| lre78 | 1978年実験後収益が0の場合0 |
+| agesq | ageの二乗 |
+| mostrn | 訓練中の場合 |
 
 * * *
 

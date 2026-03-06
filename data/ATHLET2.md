@@ -9,11 +9,11 @@
 | dscore | ホームスコア - ビジタースコア（1993年） |
 | dinstt | 州内授業料の差（1994年） |
 | doutstt | 州外授業料の差（1994年） |
-| htpriv | ホームチームが私立大学の場合1 |
-| vtpriv | ビジターチームが私立大学の場合1 |
+| htpriv | home team private sch. の場合1 |
+| vtpriv | visiting team private sch. の場合1 |
 | dapps | 入学願書数の差（1994年） |
-| htwrd | ホームチームが1993年に勝ち越しの場合1 |
-| vtwrd | ビジターチームが1993年に勝ち越しの場合1 |
+| htwrd | home winning record, 1993 の場合1 |
+| vtwrd | visitor winning record, 1993 の場合1 |
 | dwinrec | htwrd - vtwrd |
 | dpriv | htpriv - vtpriv |
 

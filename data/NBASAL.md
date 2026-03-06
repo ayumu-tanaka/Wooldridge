@@ -7,27 +7,27 @@
 | 変数名 | 説明 |
 |------|------|
 | marr | 既婚の場合 |
-| wage | salary, thousands $ |
-| exper | as a professional player |
+| wage | 給与（千ドル） |
+| exper | プロ選手としての年数 |
 | age | 年齢（年） |
-| educ | playing at college |
-| games | games per year |
-| minutes | per season |
-| guard | if guard |
-| forward | if forward |
-| center | if center |
-| points | per game |
-| rebounds | per game |
-| assists | per game |
-| draft | number |
-| allstar | player |
-| avgmin | per game |
-| lwage | log of wage |
-| black | if black |
-| children | if has children |
-| expersq | 経験年数の二乗 |
-| agesq | 年齢の二乗 |
-| marrblck | marr*black |
+| educ | 大学でプレーした場合 |
+| games | 年間試合数 |
+| minutes | 1シーズン当たり |
+| guard | ガードポジションの場合 |
+| forward | フォワードポジションの場合 |
+| center | センターポジションの場合 |
+| points | 1試合当たり |
+| rebounds | 1試合当たり |
+| assists | 1試合当たり |
+| draft | 数 |
+| allstar | 選手名 |
+| avgmin | 1試合当たり |
+| lwage | 賃金の対数 |
+| black | 黒人の場合 |
+| children | 子供がいる場合 |
+| expersq | experの二乗 |
+| agesq | ageの二乗 |
+| marrblck | 既婚 × 黒人（交差項） |
 
 * * *
 

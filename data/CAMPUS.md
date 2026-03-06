@@ -6,11 +6,11 @@
 
 | 変数名 | 説明 |
 |------|------|
-| enroll | total enrollment |
+| enroll | 総在籍者数 |
 | priv | private college の場合1 |
-| police | employed officers |
-| crime | total campus crimes |
-| lcrime | 犯罪数の対数 |
+| police | 在籍警察官数 |
+| crime | キャンパス内の総犯罪件数 |
+| lcrime | crimeの対数 |
 | lenroll | enrollの対数 |
 | lpolice | policeの対数 |
 

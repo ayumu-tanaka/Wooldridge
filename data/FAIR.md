@@ -6,34 +6,34 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1916 to 1992, by 4 |
-| V | prop. dem. vote |
+| year | 1916〜1992年（4年ごと） |
+| V | 民主党への投票割合 |
 | I | Dem. in White House, -1 if Rep. の場合1 |
-| DPER | incumbent running |
-| DUR | duration |
-| g3 | avg ann grwth rte, prev 3 qrts |
-| p15 | avg ann inf rate, prev 15 qtrs |
-| n | quarters of good news |
-| g2 | avg ann grwth rte, prev 2 qrts |
-| gYR | ann grwth rte, prev year |
-| p8 | avg ann inf rate, prev 8 qtrs |
-| p2YR | inf rte over 2 yr period |
-| Ig2 | I*g2 |
-| Ip8 | I*p8 |
+| DPER | 現職者が立候補している場合 |
+| DUR | 期間 |
+| g3 | 前3四半期の年平均成長率 |
+| p15 | 前15四半期の年平均インフレ率 |
+| n | 良いニュースの四半期数 |
+| g2 | 前2四半期の年平均成長率 |
+| gYR | 前年の年間成長率 |
+| p8 | 前8四半期の年平均インフレ率 |
+| p2YR | 2年間のインフレ率 |
+| Ig2 | I×g2 |
+| Ip8 | I×p8 |
 | demwins | V > .5 の場合1 |
-| In | I*n |
-| d | =1 in 1920, 1944,1948 |
-| Id | I*d |
-| Ig3 | I*g3 |
-| Ip151md | I*p15*(1-d) |
-| In1md | I*n*(1-d) |
+| In | I×n |
+| d | 1920、1944、1948年の場合1 |
+| Id | I×d |
+| Ig3 | I×g3 |
+| Ip151md | I×p15×(1-d) |
+| In1md | I×n×(1-d) |
 | demvote | = V |
 | incum | = DPER |
 | gnews | = n |
 | inf | = p15 |
 | partyWH | = I |
-| pWHgnews | partyWH*gnews |
-| pWHinf | partyWH*inf |
+| pWHgnews | 政権政党 × 良いニュース（交差項） |
+| pWHinf | 政権政党 × インフレ率（交差項） |
 
 * * *
 

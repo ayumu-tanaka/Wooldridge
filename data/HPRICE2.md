@@ -6,18 +6,18 @@
 
 | 変数名 | 説明 |
 |------|------|
-| price | median housing price, $ |
-| crime | crimes committed per capita |
-| nox | nitrous oxide, parts per 100 mill. |
-| rooms | avg number of rooms per house |
-| dist | weighted dist. to 5 employ centers |
-| radial | accessibiliy index to radial hghwys |
-| proptax | property tax per $1000 |
-| stratio | average student-teacher ratio |
+| price | 住宅価格中央値（ドル） |
+| crime | 一人当たり犯罪件数 |
+| nox | 亜酸化窒素濃度（pphm） |
+| rooms | 一戸当たり平均部屋数 |
+| dist | 5つの雇用センターへの加重距離 |
+| radial | 放射状高速道路へのアクセス指数 |
+| proptax | 固定資産税（1000ドル当たり） |
+| stratio | 平均生徒教員比率 |
 | lowstat | 「下位ステータス」の人の割合（%） |
-| lprice | 価格の対数 |
-| lnox | 窒素酸化物の対数 |
-| lproptax | 固定資産税率の対数 |
+| lprice | priceの対数 |
+| lnox | noxの対数 |
+| lproptax | proptaxの対数 |
 
 * * *
 

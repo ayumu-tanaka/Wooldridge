@@ -7,31 +7,31 @@
 | 変数名 | 説明 |
 |------|------|
 | state | 州の郵便番号 |
-| district | U.S. Congressional district |
+| district | 米国議会選挙区 |
 | democ | incumbent democrat の場合1 |
-| vote90 | incum. share two-party vote, 1990 |
-| vote88 | incum. share two-party vote, 1988 |
-| inexp90 | incum. camp. expends., 1990 |
-| chexp90 | chal. camp. expends., 1990 |
-| inexp88 | incum. camp. expends., 1988 |
-| chexp88 | chal. camp. expends., 1988 |
-| prtystr | 1988年同党大統領への投票率（%） |
+| vote90 | 現職者の二大政党票シェア（1990年） |
+| vote88 | 現職者の二大政党票シェア（1988年） |
+| inexp90 | 現職者の選挙費用（1990年） |
+| chexp90 | 挑戦者の選挙費用（1990年） |
+| inexp88 | 現職者の選挙費用（1988年） |
+| chexp88 | 挑戦者の選挙費用（1988年） |
+| prtystr | 1988年同党大統領候補への投票率（%） |
 | rptchall | a repeat challenger の場合1 |
-| tenure | years in H.R. |
+| tenure | HR部門の勤続年数 |
 | lawyer | law degree の場合1 |
 | linexp90 | inexp90の対数 |
 | lchexp90 | chexp90の対数 |
 | linexp88 | inexp88の対数 |
 | lchexp88 | chexp88の対数 |
-| incshr90 | 100*(inexp90/(inexp90+chexp90)) |
-| incshr88 | 100*(inexp88/(inexp88+chexp88)) |
-| cvote | vote90 - vote88 |
-| clinexp | linexp90 - linexp88 |
-| clchexp | lchexp90 - lchexp88 |
-| cincshr | incshr90 - incshr88 |
-| win88 | =1 by definition |
+| incshr90 | 現職者支出割合（%、1990年） |
+| incshr88 | 現職者支出割合（%、1988年） |
+| cvote | 投票率の変化（1990 - 1988年） |
+| clinexp | linexpの変化（1990-1988年） |
+| clchexp | 支出変化（対数、1990-1988年） |
+| cincshr | 所得シェアの変化（1990 - 1988年） |
+| win88 | 定義上1 |
 | win90 | inc. wins, 1990 の場合1 |
-| cwin | win90 - win88 |
+| cwin | 勝利数の変化（1990 - 1988年） |
 
 * * *
 

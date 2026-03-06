@@ -6,19 +6,19 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1947 to 1987 |
-| wkearns | avg. real weekly earnings |
-| wkhours | avg. weekly hours |
-| outphr | output per labor hour |
-| hrwage | wkearns/wkhours |
-| lhrwage | 時給の対数 |
+| year | 1947〜1987年 |
+| wkearns | 平均実質週収 |
+| wkhours | 平均週間労働時間 |
+| outphr | 労働時間当たりの産出 |
+| hrwage | 週収÷週当たり就業時間 |
+| lhrwage | hrwageの対数 |
 | loutphr | outphrの対数 |
-| t | time trend:  t=1 to 47 |
-| ghrwage | lhrwage - lhrwage[t-1] |
-| goutphr | loutphr - loutphr[t-1] |
-| ghrwge_1 | ghrwage[t-1] |
-| goutph_1 | goutphr[t-1] |
-| goutph_2 | goutphr[t-2] |
+| t | 時間トレンド（t=1〜47） |
+| ghrwage | 時給対数の変化 |
+| goutphr | loutphrの変化 |
+| ghrwge_1 | 時給変化（1期ラグ） |
+| goutph_1 | 一人当たり生産量変化（1期ラグ） |
+| goutph_2 | 一人当たり生産量変化（2期ラグ） |
 | lwkhours | wkhoursの対数 |
 
 * * *

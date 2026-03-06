@@ -6,19 +6,19 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1948-1996 |
-| i3 | 3 mo. T bill rate |
-| inf | CPI inflation rate |
-| rec | federal receipts, % GDP |
-| out | federal outlays, % GDP |
-| def | out - rec (deficit as % GDP) |
-| i3_1 | i3[t-1] |
-| inf_1 | inf[t-1] |
-| def_1 | def[t-1] |
-| ci3 | i3 - i3_1 |
-| cinf | inf - inf_1 |
-| cdef | def - def_1 |
-| y77 | =1 year >= 1977; change in FY |
+| year | 1948〜1996年 |
+| i3 | 3ヶ月T-bill金利 |
+| inf | CPI（消費者物価指数）インフレ率 |
+| rec | 連邦収入（GDP比、%） |
+| out | 連邦支出（GDP比、%） |
+| def | 財政収支（GDP比、%） |
+| i3_1 | 3ヶ月金利（1期ラグ） |
+| inf_1 | インフレ率（1期ラグ） |
+| def_1 | 財政赤字（1期ラグ） |
+| ci3 | 3ヶ月金利の変化 |
+| cinf | インフレ率の変化 |
+| cdef | 財政赤字の変化 |
+| y77 | 1977年以降の場合1（会計年度変更） |
 
 * * *
 

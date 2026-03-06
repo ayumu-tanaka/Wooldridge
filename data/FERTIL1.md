@@ -6,10 +6,10 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 72 to 84, even |
+| year | 72〜84年（偶数年） |
 | educ | 就学年数 |
-| meduc | mother's education |
-| feduc | father's education |
+| meduc | 母親の教育年数 |
+| feduc | 父親の教育年数 |
 | age | 年齢（年） |
 | kids | 出生子供数（累計） |
 | black | black の場合1 |
@@ -26,8 +26,8 @@
 | y80 | （説明なし） |
 | y82 | （説明なし） |
 | y84 | （説明なし） |
-| agesq | 年齢の二乗 |
-| y74educ | y74*educ |
+| agesq | ageの二乗 |
+| y74educ | y74 × educ（交差項） |
 | y76educ | （説明なし） |
 | y78educ | （説明なし） |
 | y80educ | （説明なし） |

@@ -6,17 +6,17 @@
 
 | 変数名 | 説明 |
 |------|------|
-| open | imports as % GDP, '73- |
-| inf | avg. annual inflation, '73- |
-| pcinc | 1980 per capita inc., U.S. $ |
+| open | 輸入GDP比（%、1973年以降） |
+| inf | 年平均インフレ率（1973年以降） |
+| pcinc | 一人当たり所得（1980年、米ドル） |
 | land | 土地面積（平方マイル） |
 | oil | major oil producer の場合1 |
 | good | 'good' data の場合1 |
-| lpcinc | 一人当たり所得の対数 |
+| lpcinc | pcincの対数 |
 | lland | landの対数 |
 | lopen | openの対数 |
 | linf | infの対数 |
-| opendec | open/100 |
+| opendec | 営業時間÷100 |
 | linfdec | inf/100の対数 |
 
 * * *

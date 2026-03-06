@@ -6,19 +6,19 @@
 
 | 変数名 | 説明 |
 |------|------|
-| id | state identifier |
-| state | postal code |
-| year | 87, 90, or 93 |
-| mrdrte | murders per 100,000 population |
-| exec | total executions, past 3 years |
-| unem | annual unem. rate |
+| id | 州識別子 |
+| state | 郵便番号 |
+| year | 87、90、または93年 |
+| mrdrte | 殺人率（10万人当たり） |
+| exec | 過去3年間の死刑執行数 |
+| unem | 年間失業率 |
 | d90 | year == 90 の場合1 |
 | d93 | year == 93 の場合1 |
-| cmrdrte | mrdrte - mrdrte[t-1] |
-| cexec | exec - exec[t-1] |
-| cunem | unem - unem[t-1] |
-| cexec_1 | cexec[t-1] |
-| cunem_1 | cunem[t-1] |
+| cmrdrte | 殺人率の変化 |
+| cexec | 執行件数の変化 |
+| cunem | 失業率の変化 |
+| cexec_1 | cexec（1期ラグ） |
+| cunem_1 | cunem（1期ラグ） |
 
 * * *
 

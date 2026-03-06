@@ -6,13 +6,13 @@
 
 | 変数名 | 説明 |
 |------|------|
-| sav | annual savings, $ (1970) |
-| inc | annual income, $  (1970) |
-| size | family size |
-| educ | years education, household head |
-| age | age of household head |
+| sav | 年間貯蓄（ドル、1970年） |
+| inc | 年収（ドル、1970年） |
+| size | 家族規模 |
+| educ | 世帯主の就学年数 |
+| age | 世帯主の年齢 |
 | black | household head is black の場合1 |
-| cons | annual consumption, $ (1970) |
+| cons | 年間消費（ドル、1970年） |
 
 * * *
 

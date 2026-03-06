@@ -12,9 +12,9 @@
 | state | 居住州 |
 | regprc | 通常リンゴの価格 |
 | ecoprc | エコラベルリンゴの価格 |
-| inseason | 11月にインタビューされた場合1 |
+| inseason | interviewed in Nov. の場合1 |
 | hhsize | 世帯規模 |
-| male | 男性の場合1 |
+| male | male の場合1 |
 | faminc | 家族収入（千ドル） |
 | age | 年齢（年） |
 | reglbs | 通常リンゴの購入量（ポンド） |

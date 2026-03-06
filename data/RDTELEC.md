@@ -6,11 +6,11 @@
 
 | 変数名 | 説明 |
 |------|------|
-| rd | spending, millions $ |
-| sales | sales, millions $ |
-| rdintens | as percent of sales |
+| rd | 支出（百万ドル） |
+| sales | 売上高（百万ドル） |
+| rdintens | 売上高比（%） |
 | lrd | rdの対数 |
-| lsales | 売上高の対数 |
+| lsales | salesの対数 |
 | salessq | salesの二乗 |
 
 * * *

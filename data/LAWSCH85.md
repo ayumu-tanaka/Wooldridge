@@ -6,20 +6,20 @@
 
 | 変数名 | 説明 |
 |------|------|
-| rank | law school ranking |
-| salary | median starting salary |
-| cost | law school cost |
-| LSAT | median LSAT score |
-| GPA | median college GPA |
-| libvol | no. volumes in lib., 1000s |
-| faculty | no. of faculty |
-| age | age of law sch., years |
-| clsize | size of entering class |
+| rank | 法科大学院のランキング |
+| salary | 初任給の中央値 |
+| cost | 法科大学院の費用 |
+| LSAT | LSAT中央値 |
+| GPA | 大学GPA中央値 |
+| libvol | 図書館蔵書数（千冊） |
+| faculty | 教員数 |
+| age | 法科大学院の年数 |
+| clsize | 入学クラスの規模 |
 | north | law sch in north の場合1 |
 | south | law sch in south の場合1 |
 | east | law sch in east の場合1 |
 | west | law sch in west の場合1 |
-| lsalary | 給与の対数 |
+| lsalary | salaryの対数 |
 | studfac | 学生教員比率 |
 | top10 | ranked in top 10 の場合1 |
 | r11_25 | ranked 11-25 の場合1 |

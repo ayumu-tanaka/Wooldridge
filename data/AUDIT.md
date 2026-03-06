@@ -6,8 +6,8 @@
 
 | 変数名 | 説明 |
 |------|------|
-| w | 白人応募者が内定を得た場合1 |
-| b | 黒人応募者が内定を得た場合1 |
+| w | white app. got job offer の場合1 |
+| b | black app. got job offer の場合1 |
 | y | b - w（黒人 - 白人） |
 
 * * *

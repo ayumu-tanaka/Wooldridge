@@ -6,16 +6,16 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1964-1989 |
-| month | 1〜12（月） |
-| prccem | BLS ppi for cement |
-| ipcem | industrial prod. index, cement |
-| prcpet | ppi for crude petroleum |
-| rresc | real residential construction |
-| rnonc | real nonres. construction |
-| ip | aggregate index of indus. prod. |
-| rdefs | real defense spending |
-| milemp | military employment |
+| year | 1964〜1989年 |
+| month | 1〜12 |
+| prccem | BLSのセメントPPI |
+| ipcem | セメントの産業生産指数 |
+| prcpet | 原油のPPI（生産者物価指数） |
+| rresc | 実質住宅建設 |
+| rnonc | 実質非住宅建設 |
+| ip | 産業生産指数（集計） |
+| rdefs | 実質国防費 |
+| milemp | 軍事雇用 |
 | gprc | prccem) - log(prccem[t-1]の対数 |
 | gcem | ipcem) - log(ipcem[t-1]の対数 |
 | grprcpet | prcpet) - log(prcpet[t-1]の対数 |

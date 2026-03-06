@@ -6,17 +6,17 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1987 or 1990 |
-| infmort | infant mortality rate |
-| afdcprt | AFDC participation, 1000s |
-| popul | population, 1000s |
+| year | 1987または1990年 |
+| infmort | 乳児死亡率 |
+| afdcprt | AFDC参加数（千） |
+| popul | 人口（千人） |
 | pcinc | 一人当たり所得 |
-| physic | Drs. per 100,000 civilian pop. |
-| afdcper | percent on AFDC |
+| physic | 民間人口10万人当たりの医師数 |
+| afdcper | AFDC参加割合（%） |
 | d90 | year == 1990 の場合1 |
-| lpcinc | 一人当たり所得の対数 |
+| lpcinc | pcincの対数 |
 | lphysic | physicの対数 |
-| DC | =1 for Washington DC |
+| DC | ワシントンDCの場合1 |
 | lpopul | populの対数 |
 
 * * *

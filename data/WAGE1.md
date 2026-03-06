@@ -8,12 +8,12 @@
 |------|------|
 | wage | 平均時給 |
 | educ | 就学年数 |
-| exper | years potential experience |
+| exper | 潜在的経験年数 |
 | tenure | 現在の雇用主との勤続年数 |
-| nonwhite | 非白人の場合1 |
-| female | 女性の場合1 |
-| married | 既婚の場合1 |
-| numdep | number of dependents |
+| nonwhite | nonwhite の場合1 |
+| female | female の場合1 |
+| married | married の場合1 |
+| numdep | 扶養家族数 |
 | smsa | live in SMSA の場合1 |
 | northcen | live in north central U.S の場合1 |
 | south | live in southern region の場合1 |
@@ -27,9 +27,9 @@
 | profocc | in profess. occupation の場合1 |
 | clerocc | in clerical occupation の場合1 |
 | servocc | in service occupation の場合1 |
-| lwage | 賃金の対数 |
-| expersq | 経験年数の二乗 |
-| tenursq | 勤続年数の二乗 |
+| lwage | wageの対数 |
+| expersq | experの二乗 |
+| tenursq | tenureの二乗 |
 
 * * *
 

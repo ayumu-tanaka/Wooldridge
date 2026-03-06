@@ -7,23 +7,23 @@
 | 変数名 | 説明 |
 |------|------|
 | id | 識別子 |
-| pyears | in pension plan |
-| prftshr | if profit sharing plan |
-| choice | if can choose method invest |
-| female | if female |
+| pyears | 年金プランに参加している場合 |
+| prftshr | 利益分配制度に参加している場合 |
+| choice | 投資方法を選択できる場合 |
+| female | 女性の場合 |
 | married | 既婚の場合 |
 | age | 年齢（年） |
-| educ | grade completed |
-| finc25 | < faminc92 <= $25,000 |
-| finc35 | < faminc92 <= $35,000 |
-| finc50 | < faminc92 <= $50,000 |
-| finc75 | < faminc92 <= $75,000 |
-| finc100 | < faminc92 <= $100,000 |
-| finc101 | < faminc92 |
-| wealth89 | worth, 1989, $1000 |
-| black | if black |
-| stckin89 | if owned stock in 1989 |
-| irain89 | if had IRA in 1989 |
+| educ | 修了学年 |
+| finc25 | 家族収入25000ドル未満 |
+| finc35 | 家族収入25000〜35000ドル |
+| finc50 | 家族収入35000〜50000ドル |
+| finc75 | 家族収入50000〜75000ドル |
+| finc100 | 家族収入25000〜100000ドル |
+| finc101 | （家族所得92年未満） |
+| wealth89 | 純資産（千ドル、1989年） |
+| black | 黒人の場合 |
+| stckin89 | 1989年に株を保有していた場合 |
+| irain89 | 1989年にIRAを保有していた場合 |
 | pctstck | 投資配分（0=主に債券、50=混合、100=主に株式） |
 
 * * *

@@ -6,16 +6,16 @@
 
 | 変数名 | 説明 |
 |------|------|
-| durat | duration of benefits |
+| durat | 給付期間 |
 | afchnge | after change in benefits の場合1 |
-| highearn | 高収入者の場合1 |
-| male | 男性の場合1 |
-| married | 既婚の場合1 |
-| ky | =1 for Kentucky |
-| mi | =1 for Michigan |
-| ldurat | 期間の対数 |
-| afhigh | afchnge*highearn |
-| head | 頭部負傷の場合1 |
+| highearn | high earner の場合1 |
+| male | male の場合1 |
+| married | married の場合1 |
+| ky | ケンタッキー州の場合1 |
+| mi | ミシガン州の場合1 |
+| ldurat | duratの対数 |
+| afhigh | afchnge×highearn（交差項） |
+| head | head injury の場合1 |
 | neck | neck injury の場合1 |
 | upextr | upper extremities injury の場合1 |
 | trunk | trunk injury の場合1 |

@@ -7,8 +7,8 @@
 | 変数名 | 説明 |
 |------|------|
 | state | 州の郵便番号 |
-| year | 85、90、または95（年） |
-| admnrev | 行政免許取消法がある場合1 |
+| year | 85、90、または95年 |
+| admnrev | admin. revoc. law の場合1 |
 | daysfrst | 停止日数（初犯） |
 | daysscnd | 停止日数（再犯） |
 

@@ -6,23 +6,23 @@
 
 | 変数名 | 説明 |
 |------|------|
-| wage | monthly earnings |
-| hours | average weekly hours |
+| wage | 月収 |
+| hours | 平均週間労働時間 |
 | IQ | IQスコア |
-| KWW | knowledge of world work score |
+| KWW | 仕事の世界に関する知識スコア |
 | educ | 就学年数 |
-| exper | years of work experience |
+| exper | 就業経験年数 |
 | tenure | 現在の雇用主との勤続年数 |
 | age | 年齢（年） |
-| married | 既婚の場合1 |
-| black | 黒人の場合1 |
-| south | 南部に居住の場合1 |
+| married | married の場合1 |
+| black | black の場合1 |
+| south | live in south の場合1 |
 | urban | live in SMSA の場合1 |
-| sibs | number of siblings |
-| brthord | birth order |
-| meduc | mother's education |
-| feduc | father's education |
-| lwage | natural log of wage |
+| sibs | 兄弟姉妹の数 |
+| brthord | 出生順位 |
+| meduc | 母親の教育年数 |
+| feduc | 父親の教育年数 |
+| lwage | 賃金の自然対数 |
 
 * * *
 

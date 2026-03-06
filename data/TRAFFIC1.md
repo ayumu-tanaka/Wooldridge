@@ -11,14 +11,14 @@
 | admn85 | admin. revocation, '85 の場合1 |
 | open90 | open container law, '90 の場合1 |
 | open85 | open container law, '85 の場合1 |
-| dthrte90 | deaths per 100 mill. miles, '90 |
-| dthrte85 | deaths per 100 mill. miles, '85 |
+| dthrte90 | 走行1億マイル当たりの死亡者数（1990年） |
+| dthrte85 | 走行1億マイル当たりの死亡者数（1985年） |
 | speed90 | 65 mph speed limit, 1990 の場合1 |
-| speed85 | =0 always |
-| cdthrte | dthrte90 - dthrte85 |
+| speed85 | 常に0 |
+| cdthrte | 死亡率の変化（1990年 - 1985年） |
 | cadmn | admn90 - admn85 |
-| copen | open90 - open85 |
-| cspeed | speed90 - speed85 |
+| copen | 営業時間の変化（1990 - 1985年） |
+| cspeed | 制限速度の変化（1990 - 1985年） |
 
 * * *
 

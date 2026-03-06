@@ -7,14 +7,14 @@
 | 変数名 | 説明 |
 |------|------|
 | educ | 就学年数 |
-| cigpric | state cigarette price, cents per pack |
-| white | 白人の場合1 |
+| cigpric | 州のタバコ価格（セント/パック） |
+| white | white の場合1 |
 | age | 年齢（年） |
-| income | annual income, $ |
-| cigs | cigs. smoked per day |
+| income | 年収（ドル） |
+| cigs | 1日あたりの喫煙本数 |
 | restaurn | state restaurant smoking restrictions の場合1 |
-| lincome | 所得の対数 |
-| agesq | 年齢の二乗 |
+| lincome | incomeの対数 |
+| agesq | ageの二乗 |
 | lcigpric | cigpriceの対数 |
 
 * * *

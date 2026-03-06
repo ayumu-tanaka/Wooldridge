@@ -6,8 +6,8 @@
 
 | 変数名 | 説明 |
 |------|------|
-| year | 1980 to 1988 |
-| uclms | unemployment claims |
+| year | 1980〜1988年 |
+| uclms | 失業給付申請件数 |
 | ez | have enterprise zone の場合1 |
 | d81 | year == 1981 の場合1 |
 | d82 | （説明なし） |
@@ -40,9 +40,9 @@
 | c21 | （説明なし） |
 | c22 | （説明なし） |
 | luclms | uclmsの対数 |
-| guclms | luclms - luclms[t-1] |
-| cez | ez - ez[t-1] |
-| city | city number |
+| guclms | luclmsの変化 |
+| cez | エンタープライズゾーンの変化 |
+| city | 都市番号 |
 
 * * *
 

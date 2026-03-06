@@ -7,15 +7,15 @@
 | 変数名 | 説明 |
 |------|------|
 | state | 州の郵便番号 |
-| district | congressional district |
+| district | 議会選挙区 |
 | democA | A is democrat の場合1 |
-| voteA | percent vote for A |
-| expendA | campaign expends. by A, $1000s |
-| expendB | campaign expends. by B, $1000s |
+| voteA | 候補者Aへの投票率（%） |
+| expendA | 候補者Aの選挙費用（千ドル） |
+| expendB | 候補者Bの選挙費用（千ドル） |
 | prtystrA | 大統領への投票率（%） |
-| lexpendA | 候補者A選挙費用の対数 |
-| lexpendB | 候補者B選挙費用の対数 |
-| shareA | 候補者Aの費用割合（%） |
+| lexpendA | expendAの対数 |
+| lexpendB | expendBの対数 |
+| shareA | 候補者A費用割合（%） |
 
 * * *
 

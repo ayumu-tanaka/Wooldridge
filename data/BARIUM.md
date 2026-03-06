@@ -20,13 +20,13 @@
 | spr | 春季の場合1 |
 | sum | 夏季の場合1 |
 | fall | 秋季の場合1 |
-| lchnimp | 中国輸入量の対数 |
-| lgas | ガソリン生産量の対数 |
-| lrtwex | 為替レート指数の対数 |
-| lchempi | 化学生産指数の対数 |
+| lchnimp | chnimpの対数 |
+| lgas | gasの対数 |
+| lrtwex | rtwexの対数 |
+| lchempi | chempiの対数 |
 | t | 時間トレンド |
-| feb | 2月の場合1 |
-| mar | 3月の場合1 |
+| feb | month is feb の場合1 |
+| mar | month is march の場合1 |
 | apr | （説明なし） |
 | may | （説明なし） |
 | jun | （説明なし） |

@@ -6,10 +6,10 @@
 
 | 変数名 | 説明 |
 |------|------|
-| month | name of month |
-| uclms | unemployment claims |
-| ez | ez - ez_1 |
-| year | 1980 through 1988 |
+| month | 月名 |
+| uclms | 失業給付申請件数 |
+| ez | エンタープライズゾーンの変化 |
+| year | 1980〜1988年 |
 | y81 | year == 1981 の場合1 |
 | y82 | （説明なし） |
 | y83 | （説明なし） |
