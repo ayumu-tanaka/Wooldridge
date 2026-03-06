@@ -21,13 +21,13 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
@@ -44,18 +44,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -73,12 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -91,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -105,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -114,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -148,9 +145,12 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{第9章: 定式化とデータの問題}
 \subtitle{Jeffrey Wooldridge (2016).\\
@@ -162,11 +162,10 @@ Seventh Edition. Cengage Learning.}
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{ux6e96ux5099}{%
-\section{準備}\label{ux6e96ux5099}}
+\section{準備}\label{ux6e96ux5099}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
 \begin{itemize}
 \tightlist
 \item
@@ -192,12 +191,11 @@ Seventh Edition. Cengage Learning.}
 \end{Shaded}
 \end{frame}
 
-\hypertarget{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functional-form-misspecification}{%
 \section{9-1 関数形式の誤設定 (Functional Form
-Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functional-form-misspecification}}
+Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functional-form-misspecification}
 
 \begin{frame}{定式化の誤りとは}
-\protect\hypertarget{ux5b9aux5f0fux5316ux306eux8aa4ux308aux3068ux306f}{}
+\phantomsection\label{ux5b9aux5f0fux5316ux306eux8aa4ux308aux3068ux306f}
 \begin{itemize}
 \tightlist
 \item
@@ -210,7 +208,7 @@ Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functi
 \end{frame}
 
 \begin{frame}{RESET検定 (Ramsey RESET Test)}
-\protect\hypertarget{resetux691cux5b9a-ramsey-reset-test}{}
+\phantomsection\label{resetux691cux5b9a-ramsey-reset-test}
 \begin{itemize}
 \tightlist
 \item
@@ -232,7 +230,7 @@ Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functi
 \end{frame}
 
 \begin{frame}[fragile]{RESET検定の例 (\texttt{hprice1})}
-\protect\hypertarget{resetux691cux5b9aux306eux4f8b-hprice1}{}
+\phantomsection\label{resetux691cux5b9aux306eux4f8b-hprice1}
 \footnotesize
 
 \begin{Shaded}
@@ -256,12 +254,11 @@ Misspecification)}\label{ux95a2ux6570ux5f62ux5f0fux306eux8aa4ux8a2dux5b9a-functi
 \normalsize
 \end{frame}
 
-\hypertarget{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux7528-proxy-variables}{%
 \section{9-2 観測不可能な変数の代用 (Proxy
-Variables)}\label{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux7528-proxy-variables}}
+Variables)}\label{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux7528-proxy-variables}
 
 \begin{frame}{代理変数 (Proxy Variables)}
-\protect\hypertarget{ux4ee3ux7406ux5909ux6570-proxy-variables}{}
+\phantomsection\label{ux4ee3ux7406ux5909ux6570-proxy-variables}
 \begin{itemize}
 \tightlist
 \item
@@ -277,12 +274,43 @@ Variables)}\label{ux89b3ux6e2cux4e0dux53efux80fdux306aux5909ux6570ux306eux4ee3ux
 \end{itemize}
 \end{frame}
 
-\hypertarget{ux6e2cux5b9aux8aa4ux5dee-measurement-error}{%
-\section{9-3 測定誤差 (Measurement
-Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}}
+\section{9-3 ランダム傾きモデル (Models with Random
+Slopes)}\label{ux30e9ux30f3ux30c0ux30e0ux50beux304dux30e2ux30c7ux30eb-models-with-random-slopes}
+
+\begin{frame}{ランダム傾きモデルの考え方}
+\phantomsection\label{ux30e9ux30f3ux30c0ux30e0ux50beux304dux30e2ux30c7ux30ebux306eux8003ux3048ux65b9}
+\begin{itemize}
+\tightlist
+\item
+  個体ごとに傾きが異なるモデル：\(y_i = a_i + b_i x_i\)
+\item
+  平均傾きを \(b = E(b_i)\) とおくと、\(b\)
+  は平均偏効果（APE）として解釈できる。
+\item
+  傾きの異質性は、誤差項に \(x_i\)
+  との交差項が入る形（\(u_i = c_i + d_i x_i\)）で表現できる。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{OLSで平均効果を推定できる条件}
+\phantomsection\label{olsux3067ux5e73ux5747ux52b9ux679cux3092ux63a8ux5b9aux3067ux304dux308bux6761ux4ef6}
+\begin{itemize}
+\tightlist
+\item
+  \(a_i\) と \(b_i\) が \(x_i\) と平均独立であれば、OLS は平均傾き \(b\)
+  を推定できる。
+\item
+  一方で、この設定では一般に不均一分散が生じるため、頑健標準誤差の利用が重要。
+\item
+  傾きの異質性を観測可能変数で表す場合は、交差項モデルとして実装できる。
+\end{itemize}
+\end{frame}
+
+\section{9-4 測定誤差 (Measurement
+Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}
 
 \begin{frame}{従属変数の測定誤差}
-\protect\hypertarget{ux5f93ux5c5eux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}{}
+\phantomsection\label{ux5f93ux5c5eux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}
 \begin{itemize}
 \tightlist
 \item
@@ -296,7 +324,7 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}}
 \end{frame}
 
 \begin{frame}{独立変数の測定誤差}
-\protect\hypertarget{ux72ecux7acbux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}{}
+\phantomsection\label{ux72ecux7acbux5909ux6570ux306eux6e2cux5b9aux8aa4ux5dee}
 \begin{itemize}
 \tightlist
 \item
@@ -312,12 +340,11 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{ux6b20ux640dux30c7ux30fcux30bfux3068ux975eux30e9ux30f3ux30c0ux30e0ux6a19ux672c}{%
-\section{9-4
-欠損データと非ランダム標本}\label{ux6b20ux640dux30c7ux30fcux30bfux3068ux975eux30e9ux30f3ux30c0ux30e0ux6a19ux672c}}
+\section{9-5
+欠損データと非ランダム標本}\label{ux6b20ux640dux30c7ux30fcux30bfux3068ux975eux30e9ux30f3ux30c0ux30e0ux6a19ux672c}
 
 \begin{frame}{データの欠損}
-\protect\hypertarget{ux30c7ux30fcux30bfux306eux6b20ux640d}{}
+\phantomsection\label{ux30c7ux30fcux30bfux306eux6b20ux640d}
 \begin{itemize}
 \tightlist
 \item
@@ -334,7 +361,7 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}}
 \end{frame}
 
 \begin{frame}{外れ値 (Outliers)}
-\protect\hypertarget{ux5916ux308cux5024-outliers}{}
+\phantomsection\label{ux5916ux308cux5024-outliers}
 \begin{itemize}
 \tightlist
 \item
@@ -345,13 +372,15 @@ Error)}\label{ux6e2cux5b9aux8aa4ux5dee-measurement-error}}
 \end{frame}
 
 \begin{frame}{まとめ}
-\protect\hypertarget{ux307eux3068ux3081}{}
+\phantomsection\label{ux307eux3068ux3081}
 \begin{itemize}
 \tightlist
 \item
   RESET検定は、モデルの非線形性が適切に捉えられているかのチェックに有効。
 \item
   代理変数は、観測不能な変数を近似するために用いられる。
+\item
+  ランダム傾きモデルでは、平均独立の条件の下でOLSは平均偏効果（APE）を推定できる。
 \item
   説明変数の測定誤差は、係数を 0
   に近づけるバイアス（減衰バイアス）を生む。

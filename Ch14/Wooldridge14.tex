@@ -21,13 +21,13 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
@@ -44,18 +44,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -73,12 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -91,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -105,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -114,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -155,25 +152,27 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{第14章: 発展的なパネルデータ法}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
+Seventh Edition. Cengage Learning.}
 \author{}
-\date{\vspace{-2.5em}2026-03-05}
+\date{\vspace{-2.5em}2026-03-06}
 
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{ux6e96ux5099}{%
-\section{準備}\label{ux6e96ux5099}}
+\section{準備}\label{ux6e96ux5099}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
 \begin{itemize}
 \tightlist
 \item
@@ -199,17 +198,16 @@ Introductory Econometrics: A Modern Approach\\
 \end{Shaded}
 \end{frame}
 
-\hypertarget{ux56faux5b9aux52b9ux679cux63a8ux5b9a}{%
-\section{14-1 固定効果推定}\label{ux56faux5b9aux52b9ux679cux63a8ux5b9a}}
+\section{14-1 固定効果推定}\label{ux56faux5b9aux52b9ux679cux63a8ux5b9a}
 
 \begin{frame}{固定効果変換 (Fixed Effects Transformation)}
-\protect\hypertarget{ux56faux5b9aux52b9ux679cux5909ux63db-fixed-effects-transformation}{}
+\phantomsection\label{ux56faux5b9aux52b9ux679cux5909ux63db-fixed-effects-transformation}
 \begin{itemize}
 \tightlist
 \item
   モデル:
   \(y_{it} = \beta_1 x_{it} + a_i + u_{it}, \quad t = 1, 2, \dots, T\)
-  \hfill [14.1]
+  \hfill {[}14.1{]}
 \item
   個体 \(i\) に関して時間平均をとると：
   \[\bar{y}_i = \beta_1 \bar{x}_i + a_i + \bar{u}_i \hfill [14.2]\]
@@ -227,7 +225,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{固定効果推定量の特性}
-\protect\hypertarget{ux56faux5b9aux52b9ux679cux63a8ux5b9aux91cfux306eux7279ux6027}{}
+\phantomsection\label{ux56faux5b9aux52b9ux679cux63a8ux5b9aux91cfux306eux7279ux6027}
 \begin{itemize}
 \tightlist
 \item
@@ -247,7 +245,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{複数の説明変数への拡張}
-\protect\hypertarget{ux8907ux6570ux306eux8aacux660eux5909ux6570ux3078ux306eux62e1ux5f35}{}
+\phantomsection\label{ux8907ux6570ux306eux8aacux660eux5909ux6570ux3078ux306eux62e1ux5f35}
 \begin{itemize}
 \tightlist
 \item
@@ -262,7 +260,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{例14.1: 職業訓練が不良品率に与える影響 (JTRAIN)}
-\protect\hypertarget{ux4f8b14.1-ux8077ux696dux8a13ux7df4ux304cux4e0dux826fux54c1ux7387ux306bux4e0eux3048ux308bux5f71ux97ff-jtrain}{}
+\phantomsection\label{ux4f8b14.1-ux8077ux696dux8a13ux7df4ux304cux4e0dux826fux54c1ux7387ux306bux4e0eux3048ux308bux5f71ux97ff-jtrain}
 \begin{itemize}
 \tightlist
 \item
@@ -301,7 +299,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{例14.1: 結果の解釈}
-\protect\hypertarget{ux4f8b14.1-ux7d50ux679cux306eux89e3ux91c8}{}
+\phantomsection\label{ux4f8b14.1-ux7d50ux679cux306eux89e3ux91c8}
 \begin{itemize}
 \tightlist
 \item
@@ -317,7 +315,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{例14.2: 教育収益率の時間変化 (WAGEPAN)}
-\protect\hypertarget{ux4f8b14.2-ux6559ux80b2ux53ceux76caux7387ux306eux6642ux9593ux5909ux5316-wagepan}{}
+\phantomsection\label{ux4f8b14.2-ux6559ux80b2ux53ceux76caux7387ux306eux6642ux9593ux5909ux5316-wagepan}
 \begin{itemize}
 \tightlist
 \item
@@ -355,7 +353,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{例14.2: 解釈}
-\protect\hypertarget{ux4f8b14.2-ux89e3ux91c8}{}
+\phantomsection\label{ux4f8b14.2-ux89e3ux91c8}
 \begin{itemize}
 \tightlist
 \item
@@ -370,12 +368,11 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
-\hypertarget{a-ux30c0ux30dfux30fcux5909ux6570ux56deux5e30}{%
 \section{14-1a
-ダミー変数回帰}\label{a-ux30c0ux30dfux30fcux5909ux6570ux56deux5e30}}
+ダミー変数回帰}\label{a-ux30c0ux30dfux30fcux5909ux6570ux56deux5e30}
 
 \begin{frame}{ダミー変数回帰 (Dummy Variable Regression)}
-\protect\hypertarget{ux30c0ux30dfux30fcux5909ux6570ux56deux5e30-dummy-variable-regression}{}
+\phantomsection\label{ux30c0ux30dfux30fcux5909ux6570ux56deux5e30-dummy-variable-regression}
 \begin{itemize}
 \tightlist
 \item
@@ -394,23 +391,22 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
-\hypertarget{b-ux56faux5b9aux52b9ux679c-vs-1ux968eux5deeux5206}{%
 \section{14-1b 固定効果 vs
-1階差分}\label{b-ux56faux5b9aux52b9ux679c-vs-1ux968eux5deeux5206}}
+1階差分}\label{b-ux56faux5b9aux52b9ux679c-vs-1ux968eux5deeux5206}
 
 \begin{frame}{固定効果法 (FE) と 1階差分法 (FD) の比較}
-\protect\hypertarget{ux56faux5b9aux52b9ux679cux6cd5-fe-ux3068-1ux968eux5deeux5206ux6cd5-fd-ux306eux6bd4ux8f03}{}
+\phantomsection\label{ux56faux5b9aux52b9ux679cux6cd5-fe-ux3068-1ux968eux5deeux5206ux6cd5-fd-ux306eux6bd4ux8f03}
 \begin{longtable}[]{@{}lll@{}}
-\toprule
+\toprule\noalign{}
 特徴 & FE (固定効果) & FD (1階差分) \\
-\midrule
+\midrule\noalign{}
 \endhead
 \(T=2\) のとき & \textbf{同一} & \textbf{同一} \\
 \(T \geq 3\) のとき & 異なる推定量 & 異なる推定量 \\
 \(u_{it}\) が系列無相関 & \textbf{効率的} & 非効率 \\
 \(u_{it}\) がランダムウォーク & 非効率 & \textbf{効率的} \\
 測定誤差に対する感度 & 高い & 高い \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{itemize}
@@ -430,12 +426,11 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
-\hypertarget{c-ux4e0dux5747ux8861ux30d1ux30cdux30eb}{%
 \section{14-1c
-不均衡パネル}\label{c-ux4e0dux5747ux8861ux30d1ux30cdux30eb}}
+不均衡パネル}\label{c-ux4e0dux5747ux8861ux30d1ux30cdux30eb}
 
 \begin{frame}{不均衡パネルの固定効果推定}
-\protect\hypertarget{ux4e0dux5747ux8861ux30d1ux30cdux30ebux306eux56faux5b9aux52b9ux679cux63a8ux5b9a}{}
+\phantomsection\label{ux4e0dux5747ux8861ux30d1ux30cdux30ebux306eux56faux5b9aux52b9ux679cux63a8ux5b9a}
 \begin{itemize}
 \tightlist
 \item
@@ -461,7 +456,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{例14.3: 不均衡パネルでの職業訓練効果 (JTRAIN)}
-\protect\hypertarget{ux4f8b14.3-ux4e0dux5747ux8861ux30d1ux30cdux30ebux3067ux306eux8077ux696dux8a13ux7df4ux52b9ux679c-jtrain}{}
+\phantomsection\label{ux4f8b14.3-ux4e0dux5747ux8861ux30d1ux30cdux30ebux3067ux306eux8077ux696dux8a13ux7df4ux52b9ux679c-jtrain}
 \begin{itemize}
 \tightlist
 \item
@@ -497,12 +492,11 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
-\hypertarget{ux5909ux91cfux52b9ux679cux30e2ux30c7ux30eb}{%
 \section{14-2
-変量効果モデル}\label{ux5909ux91cfux52b9ux679cux30e2ux30c7ux30eb}}
+変量効果モデル}\label{ux5909ux91cfux52b9ux679cux30e2ux30c7ux30eb}
 
 \begin{frame}{変量効果モデルの設定}
-\protect\hypertarget{ux5909ux91cfux52b9ux679cux30e2ux30c7ux30ebux306eux8a2dux5b9a}{}
+\phantomsection\label{ux5909ux91cfux52b9ux679cux30e2ux30c7ux30ebux306eux8a2dux5b9a}
 \begin{itemize}
 \tightlist
 \item
@@ -523,7 +517,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}{GLS変換（準時間平均除去）}
-\protect\hypertarget{glsux5909ux63dbux6e96ux6642ux9593ux5e73ux5747ux9664ux53bb}{}
+\phantomsection\label{glsux5909ux63dbux6e96ux6642ux9593ux5e73ux5747ux9664ux53bb}
 \begin{itemize}
 \tightlist
 \item
@@ -545,7 +539,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{例14.4: 賃金方程式 (WAGEPAN)}
-\protect\hypertarget{ux4f8b14.4-ux8cc3ux91d1ux65b9ux7a0bux5f0f-wagepan}{}
+\phantomsection\label{ux4f8b14.4-ux8cc3ux91d1ux65b9ux7a0bux5f0f-wagepan}
 \begin{itemize}
 \tightlist
 \item
@@ -577,7 +571,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{例14.4: 結果の比較}
-\protect\hypertarget{ux4f8b14.4-ux7d50ux679cux306eux6bd4ux8f03}{}
+\phantomsection\label{ux4f8b14.4-ux7d50ux679cux306eux6bd4ux8f03}
 \footnotesize
 
 \begin{Shaded}
@@ -603,7 +597,7 @@ Introductory Econometrics: A Modern Approach\\
 \end{frame}
 
 \begin{frame}[fragile]{例14.4: 解釈}
-\protect\hypertarget{ux4f8b14.4-ux89e3ux91c8}{}
+\phantomsection\label{ux4f8b14.4-ux89e3ux91c8}
 \begin{itemize}
 \tightlist
 \item
@@ -630,12 +624,11 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
-\hypertarget{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}{%
 \section{14-2a 変量効果 vs Pooled
-OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
+OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}
 
 \begin{frame}{変量効果とPooled OLSの選択}
-\protect\hypertarget{ux5909ux91cfux52b9ux679cux3068pooled-olsux306eux9078ux629e}{}
+\phantomsection\label{ux5909ux91cfux52b9ux679cux3068pooled-olsux306eux9078ux629e}
 \begin{itemize}
 \tightlist
 \item
@@ -654,7 +647,8 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
     RE/POLS ともに不一致
   \end{itemize}
 \item
-  \textbf{結論}: REはPooled OLSより常に好ましい
+  \textbf{実務上の含意}: REはPooled
+  OLSより好まれることが多い（特に誤差構造がRE仮定に近い場合）
 
   \begin{itemize}
   \tightlist
@@ -666,12 +660,11 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{b-ux5909ux91cfux52b9ux679c-vs-ux56faux5b9aux52b9ux679c}{%
 \section{14-2b 変量効果 vs
-固定効果}\label{b-ux5909ux91cfux52b9ux679c-vs-ux56faux5b9aux52b9ux679c}}
+固定効果}\label{b-ux5909ux91cfux52b9ux679c-vs-ux56faux5b9aux52b9ux679c}
 
 \begin{frame}[fragile]{FE vs RE の選択基準}
-\protect\hypertarget{fe-vs-re-ux306eux9078ux629eux57faux6e96}{}
+\phantomsection\label{fe-vs-re-ux306eux9078ux629eux57faux6e96}
 \begin{itemize}
 \tightlist
 \item
@@ -691,7 +684,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}[fragile]{Hausman検定の実施}
-\protect\hypertarget{hausmanux691cux5b9aux306eux5b9fux65bd}{}
+\phantomsection\label{hausmanux691cux5b9aux306eux5b9fux65bd}
 \footnotesize
 
 \begin{Shaded}
@@ -725,12 +718,11 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{ux76f8ux95a2ux5909ux91cfux52b9ux679cux30a2ux30d7ux30edux30fcux30c1}{%
 \section{14-3
-相関変量効果アプローチ}\label{ux76f8ux95a2ux5909ux91cfux52b9ux679cux30a2ux30d7ux30edux30fcux30c1}}
+相関変量効果アプローチ}\label{ux76f8ux95a2ux5909ux91cfux52b9ux679cux30a2ux30d7ux30edux30fcux30c1}
 
 \begin{frame}{CREアプローチの基本アイデア}
-\protect\hypertarget{creux30a2ux30d7ux30edux30fcux30c1ux306eux57faux672cux30a2ux30a4ux30c7ux30a2}{}
+\phantomsection\label{creux30a2ux30d7ux30edux30fcux30c1ux306eux57faux672cux30a2ux30a4ux30c7ux30a2}
 \begin{itemize}
 \tightlist
 \item
@@ -749,7 +741,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}{CREとFEの等価性}
-\protect\hypertarget{creux3068feux306eux7b49ux4fa1ux6027}{}
+\phantomsection\label{creux3068feux306eux7b49ux4fa1ux6027}
 \begin{itemize}
 \tightlist
 \item
@@ -771,7 +763,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}[fragile]{CREの推定: WAGEPAN}
-\protect\hypertarget{creux306eux63a8ux5b9a-wagepan}{}
+\phantomsection\label{creux306eux63a8ux5b9a-wagepan}
 \footnotesize
 
 \begin{Shaded}
@@ -801,7 +793,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}[fragile]{CRE: RE vs FE の検定}
-\protect\hypertarget{cre-re-vs-fe-ux306eux691cux5b9a}{}
+\phantomsection\label{cre-re-vs-fe-ux306eux691cux5b9a}
 \begin{itemize}
 \tightlist
 \item
@@ -845,12 +837,11 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \normalsize
 \end{frame}
 
-\hypertarget{ux30d1ux30cdux30ebux30c7ux30fcux30bfux3092ux7528ux3044ux305fux653fux7b56ux5206ux6790}{%
 \section{14-4
-パネルデータを用いた政策分析}\label{ux30d1ux30cdux30ebux30c7ux30fcux30bfux3092ux7528ux3044ux305fux653fux7b56ux5206ux6790}}
+パネルデータを用いた政策分析}\label{ux30d1ux30cdux30ebux30c7ux30fcux30bfux3092ux7528ux3044ux305fux653fux7b56ux5206ux6790}
 
 \begin{frame}{一般的な政策分析フレームワーク {[}14.22{]}}
-\protect\hypertarget{ux4e00ux822cux7684ux306aux653fux7b56ux5206ux6790ux30d5ux30ecux30fcux30e0ux30efux30fcux30af-14.22}{}
+\phantomsection\label{ux4e00ux822cux7684ux306aux653fux7b56ux5206ux6790ux30d5ux30ecux30fcux30e0ux30efux30fcux30af-14.22}
 \[y_{it} = \eta_1 + \alpha_2 d2_t + \cdots + \alpha_T dT_t + \beta w_{it} + \mathbf{x}_{it}\boldsymbol{\psi} + a_i + u_{it}\]
 
 \begin{itemize}
@@ -869,7 +860,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}{動的効果の推定 {[}14.24{]}}
-\protect\hypertarget{ux52d5ux7684ux52b9ux679cux306eux63a8ux5b9a-14.24}{}
+\phantomsection\label{ux52d5ux7684ux52b9ux679cux306eux63a8ux5b9a-14.24}
 \begin{itemize}
 \tightlist
 \item
@@ -881,7 +872,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}{因果分析の注意点}
-\protect\hypertarget{ux56e0ux679cux5206ux6790ux306eux6ce8ux610fux70b9}{}
+\phantomsection\label{ux56e0ux679cux5206ux6790ux306eux6ce8ux610fux70b9}
 \begin{itemize}
 \tightlist
 \item
@@ -905,7 +896,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 
 \begin{frame}{異質トレンドモデル (Heterogeneous Trend Model)
 {[}14.26{]}}
-\protect\hypertarget{ux7570ux8ceaux30c8ux30ecux30f3ux30c9ux30e2ux30c7ux30eb-heterogeneous-trend-model-14.26}{}
+\phantomsection\label{ux7570ux8ceaux30c8ux30ecux30f3ux30c9ux30e2ux30c7ux30eb-heterogeneous-trend-model-14.26}
 \begin{itemize}
 \tightlist
 \item
@@ -920,12 +911,11 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{ux4ed6ux306eux30c7ux30fcux30bfux69cbux9020ux3078ux306eux5fdcux7528}{%
 \section{14-5
-他のデータ構造への応用}\label{ux4ed6ux306eux30c7ux30fcux30bfux69cbux9020ux3078ux306eux5fdcux7528}}
+他のデータ構造への応用}\label{ux4ed6ux306eux30c7ux30fcux30bfux69cbux9020ux3078ux306eux5fdcux7528}
 
 \begin{frame}{マッチドペアとクラスターサンプル}
-\protect\hypertarget{ux30deux30c3ux30c1ux30c9ux30daux30a2ux3068ux30afux30e9ux30b9ux30bfux30fcux30b5ux30f3ux30d7ux30eb}{}
+\phantomsection\label{ux30deux30c3ux30c1ux30c9ux30daux30a2ux3068ux30afux30e9ux30b9ux30bfux30fcux30b5ux30f3ux30d7ux30eb}
 \begin{itemize}
 \tightlist
 \item
@@ -955,7 +945,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}{クラスターサンプルにおける注意点}
-\protect\hypertarget{ux30afux30e9ux30b9ux30bfux30fcux30b5ux30f3ux30d7ux30ebux306bux304aux3051ux308bux6ce8ux610fux70b9}{}
+\phantomsection\label{ux30afux30e9ux30b9ux30bfux30fcux30b5ux30f3ux30d7ux30ebux306bux304aux3051ux308bux6ce8ux610fux70b9}
 \begin{itemize}
 \tightlist
 \item
@@ -972,7 +962,7 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{frame}
 
 \begin{frame}{クラスター頑健標準誤差の適用場面}
-\protect\hypertarget{ux30afux30e9ux30b9ux30bfux30fcux9811ux5065ux6a19ux6e96ux8aa4ux5deeux306eux9069ux7528ux5834ux9762}{}
+\phantomsection\label{ux30afux30e9ux30b9ux30bfux30fcux9811ux5065ux6a19ux6e96ux8aa4ux5deeux306eux9069ux7528ux5834ux9762}
 \begin{itemize}
 \tightlist
 \item
@@ -994,27 +984,26 @@ OLS}\label{a-ux5909ux91cfux52b9ux679c-vs-pooled-ols}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{ux307eux3068ux3081}{%
-\section{まとめ}\label{ux307eux3068ux3081}}
+\section{まとめ}\label{ux307eux3068ux3081}
 
 \begin{frame}{第14章のまとめ}
-\protect\hypertarget{ux7b2c14ux7ae0ux306eux307eux3068ux3081}{}
+\phantomsection\label{ux7b2c14ux7ae0ux306eux307eux3068ux3081}
 \begin{longtable}[]{@{}llll@{}}
-\toprule
+\toprule\noalign{}
 手法 & \(a_i\) と \(x_{it}\) の相関 & 時間不変変数 & 効率性 \\
-\midrule
+\midrule\noalign{}
 \endhead
 Pooled OLS & 不可 & 推定可 & 低 \\
 固定効果 (FE) & 許容 & 推定不可 & 中 \\
 1階差分 (FD) & 許容 & 推定不可 & 中 \\
 変量効果 (RE) & 不可（仮定） & 推定可 & 高 \\
 相関変量効果 (CRE) & 許容 & 推定可 & 中 \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 \end{frame}
 
 \begin{frame}{まとめ（続き）}
-\protect\hypertarget{ux307eux3068ux3081ux7d9aux304d}{}
+\phantomsection\label{ux307eux3068ux3081ux7d9aux304d}
 \begin{itemize}
 \tightlist
 \item

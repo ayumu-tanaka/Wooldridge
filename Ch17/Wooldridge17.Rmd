@@ -584,7 +584,7 @@ res_cens <- survreg(
 ```{r example174b}
 coef_surv <- coef(res_cens)
 se_surv   <- sqrt(diag(vcov(res_cens)))
-result174 <- cbind(係数 = round(coef_surv, 3),
+result174 <- cbind(`係数` = round(coef_surv, 3),
                    SE   = round(se_surv,   3))
 print(result174[1:6, ])
 ```

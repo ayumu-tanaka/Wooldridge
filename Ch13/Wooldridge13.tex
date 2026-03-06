@@ -1,16 +1,18 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
-\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% remove section numbering
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -29,9 +31,6 @@
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,6 +43,7 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
+\usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -75,6 +75,8 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -118,6 +120,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -152,9 +155,9 @@
 \title{第13章: 単純なパネルデータ}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
+Seventh Edition. Cengage Learning.}
 \author{}
-\date{\vspace{-2.5em}2026-03-05}
+\date{\vspace{-2.5em}2026-03-06}
 
 \begin{document}
 \frame{\titlepage}
@@ -241,7 +244,8 @@ Introductory Econometrics: A Modern Approach\\
   \textbf{DiD推定量:}
   \(\hat{\delta}_1 = (\bar{y}_{T,A} - \bar{y}_{T,B}) - (\bar{y}_{C,A} - \bar{y}_{C,B})\)
 \item
-  交差項の係数 \(\hat{\delta}_1\) が政策の因果的効果を表す。
+  平行トレンド仮定（介入がなければ処置群・対照群の平均変化が同じ）の下で、交差項の係数
+  \(\hat{\delta}_1\) が政策の因果的効果を表す。
 \end{itemize}
 \end{frame}
 
@@ -326,8 +330,9 @@ Introductory Econometrics: A Modern Approach\\
 \item
   \(\Delta y_i = \delta_0 + \beta_1 \Delta x_i + \Delta u_i\)
 \item
-  これにより、\(a_i\) が \(x_{it}\)
-  と相関していても（内生性があっても）、\(\beta_1\) を一致推定できる。
+  これにより時間不変の未観測効果 \(a_i\) は除去できるが、\(\Delta x_i\)
+  と \(\Delta u_i\)
+  が相関しない（差分後の外生性）ことが一致性の条件である。
 \end{itemize}
 \end{frame}
 
@@ -380,7 +385,8 @@ Introductory Econometrics: A Modern Approach\\
   \textbf{パネルデータ:} 個体固有の観測不能な要因 (\(a_i\))
   を考慮できる。
 \item
-  \textbf{1階差分法:} \(a_i\) を引き算で消去し、因果関係を特定する。
+  \textbf{1階差分法:} \(a_i\)
+  を引き算で消去し、時間不変の未観測要因によるバイアスを軽減する（因果解釈には差分後の外生性など追加条件が必要）。
 \end{itemize}
 \end{frame}
 

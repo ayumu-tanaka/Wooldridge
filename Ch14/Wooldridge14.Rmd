@@ -292,7 +292,7 @@ rbind(
 - $\sigma_a^2 = 0$ なら観測不能効果なし $\Rightarrow$ Pooled OLSが適切
 - ただし、この検定はあくまで $\sigma_a^2 > 0$ を確認するもの
   - $\sigma_a^2 > 0$ でも $a_i$ が $x_{it}$ と相関していれば RE/POLS ともに不一致
-- **結論**: REはPooled OLSより常に好ましい
+- **実務上の含意**: REはPooled OLSより好まれることが多い（特に誤差構造がRE仮定に近い場合）
   - 系列相関の除去により効率的
   - $a_i$ の一部を誤差項から除去 $\Rightarrow$ バイアスを軽減
 

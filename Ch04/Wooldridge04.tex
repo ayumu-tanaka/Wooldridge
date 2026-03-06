@@ -21,13 +21,13 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
@@ -44,18 +44,21 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -73,12 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -91,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -105,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -114,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -148,9 +145,12 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{第4章: 重回帰分析：推論}
 \subtitle{Jeffrey Wooldridge (2016).\\
@@ -162,11 +162,10 @@ Seventh Edition. Cengage Learning.}
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{ux6e96ux5099}{%
-\section{準備}\label{ux6e96ux5099}}
+\section{準備}\label{ux6e96ux5099}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
 \begin{itemize}
 \tightlist
 \item
@@ -193,12 +192,11 @@ Seventh Edition. Cengage Learning.}
 \end{Shaded}
 \end{frame}
 
-\hypertarget{ux53e4ux5178ux7684ux7ddaux5f62ux56deux5e30ux30e2ux30c7ux30ebux306eux4eeeux5b9a}{%
 \section{4-1
-古典的線形回帰モデルの仮定}\label{ux53e4ux5178ux7684ux7ddaux5f62ux56deux5e30ux30e2ux30c7ux30ebux306eux4eeeux5b9a}}
+古典的線形回帰モデルの仮定}\label{ux53e4ux5178ux7684ux7ddaux5f62ux56deux5e30ux30e2ux30c7ux30ebux306eux4eeeux5b9a}
 
 \begin{frame}{誤差項の正規性の仮定 (MLR.6)}
-\protect\hypertarget{ux8aa4ux5deeux9805ux306eux6b63ux898fux6027ux306eux4eeeux5b9a-mlr.6}{}
+\phantomsection\label{ux8aa4ux5deeux9805ux306eux6b63ux898fux6027ux306eux4eeeux5b9a-mlr.6}
 \begin{itemize}
 \tightlist
 \item
@@ -222,12 +220,11 @@ Seventh Edition. Cengage Learning.}
 \[ \hat{\beta}_j \sim \text{Normal}(\beta_j, \text{Var}(\hat{\beta}_j)) \]
 \end{frame}
 
-\hypertarget{tux691cux5b9aux5358ux4e00ux306eux6bcdux96c6ux56e3ux30d1ux30e9ux30e1ux30fcux30bfux306bux95a2ux3059ux308bux691cux5b9a}{%
 \section{4-2
-t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b9aux5358ux4e00ux306eux6bcdux96c6ux56e3ux30d1ux30e9ux30e1ux30fcux30bfux306bux95a2ux3059ux308bux691cux5b9a}}
+t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b9aux5358ux4e00ux306eux6bcdux96c6ux56e3ux30d1ux30e9ux30e1ux30fcux30bfux306bux95a2ux3059ux308bux691cux5b9a}
 
 \begin{frame}{t統計量（1）}
-\protect\hypertarget{tux7d71ux8a08ux91cf1}{}
+\phantomsection\label{tux7d71ux8a08ux91cf1}
 \begin{itemize}
 \tightlist
 \item
@@ -239,7 +236,7 @@ t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b
 \end{frame}
 
 \begin{frame}{t統計量（2）}
-\protect\hypertarget{tux7d71ux8a08ux91cf2}{}
+\phantomsection\label{tux7d71ux8a08ux91cf2}
 \begin{itemize}
 \tightlist
 \item
@@ -258,7 +255,7 @@ t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b
 \end{frame}
 
 \begin{frame}{帰無仮説と対立仮説}
-\protect\hypertarget{ux5e30ux7121ux4eeeux8aacux3068ux5bfeux7acbux4eeeux8aac}{}
+\phantomsection\label{ux5e30ux7121ux4eeeux8aacux3068ux5bfeux7acbux4eeeux8aac}
 \begin{itemize}
 \tightlist
 \item
@@ -285,7 +282,7 @@ t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b
 \end{frame}
 
 \begin{frame}[fragile]{Rによる実装例 (\texttt{meap93})}
-\protect\hypertarget{rux306bux3088ux308bux5b9fux88c5ux4f8b-meap93}{}
+\phantomsection\label{rux306bux3088ux308bux5b9fux88c5ux4f8b-meap93}
 \begin{itemize}
 \tightlist
 \item
@@ -305,7 +302,7 @@ t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b
 \end{frame}
 
 \begin{frame}[fragile]{Rによるt検定の結果表示}
-\protect\hypertarget{rux306bux3088ux308btux691cux5b9aux306eux7d50ux679cux8868ux793a}{}
+\phantomsection\label{rux306bux3088ux308btux691cux5b9aux306eux7d50ux679cux8868ux793a}
 \scriptsize
 
 \begin{Shaded}
@@ -324,7 +321,7 @@ t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b
 \end{frame}
 
 \begin{frame}[fragile]{t検定の結果解釈}
-\protect\hypertarget{tux691cux5b9aux306eux7d50ux679cux89e3ux91c8}{}
+\phantomsection\label{tux691cux5b9aux306eux7d50ux679cux89e3ux91c8}
 \begin{itemize}
 \tightlist
 \item
@@ -336,16 +333,14 @@ t検定：単一の母集団パラメータに関する検定}\label{tux691cux5b
   のt分布において、3.52は非常に稀な値（棄却域に入る）。
 \item
   したがって、\(H_0: \beta_{\log(expend)} = 0\)
-  は棄却され、支出は数学の合格率に有意な正の影響を与えると結論付けられる。
+  は棄却され、支出と数学の合格率には統計的に有意な正の関連があると結論付けられる（因果解釈には追加の識別仮定が必要）。
 \end{itemize}
 \end{frame}
 
-\hypertarget{pux5024ux3068ux4fe1ux983cux533aux9593}{%
-\section{4-3
-p値と信頼区間}\label{pux5024ux3068ux4fe1ux983cux533aux9593}}
+\section{4-3 p値と信頼区間}\label{pux5024ux3068ux4fe1ux983cux533aux9593}
 
 \begin{frame}[fragile]{p値 (p-value)}
-\protect\hypertarget{pux5024-p-value}{}
+\phantomsection\label{pux5024-p-value}
 \begin{itemize}
 \tightlist
 \item
@@ -369,7 +364,7 @@ p値と信頼区間}\label{pux5024ux3068ux4fe1ux983cux533aux9593}}
 \end{frame}
 
 \begin{frame}{信頼区間 (Confidence Interval)}
-\protect\hypertarget{ux4fe1ux983cux533aux9593-confidence-interval}{}
+\phantomsection\label{ux4fe1ux983cux533aux9593-confidence-interval}
 \begin{itemize}
 \tightlist
 \item
@@ -389,7 +384,7 @@ p値と信頼区間}\label{pux5024ux3068ux4fe1ux983cux533aux9593}}
 \end{frame}
 
 \begin{frame}[fragile]{Rによる信頼区間の計算例}
-\protect\hypertarget{rux306bux3088ux308bux4fe1ux983cux533aux9593ux306eux8a08ux7b97ux4f8b}{}
+\phantomsection\label{rux306bux3088ux308bux4fe1ux983cux533aux9593ux306eux8a08ux7b97ux4f8b}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# 95\%信頼区間の計算}
@@ -405,12 +400,11 @@ p値と信頼区間}\label{pux5024ux3068ux4fe1ux983cux533aux9593}}
 \end{verbatim}
 \end{frame}
 
-\hypertarget{fux691cux5b9aux8907ux6570ux306eux7ddaux5f62ux5236ux7d04ux306eux691cux5b9a}{%
 \section{4-4
-F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eux7ddaux5f62ux5236ux7d04ux306eux691cux5b9a}}
+F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eux7ddaux5f62ux5236ux7d04ux306eux691cux5b9a}
 
 \begin{frame}{複数の仮説の同時検定}
-\protect\hypertarget{ux8907ux6570ux306eux4eeeux8aacux306eux540cux6642ux691cux5b9a}{}
+\phantomsection\label{ux8907ux6570ux306eux4eeeux8aacux306eux540cux6642ux691cux5b9a}
 \begin{itemize}
 \tightlist
 \item
@@ -431,7 +425,7 @@ F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eu
 \end{frame}
 
 \begin{frame}{F統計量}
-\protect\hypertarget{fux7d71ux8a08ux91cf}{}
+\phantomsection\label{fux7d71ux8a08ux91cf}
 \begin{itemize}
 \tightlist
 \item
@@ -455,7 +449,7 @@ F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eu
 \end{frame}
 
 \begin{frame}[fragile]{RによるF検定の実装例 (\texttt{mlb1})}
-\protect\hypertarget{rux306bux3088ux308bfux691cux5b9aux306eux5b9fux88c5ux4f8b-mlb1}{}
+\phantomsection\label{rux306bux3088ux308bfux691cux5b9aux306eux5b9fux88c5ux4f8b-mlb1}
 \begin{itemize}
 \tightlist
 \item
@@ -475,7 +469,7 @@ F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eu
 \end{frame}
 
 \begin{frame}[fragile]{\texttt{anova}関数による比較}
-\protect\hypertarget{anovaux95a2ux6570ux306bux3088ux308bux6bd4ux8f03}{}
+\phantomsection\label{anovaux95a2ux6570ux306bux3088ux308bux6bd4ux8f03}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# F検定の実行}
@@ -505,7 +499,7 @@ F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eu
 \end{frame}
 
 \begin{frame}[fragile]{モデル全体の有意性検定}
-\protect\hypertarget{ux30e2ux30c7ux30ebux5168ux4f53ux306eux6709ux610fux6027ux691cux5b9a}{}
+\phantomsection\label{ux30e2ux30c7ux30ebux5168ux4f53ux306eux6709ux610fux6027ux691cux5b9a}
 \begin{itemize}
 \tightlist
 \item
@@ -522,11 +516,10 @@ F検定：複数の線形制約の検定}\label{fux691cux5b9aux8907ux6570ux306eu
 \end{itemize}
 \end{frame}
 
-\hypertarget{ux307eux3068ux3081}{%
-\section{まとめ}\label{ux307eux3068ux3081}}
+\section{まとめ}\label{ux307eux3068ux3081}
 
 \begin{frame}{まとめ}
-\protect\hypertarget{ux307eux3068ux3081-1}{}
+\phantomsection\label{ux307eux3068ux3081-1}
 \begin{itemize}
 \tightlist
 \item

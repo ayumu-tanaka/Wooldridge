@@ -210,9 +210,9 @@ $$ R^2 = \frac{\text{SSE}}{\text{SST}} = 1 - \frac{\text{SSR}}{\text{SST}} $$
 
 ```{r, echo=FALSE, results='asis'}
 df_models <- data.frame(
-  モデル = c("Level-level", "Log-level", "Level-log", "Log-log"),
-  方程式 = c("$y = \\beta_0 + \\beta_1 x$", "$\\log(y) = \\beta_0 + \\beta_1 x$", "$y = \\beta_0 + \\beta_1 \\log(x)$", "$\\log(y) = \\beta_0 + \\beta_1 \\log(x)$"),
-  解釈 = c("$\\Delta y = \\beta_1 \\Delta x$", "$\\% \\Delta y \\approx (100 \\beta_1) \\Delta x$", "$\\Delta y \\approx (\\beta_1 / 100) \\% \\Delta x$", "$\\% \\Delta y \\approx \\beta_1 \\% \\Delta x$ (弾力性)")
+  `モデル` = c("Level-level", "Log-level", "Level-log", "Log-log"),
+  `方程式` = c("$y = \\beta_0 + \\beta_1 x$", "$\\log(y) = \\beta_0 + \\beta_1 x$", "$y = \\beta_0 + \\beta_1 \\log(x)$", "$\\log(y) = \\beta_0 + \\beta_1 \\log(x)$"),
+  `解釈` = c("$\\Delta y = \\beta_1 \\Delta x$", "$\\% \\Delta y \\approx (100 \\beta_1) \\Delta x$", "$\\Delta y \\approx (\\beta_1 / 100) \\% \\Delta x$", "$\\% \\Delta y \\approx \\beta_1 \\% \\Delta x$ (弾力性)")
 )
 knitr::kable(df_models)
 ```
@@ -261,5 +261,4 @@ $$ \widehat{\log(wage)} = 0.584 + 0.083 \cdot educ $$
 - OLS（最小二乗法）は、残差二乗和を最小化することでパラメータを推定する。
 - $R^2$（決定係数）はモデルの当てはまりの良さを測る指標である。
 - 対数変換を用いることで、弾力性や成長率（%変化）として係数を解釈できる。
-
 

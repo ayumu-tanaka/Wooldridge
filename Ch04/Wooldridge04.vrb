@@ -1,0 +1,16 @@
+\frametitle{モデル全体の有意性検定}
+\phantomsection\label{ux30e2ux30c7ux30ebux5168ux4f53ux306eux6709ux610fux6027ux691cux5b9a}
+\begin{itemize}
+\tightlist
+\item
+  通常の \texttt{summary()} 出力の最後にある \texttt{F-statistic}
+  は、すべての独立変数（切片以外）が0であるという帰無仮説に対する検定結果である。
+\end{itemize}
+
+\[ H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0 \]
+
+\begin{itemize}
+\tightlist
+\item
+  これにより、モデル全体として説明力があるかどうかを判断できる。
+\end{itemize}
