@@ -1,0 +1,49 @@
+# EZUNEM データセットの説明
+
+**観測数（Obs）:** 198
+
+## 変数一覧
+
+| 変数名 | 説明 |
+|------|------|
+| year | 1980 to 1988 |
+| uclms | unemployment claims |
+| ez | have enterprise zone の場合1 |
+| d81 | year == 1981 の場合1 |
+| d82 | （説明なし） |
+| d83 | （説明なし） |
+| d84 | （説明なし） |
+| d85 | （説明なし） |
+| d86 | （説明なし） |
+| d87 | （説明なし） |
+| d88 | （説明なし） |
+| c1 | city == 1 の場合1 |
+| c2 | （説明なし） |
+| c3 | （説明なし） |
+| c4 | （説明なし） |
+| c5 | （説明なし） |
+| c6 | （説明なし） |
+| c7 | （説明なし） |
+| c8 | （説明なし） |
+| c9 | （説明なし） |
+| c10 | （説明なし） |
+| c11 | （説明なし） |
+| c12 | （説明なし） |
+| c13 | （説明なし） |
+| c14 | （説明なし） |
+| c15 | （説明なし） |
+| c16 | （説明なし） |
+| c17 | （説明なし） |
+| c18 | （説明なし） |
+| c19 | （説明なし） |
+| c20 | （説明なし） |
+| c21 | （説明なし） |
+| c22 | （説明なし） |
+| luclms | uclmsの対数 |
+| guclms | luclms - luclms[t-1] |
+| cez | ez - ez[t-1] |
+| city | city number |
+
+* * *
+
+**出典**: [http://fmwww.bc.edu/ec-p/data/wooldridge/ezunem.des](http://fmwww.bc.edu/ec-p/data/wooldridge/ezunem.des)
