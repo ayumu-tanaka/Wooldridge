@@ -1,6 +1,6 @@
 ---
 title: |
-  | 第8章: 多重回帰分析：不均一分散
+  | 第8章: 重回帰分析：不均一分散
 subtitle: |
     | Jeffrey Wooldridge (2016).
     | Introductory Econometrics: A Modern Approach 

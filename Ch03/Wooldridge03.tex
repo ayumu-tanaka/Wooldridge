@@ -1,16 +1,18 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
-\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% remove section numbering
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -19,19 +21,16 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{section title}
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,21 +43,19 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
 \usetheme[]{Montpellier}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -75,6 +72,14 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -86,13 +91,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -100,7 +105,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -109,7 +114,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -125,6 +130,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -149,27 +155,25 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 
-\title{第3章: 多重回帰分析：推定}
+\title{第3章: 重回帰分析：推定}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
-6rd ed.~Cengage Learning.}
+Seventh Edition. Cengage Learning.}
 \author{}
 \date{\vspace{-2.5em}2026-01-23}
 
 \begin{document}
 \frame{\titlepage}
 
-\section{準備}\label{ux6e96ux5099}
+\hypertarget{ux6e96ux5099}{%
+\section{準備}\label{ux6e96ux5099}}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
+\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
 \begin{itemize}
 \tightlist
 \item
@@ -183,11 +187,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{Shaded}
 \end{frame}
 
+\hypertarget{ux91cdux56deux5e30ux5206ux6790ux306eux52d5ux6a5f}{%
 \section{3-1
-多重回帰分析の動機}\label{ux591aux91cdux56deux5e30ux5206ux6790ux306eux52d5ux6a5f}
+重回帰分析の動機}\label{ux91cdux56deux5e30ux5206ux6790ux306eux52d5ux6a5f}}
 
 \begin{frame}{単回帰分析の限界}
-\phantomsection\label{ux5358ux56deux5e30ux5206ux6790ux306eux9650ux754c}
+\protect\hypertarget{ux5358ux56deux5e30ux5206ux6790ux306eux9650ux754c}{}
 \begin{itemize}
 \tightlist
 \item
@@ -197,12 +202,12 @@ Introductory Econometrics: A Modern Approach\\
   \(x\) と \(u\)
   が相関している場合（つまり、重要な変数が欠落している場合）、OLS推定量は\textbf{バイアス}を持つ（偏りがある）。
 \item
-  多重回帰分析を用いることで、他の要因を\textbf{明示的に}モデルに組み込み、制御することができる。
+  重回帰分析を用いることで、他の要因を\textbf{明示的に}モデルに組み込み、制御することができる。
 \end{itemize}
 \end{frame}
 
 \begin{frame}{多重回帰モデルの一般形}
-\phantomsection\label{ux591aux91cdux56deux5e30ux30e2ux30c7ux30ebux306eux4e00ux822cux5f62}
+\protect\hypertarget{ux591aux91cdux56deux5e30ux30e2ux30c7ux30ebux306eux4e00ux822cux5f62}{}
 \[ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + u \]
 
 \begin{itemize}
@@ -216,11 +221,12 @@ Introductory Econometrics: A Modern Approach\\
 \end{itemize}
 \end{frame}
 
+\hypertarget{olsux63a8ux5b9aux91cfux306eux89e3ux91c8}{%
 \section{3-2
-OLS推定量の解釈}\label{olsux63a8ux5b9aux91cfux306eux89e3ux91c8}
+OLS推定量の解釈}\label{olsux63a8ux5b9aux91cfux306eux89e3ux91c8}}
 
 \begin{frame}{係数の解釈：セテリス・パリバス}
-\phantomsection\label{ux4fc2ux6570ux306eux89e3ux91c8ux30bbux30c6ux30eaux30b9ux30d1ux30eaux30d0ux30b9}
+\protect\hypertarget{ux4fc2ux6570ux306eux89e3ux91c8ux30bbux30c6ux30eaux30b9ux30d1ux30eaux30d0ux30b9}{}
 \begin{itemize}
 \tightlist
 \item
@@ -239,7 +245,7 @@ OLS推定量の解釈}\label{olsux63a8ux5b9aux91cfux306eux89e3ux91c8}
 \end{frame}
 
 \begin{frame}{``部分''回帰としての解釈}
-\phantomsection\label{ux90e8ux5206ux56deux5e30ux3068ux3057ux3066ux306eux89e3ux91c8}
+\protect\hypertarget{ux90e8ux5206ux56deux5e30ux3068ux3057ux3066ux306eux89e3ux91c8}{}
 \begin{itemize}
 \tightlist
 \item
@@ -250,11 +256,12 @@ OLS推定量の解釈}\label{olsux63a8ux5b9aux91cfux306eux89e3ux91c8}
 \end{itemize}
 \end{frame}
 
+\hypertarget{rux306bux3088ux308bux91cdux56deux5e30ux5206ux6790ux306eux5b9fux88c5}{%
 \section{3-3
-Rによる多重回帰分析の実装}\label{rux306bux3088ux308bux591aux91cdux56deux5e30ux5206ux6790ux306eux5b9fux88c5}
+Rによる重回帰分析の実装}\label{rux306bux3088ux308bux91cdux56deux5e30ux5206ux6790ux306eux5b9fux88c5}}
 
 \begin{frame}[fragile]{例: 賃金方程式の拡張 (\texttt{wage1})}
-\phantomsection\label{ux4f8b-ux8cc3ux91d1ux65b9ux7a0bux5f0fux306eux62e1ux5f35-wage1}
+\protect\hypertarget{ux4f8b-ux8cc3ux91d1ux65b9ux7a0bux5f0fux306eux62e1ux5f35-wage1}{}
 \begin{itemize}
 \item
   単回帰モデル： \[ \log(wage) = \beta_0 + \beta_1 educ + u \]
@@ -266,7 +273,7 @@ Rによる多重回帰分析の実装}\label{rux306bux3088ux308bux591aux91cdux56
 \end{frame}
 
 \begin{frame}[fragile]{Rでの実行}
-\phantomsection\label{rux3067ux306eux5b9fux884c}
+\protect\hypertarget{rux3067ux306eux5b9fux884c}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(wage1)}
@@ -282,22 +289,22 @@ Rによる多重回帰分析の実装}\label{rux306bux3088ux308bux591aux91cdux56
 \end{frame}
 
 \begin{frame}[fragile]{結果の比較}
-\phantomsection\label{ux7d50ux679cux306eux6bd4ux8f03}
+\protect\hypertarget{ux7d50ux679cux306eux6bd4ux8f03}{}
 \begin{longtable}[]{@{}llrr@{}}
 \caption{係数の比較}\tabularnewline
-\toprule\noalign{}
+\toprule
 & Variable & Simple & Multiple \\
-\midrule\noalign{}
+\midrule
 \endfirsthead
-\toprule\noalign{}
+\toprule
 & Variable & Simple & Multiple \\
-\midrule\noalign{}
+\midrule
 \endhead
 (Intercept) & Intercept & 0.584 & 0.284 \\
 educ & educ & 0.083 & 0.092 \\
 exper & exper & NA & 0.004 \\
 tenure & tenure & NA & 0.022 \\
-\bottomrule\noalign{}
+\bottomrule
 \end{longtable}
 
 \begin{itemize}
@@ -310,11 +317,12 @@ tenure & tenure & NA & 0.022 \\
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux6c7aux5b9aux4fc2ux6570-r2}{%
 \section{\texorpdfstring{3-4 決定係数
-\(R^2\)}{3-4 決定係数 R\^{}2}}\label{ux6c7aux5b9aux4fc2ux6570-r2}
+\(R^2\)}{3-4 決定係数 R\^{}2}}\label{ux6c7aux5b9aux4fc2ux6570-r2}}
 
 \begin{frame}{多重回帰における \(R^2\)}
-\phantomsection\label{ux591aux91cdux56deux5e30ux306bux304aux3051ux308b-r2}
+\protect\hypertarget{ux591aux91cdux56deux5e30ux306bux304aux3051ux308b-r2}{}
 \begin{itemize}
 \tightlist
 \item
@@ -333,7 +341,7 @@ tenure & tenure & NA & 0.022 \\
 \end{frame}
 
 \begin{frame}[fragile]{決定係数の計算例}
-\phantomsection\label{ux6c7aux5b9aux4fc2ux6570ux306eux8a08ux7b97ux4f8b}
+\protect\hypertarget{ux6c7aux5b9aux4fc2ux6570ux306eux8a08ux7b97ux4f8b}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{summary}\NormalTok{(model\_simple)}\SpecialCharTok{$}\NormalTok{r.squared}
@@ -361,11 +369,12 @@ tenure & tenure & NA & 0.022 \\
 \end{itemize}
 \end{frame}
 
+\hypertarget{ux9664ux5916ux5909ux6570ux30d0ux30a4ux30a2ux30b9-omitted-variable-bias}{%
 \section{3-5 除外変数バイアス (Omitted Variable
-Bias)}\label{ux9664ux5916ux5909ux6570ux30d0ux30a4ux30a2ux30b9-omitted-variable-bias}
+Bias)}\label{ux9664ux5916ux5909ux6570ux30d0ux30a4ux30a2ux30b9-omitted-variable-bias}}
 
 \begin{frame}{除外変数バイアスとは}
-\phantomsection\label{ux9664ux5916ux5909ux6570ux30d0ux30a4ux30a2ux30b9ux3068ux306f}
+\protect\hypertarget{ux9664ux5916ux5909ux6570ux30d0ux30a4ux30a2ux30b9ux3068ux306f}{}
 \begin{itemize}
 \item
   本来モデルに含めるべき変数（真のモデルにおいて \(\beta \neq 0\)
@@ -383,33 +392,34 @@ Bias)}\label{ux9664ux5916ux5909ux6570ux30d0ux30a4ux30a2ux30b9-omitted-variable-b
 \end{frame}
 
 \begin{frame}{バイアスの方向}
-\phantomsection\label{ux30d0ux30a4ux30a2ux30b9ux306eux65b9ux5411}
+\protect\hypertarget{ux30d0ux30a4ux30a2ux30b9ux306eux65b9ux5411}{}
 バイアスの符号（プラスかマイナスか）は、\(\beta_2\) の符号と、\(x_1\) と
 \(x_2\) の相関（\(\text{Corr}(x_1, x_2)\)）によって決まる。
 
 \begin{longtable}[]{@{}lll@{}}
 \caption{除外変数バイアスの方向}\tabularnewline
-\toprule\noalign{}
+\toprule
 Corr.x1..x2. & beta2 & Bias \\
-\midrule\noalign{}
+\midrule
 \endfirsthead
-\toprule\noalign{}
+\toprule
 Corr.x1..x2. & beta2 & Bias \\
-\midrule\noalign{}
+\midrule
 \endhead
 正 (+) & 正 (+) & 正 (+) \\
 正 (+) & 負 (-) & 負 (-) \\
 負 (-) & 正 (+) & 負 (-) \\
 負 (-) & 負 (-) & 正 (+) \\
-\bottomrule\noalign{}
+\bottomrule
 \end{longtable}
 \end{frame}
 
+\hypertarget{olsux63a8ux5b9aux91cfux306eux5206ux6563}{%
 \section{3-6
-OLS推定量の分散}\label{olsux63a8ux5b9aux91cfux306eux5206ux6563}
+OLS推定量の分散}\label{olsux63a8ux5b9aux91cfux306eux5206ux6563}}
 
 \begin{frame}{OLS推定量の分散}
-\phantomsection\label{olsux63a8ux5b9aux91cfux306eux5206ux6563-1}
+\protect\hypertarget{olsux63a8ux5b9aux91cfux306eux5206ux6563-1}{}
 \begin{itemize}
 \tightlist
 \item
@@ -432,7 +442,7 @@ OLS推定量の分散}\label{olsux63a8ux5b9aux91cfux306eux5206ux6563}
 \end{frame}
 
 \begin{frame}{多重共線性 (Multicollinearity)}
-\phantomsection\label{ux591aux91cdux5171ux7ddaux6027-multicollinearity}
+\protect\hypertarget{ux591aux91cdux5171ux7ddaux6027-multicollinearity}{}
 \begin{itemize}
 \tightlist
 \item
@@ -447,7 +457,7 @@ OLS推定量の分散}\label{olsux63a8ux5b9aux91cfux306eux5206ux6563}
 \end{frame}
 
 \begin{frame}{ガウス・マルコフの定理}
-\phantomsection\label{ux30acux30a6ux30b9ux30deux30ebux30b3ux30d5ux306eux5b9aux7406}
+\protect\hypertarget{ux30acux30a6ux30b9ux30deux30ebux30b3ux30d5ux306eux5b9aux7406}{}
 \begin{itemize}
 \tightlist
 \item
@@ -471,14 +481,15 @@ OLS推定量の分散}\label{olsux63a8ux5b9aux91cfux306eux5206ux6563}
 \end{enumerate}
 \end{frame}
 
-\section{まとめ}\label{ux307eux3068ux3081}
+\hypertarget{ux307eux3068ux3081}{%
+\section{まとめ}\label{ux307eux3068ux3081}}
 
 \begin{frame}{まとめ}
-\phantomsection\label{ux307eux3068ux3081-1}
+\protect\hypertarget{ux307eux3068ux3081-1}{}
 \begin{itemize}
 \tightlist
 \item
-  多重回帰分析は、他の要因を制御した上で変数の効果を推定できる。
+  重回帰分析は、他の要因を制御した上で変数の効果を推定できる。
 \item
   OLS推定量は、セテリス・パリバス（他の条件一定）の効果として解釈する。
 \item

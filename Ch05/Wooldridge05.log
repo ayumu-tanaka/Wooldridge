@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.11)  6 MAR 2026 08:49
+This is LuaHBTeX, Version 1.21.0 (TeX Live 2025)  (format=lualatex 2025.3.11)  6 MAR 2026 12:32
  restricted system commands enabled.
 **Wooldridge05.tex
 (./Wooldridge05.tex
@@ -1946,16 +1946,16 @@ L3 programming layer <2025-01-18>
 
 Here is how much of LuaTeX's memory you used:
  39552 strings out of 475506
- 156366,1648299 words of node,token memory allocated
- 28570 words of node memory still in use:
-   85 hlist, 14 vlist, 164 rule, 12 local_par, 8 math, 317 glue, 16 kern, 58 pen
-alty, 192 glyph, 9695 attribute, 68 glue_spec, 939 attribute_list, 1 shape, 5 wr
+ 156364,1648299 words of node,token memory allocated
+ 28475 words of node memory still in use:
+   85 hlist, 14 vlist, 163 rule, 12 local_par, 8 math, 316 glue, 16 kern, 58 pen
+alty, 191 glyph, 9662 attribute, 68 glue_spec, 936 attribute_list, 1 shape, 5 wr
 ite, 77 user_defined, 2 pdf_literal, 2 pdf_start_link, 2 pdf_end_link, 1 pdf_des
 t, 3 pdf_action, 50 pdf_colorstack nodes
-   avail lists: 1:24,2:23397,3:245,4:1968,5:132,6:165,7:3126,8:29,9:2334,10:29,1
+   avail lists: 1:23,2:23400,3:246,4:1968,5:128,6:165,7:3122,8:29,9:2332,10:29,1
 1:56
  61447 multiletter control sequences out of 65536+600000
- 79 fonts using 57687547 bytes
+ 79 fonts using 57687395 bytes
  128i,14n,116p,1835b,929s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmono12-regular.ot
 f></usr/local/texlive/2025/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.o
@@ -1969,7 +1969,7 @@ ntype/public/lm/lmsans10-regular.otf></usr/local/texlive/2025/texmf-dist/fonts/o
 pentype/public/lm/lmsans12-regular.otf></usr/local/texlive/2025/texmf-dist/fonts
 /opentype/public/lm/lmsans8-regular.otf></usr/local/texlive/2025/texmf-dist/font
 s/opentype/public/haranoaji/HaranoAjiMincho-Regular.otf>
-Output written on Wooldridge05.pdf (22 pages, 139406 bytes).
+Output written on Wooldridge05.pdf (22 pages, 139121 bytes).
 
 PDF statistics: 438 PDF objects out of 1000 (max. 8388607)
  265 compressed objects within 3 object streams

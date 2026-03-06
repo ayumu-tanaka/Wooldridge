@@ -150,7 +150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title"><div class="line-block">第3章: 多重回帰分析：推定</div></h1>
+  <h1 class="title"><div class="line-block">第3章: 重回帰分析：推定</div></h1>
   <h1 class="subtitle"><div class="line-block">Jeffrey Wooldridge (2016).<br />
 Introductory Econometrics: A Modern Approach<br />
 Seventh Edition. Cengage Learning.</div></h1>
@@ -171,8 +171,8 @@ Seventh Edition. Cengage Learning.</div></h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wooldridge)</span></code></pre></div>
 </div>
 
-<div id="多重回帰分析の動機" class="title-slide slide section level1">
-<h1>3-1 多重回帰分析の動機</h1>
+<div id="重回帰分析の動機" class="title-slide slide section level1">
+<h1>3-1 重回帰分析の動機</h1>
 
 </div>
 <div id="単回帰分析の限界" class="slide section level2">
@@ -180,7 +180,7 @@ Seventh Edition. Cengage Learning.</div></h1>
 <ul>
 <li>単回帰モデル <span class="math inline">\(y = \beta_0 + \beta_1 x + u\)</span> では、誤差項 <span class="math inline">\(u\)</span> に <span class="math inline">\(y\)</span> に影響を与える他のすべての要因が含まれている。</li>
 <li><span class="math inline">\(x\)</span> と <span class="math inline">\(u\)</span> が相関している場合（つまり、重要な変数が欠落している場合）、OLS推定量は<strong>バイアス</strong>を持つ（偏りがある）。</li>
-<li>多重回帰分析を用いることで、他の要因を<strong>明示的に</strong>モデルに組み込み、制御することができる。</li>
+<li>重回帰分析を用いることで、他の要因を<strong>明示的に</strong>モデルに組み込み、制御することができる。</li>
 </ul>
 </div>
 <div id="多重回帰モデルの一般形" class="slide section level2">
@@ -215,8 +215,8 @@ Seventh Edition. Cengage Learning.</div></h1>
 </ul>
 </div>
 
-<div id="rによる多重回帰分析の実装" class="title-slide slide section level1">
-<h1>3-3 Rによる多重回帰分析の実装</h1>
+<div id="rによる重回帰分析の実装" class="title-slide slide section level1">
+<h1>3-3 Rによる重回帰分析の実装</h1>
 
 </div>
 <div id="例-賃金方程式の拡張-wage1" class="slide section level2">
@@ -403,7 +403,7 @@ Seventh Edition. Cengage Learning.</div></h1>
 <div id="まとめ-1" class="slide section level2">
 <h1>まとめ</h1>
 <ul>
-<li>多重回帰分析は、他の要因を制御した上で変数の効果を推定できる。</li>
+<li>重回帰分析は、他の要因を制御した上で変数の効果を推定できる。</li>
 <li>OLS推定量は、セテリス・パリバス（他の条件一定）の効果として解釈する。</li>
 <li>重要な変数が欠落していると、除外変数バイアスが生じる可能性がある。</li>
 <li>独立変数間の相関が高いと、推定量の分散が大きくなる（多重共線性）。</li>
