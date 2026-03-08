@@ -239,13 +239,13 @@ $$y_1 = \beta_0 + \beta_1 y_2 + \beta_2 z_1 + u_1$$
 
 ---
 
-## 縮約型方程式と識別条件
+## 誘導型方程式と識別条件
 
-- $y_2$ の縮約型 (reduced form) [15.26]:
+- $y_2$ の誘導型 (reduced form) [15.26]:
 $$y_2 = \pi_0 + \pi_1 z_1 + \pi_2 z_2 + v_2$$
 - 識別条件 [15.27]: $\pi_2 \neq 0$（$z_2$ が $y_2$ と偏相関を持つ）
 - 一般化: 構造方程式 [15.28] に $k-1$ 個の外生変数と1個の内生変数がある場合
-  - 縮約型 [15.30] で $z_k$ の係数 $\pi_k \neq 0$ が識別条件
+  - 誘導型 [15.30] で $z_k$ の係数 $\pi_k \neq 0$ が識別条件
 
 ---
 
@@ -354,7 +354,7 @@ cat("F統計量:", ht$F[2], "\n")  # >> 10 → 弱い操作変数問題なし
   - ちょうど識別 (just-identified): 除外IV数 = 内生変数数
   - 過剰識別 (over-identified): 除外IV数 > 内生変数数 $\Rightarrow$ 検定可能
 - **階数条件 (Rank Condition)**: 各内生変数に対して少なくとも1つの除外変数が部分相関を持つ
-  - 実質的に重要: 各内生変数の縮約型回帰で除外IVが有意かを確認
+  - 実質的に重要: 各内生変数の誘導型回帰で除外IVが有意かを確認
 
 # 15-4 測定誤差問題へのIV応用
 
@@ -398,7 +398,7 @@ coef(summary(res_iv156))["educ", ]
 - 2SLSはOLSより標準誤差が大きい $\Rightarrow$ 本当に内生性があるか確認したい
 - **Hausman型の内生性検定**（回帰ベース）手順:
 
-(i) 縮約型で $y_2$ を全外生変数に回帰し残差 $\hat{v}_2$ を得る
+(i) 誘導型で $y_2$ を全外生変数に回帰し残差 $\hat{v}_2$ を得る
 
 (ii) 構造方程式に $\hat{v}_2$ を追加してOLS推定
 
@@ -406,7 +406,7 @@ coef(summary(res_iv156))["educ", ]
 
 \scriptsize
 ```{r endog_test}
-# Step 1: 縮約型残差
+# Step 1: 誘導型残差
 v_hat <- residuals(lm(educ ~ motheduc + fatheduc + exper + expersq,
                       data = mroz_work))
 # Step 2: 構造方程式 + v_hat
@@ -436,12 +436,20 @@ coef(summary(endog_reg))["v_hat", ]  # t ≈ 1.67
 
 (iii) 検定統計量 $nR^2 \sim \chi^2_q$（$q$ = 過剰識別制約数）
 
+---
+
+## Sargan検定（Rコード）
+
 \scriptsize
+
 ```{r overid_test}
+# 2SLSの残差
 u_hat155 <- residuals(res_2sls155)
+# 2SLSの残差を全外生変数に回帰
 oir_reg <- lm(u_hat155 ~ motheduc + fatheduc + exper + expersq,
               data = mroz_work)
 n  <- nrow(mroz_work)
+# Sargan検定統計量
 nR2 <- n * summary(oir_reg)$r.squared
 cat("nR² =", round(nR2, 4), "\n")
 cat("p値 =", round(pchisq(nR2, df = 1, lower.tail = FALSE), 4), "\n")
