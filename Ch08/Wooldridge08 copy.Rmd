@@ -208,138 +208,19 @@ data.frame(LM = lm_stat, df = 2, p_value = p_val)
 
 ## 加重最小二乗法 (Weighted Least Squares)
 
-- 不均一分散の構造 $Var(u|\mathbf{x}) = \sigma^2 h(\mathbf{x})$ が既知である場合、OLSよりも効率的な推定が可能。
-- 各観測値を $1/\sqrt{h_i}$ で割って変換し、変換モデルにOLSを適用 → これがWLS。
-- Rでは `lm()` の `weights` 引数に $1/h_i$ を指定するだけでよい。
+- 不均一分散の構造 $Var(u|x) = \sigma^2 h(x)$ が既知である場合、OLSよりも効率的な推定が可能。
+- 各観測値を $1/\sqrt{h(x)}$ 倍して重み付けし、変換されたモデルにOLSを適用する。
 - これを**一般化最小二乗法 (GLS)** の一種と呼ぶ。
-
----
-
-## WLS の実装例：Example 8.6（金融資産方程式）
-
-- データ：`k401ksubs`（単身世帯 `fsize == 1`）
-- モデル：$nettfa = \beta_0 + \beta_1 inc + \beta_2 (age-25)^2 + \beta_3 male + \beta_4 e401k + u$
-- 仮定：$Var(u|inc) = \sigma^2 \cdot inc$（分散が所得に比例）
-- 重み：$1/h_i = 1/inc_i$
-
----
-
-## WLS の実装例: Example 8.6（続き）
-
-\footnotesize
-```{r}
-data(k401ksubs)
-# 単身世帯のみを抽出（fsize == 1）
-k401_s <- subset(k401ksubs, fsize == 1)
-
-# OLS推定（比較用）
-ols_w <- lm(nettfa ~ inc + I((age-25)^2) + male + e401k, data = k401_s)
-
-# WLS：Var(u|inc) = σ²*inc を仮定
-# weights に 1/h_i = 1/inc を指定 → 所得が大きい観測は信頼度が低いとみなす
-wls_w <- lm(nettfa ~ inc + I((age-25)^2) + male + e401k,
-            data = k401_s, weights = 1/inc)
-```
-
----
-
-## WLS の実装例: Example 8.6（続き）
-
-\footnotesize
-```{r}
-# OLS と WLS の係数・標準誤差を比較
-round(cbind(OLS_coef  = coef(ols_w),
-            WLS_coef  = coef(wls_w)), 3)
-```
-\normalsize
-
----
-
-## WLS 結果の解釈
-
-\footnotesize
-```{r}
-# 標準誤差の比較
-round(cbind(OLS_se = sqrt(diag(vcov(ols_w))),
-            WLS_se = sqrt(diag(vcov(wls_w)))), 3)
-```
-\normalsize
-
-- `inc` の係数：OLS ≈ 0.82 → WLS ≈ 0.79（高所得層に少ない重みをつけた結果）
-- WLS の標準誤差は OLS より小さい → 分散の構造を正しく利用すれば効率が上がる。
 
 ---
 
 ## 実行可能な一般化最小二乗法 (FGLS)
 
-- $h(\mathbf{x})$ の形が未知の場合、データから推定する → **FGLS（実行可能GLS）**。
-- 分散関数のモデル化：$Var(u|\mathbf{x}) = \sigma^2 \exp(\delta_0 + \delta_1 x_1 + \cdots + \delta_k x_k)$
-    - 指数関数を使うので推定された分散は常に正。
-- **FGLS の手順：**
-    1. OLSを実行し残差 $\hat{u}$ を取得。
-    2. $\log(\hat{u}^2)$ を独立変数で回帰し、予測値 $\hat{g}_i$ を得る。
-    3. $\hat{h}_i = \exp(\hat{g}_i)$ を計算（分散の推定値）。
-    4. 重み $1/\hat{h}_i$ でWLSを実行。
-
----
-
-## FGLS の実装例：Example 8.7（タバコ需要関数）
-
-- データ：`smoke`
-- モデル：$cigs = \beta_0 + \beta_1 \log(income) + \beta_2 \log(cigpric) + \beta_3 educ + \beta_4 age + \beta_5 age^2 + \beta_6 restaurn + u$
-
-\footnotesize
-```{r}
-data(smoke)
-
-# ステップ1：OLS推定（残差を取得するため）
-ols_c <- lm(cigs ~ log(income) + log(cigpric) + educ +
-              age + I(age^2) + restaurn, data = smoke)
-```
-\normalsize
-
----
-
-\footnotesize
-```{r}
-# ステップ2：残差の2乗を対数変換 → log(û²)
-# log(0) を避けるため resid()^2 が 0 になる場合は注意（通常は問題ない）
-log_u2 <- log(resid(ols_c)^2)
-
-# ステップ3：log(û²) を元の説明変数で回帰（分散関数を推定）
-# 予測値 ghat = log(h_i) の推定値
-var_reg <- lm(log_u2 ~ log(income) + log(cigpric) + educ +
-                age + I(age^2) + restaurn, data = smoke)
-
-# ステップ4：hhat = exp(ghat) → 各観測の分散推定値（常に正）
-hhat <- exp(fitted(var_reg))
-```
-\normalsize
-
----
-
-\footnotesize
-```{r}
-# ステップ5：WLS（重み = 1/hhat）で本来のモデルを推定
-# 分散が大きいと推定された観測には小さな重みがつく
-fgls_c <- lm(cigs ~ log(income) + log(cigpric) + educ +
-               age + I(age^2) + restaurn,
-             data = smoke, weights = 1/hhat)
-
-# OLS と FGLS の係数比較（テキスト式(8.35)・(8.36)に対応）
-round(cbind(OLS  = coef(ols_c),
-            FGLS = coef(fgls_c)), 3)
-```
-\normalsize
-
----
-
-## FGLS 結果の解釈
-
-- OLS の `log(income)` 係数 ≈ 0.880（有意でない）→ FGLS では ≈ 1.30（有意）
-- BP検定で強い不均一分散を確認済み（$LM \approx 32.3$, $p < 0.001$）。
-- FGLS は分散の大きい観測の影響を抑えることで、係数推定を改善。
-- OLS と FGLS の係数が大きく異なる場合は、モデルの関数形の誤特定の可能性もある点に注意。
+- 関数 $h(x)$ の形が未知の場合、データから $h(x)$ を推定してWLSを行う。
+- 一般的な手順：
+    1. $\log(\hat{u}^2)$ を独立変数で回帰し、予測値 $\hat{g}$ を得る。
+    2. 重み $\hat{h} = \exp(\hat{g})$ を計算する。
+    3. 重み $1/\hat{h}$ を用いてWLSを実行する。
 
 ---
 

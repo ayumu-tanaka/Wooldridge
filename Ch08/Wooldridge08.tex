@@ -1,18 +1,16 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   ignorenonframetext,
 ]{beamer}
+\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
+% remove section numbering
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -21,16 +19,19 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -43,19 +44,21 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
-\usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
+\usepackage{lmodern}
 \usetheme[]{Montpellier}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \IfFileExists{microtype.sty}{% use microtype if available
@@ -72,14 +75,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
-\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -91,13 +86,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -105,7 +100,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -114,16 +109,22 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 %\documentclass[unicode,10pt]{beamer}% 'unicode'が必要
 \usepackage{luatexja}% 日本語を使う場合は必須
 %\usepackage[japanese]{babel}	
@@ -148,25 +149,27 @@
 }
 \makeatother
 % スライド番号の表示 %%%%%%%%%%%%%%%%%%%
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{第8章: 重回帰分析：不均一分散}
 \subtitle{Jeffrey Wooldridge (2016).\\
 Introductory Econometrics: A Modern Approach\\
 Seventh Edition. Cengage Learning.}
 \author{}
-\date{\vspace{-2.5em}2026-03-06}
+\date{\vspace{-2.5em}2026-03-08}
 
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{ux6e96ux5099}{%
-\section{準備}\label{ux6e96ux5099}}
+\section{準備}\label{ux6e96ux5099}
 
 \begin{frame}[fragile]{必要なパッケージの読み込み}
-\protect\hypertarget{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}{}
+\phantomsection\label{ux5fc5ux8981ux306aux30d1ux30c3ux30b1ux30fcux30b8ux306eux8aadux307fux8fbcux307f}
 \begin{itemize}
 \tightlist
 \item
@@ -204,12 +207,11 @@ Seventh Edition. Cengage Learning.}
 \end{Shaded}
 \end{frame}
 
-\hypertarget{ux4e0dux5747ux4e00ux5206ux6563ux306eux542bux610f}{%
 \section{8-1
-不均一分散の含意}\label{ux4e0dux5747ux4e00ux5206ux6563ux306eux542bux610f}}
+不均一分散の含意}\label{ux4e0dux5747ux4e00ux5206ux6563ux306eux542bux610f}
 
 \begin{frame}{不均一分散 (Heteroskedasticity) とは}
-\protect\hypertarget{ux4e0dux5747ux4e00ux5206ux6563-heteroskedasticity-ux3068ux306f}{}
+\phantomsection\label{ux4e0dux5747ux4e00ux5206ux6563-heteroskedasticity-ux3068ux306f}
 \begin{itemize}
 \tightlist
 \item
@@ -223,7 +225,7 @@ Seventh Edition. Cengage Learning.}
 \end{frame}
 
 \begin{frame}{不均一分散がOLSに与える影響}
-\protect\hypertarget{ux4e0dux5747ux4e00ux5206ux6563ux304colsux306bux4e0eux3048ux308bux5f71ux97ff}{}
+\phantomsection\label{ux4e0dux5747ux4e00ux5206ux6563ux304colsux306bux4e0eux3048ux308bux5f71ux97ff}
 \begin{enumerate}
 \tightlist
 \item
@@ -238,12 +240,11 @@ Seventh Edition. Cengage Learning.}
 \end{enumerate}
 \end{frame}
 
-\hypertarget{ux4e0dux5747ux4e00ux5206ux6563ux306bux9811ux5065ux306aux63a8ux8ad6}{%
 \section{8-2
-不均一分散に頑健な推論}\label{ux4e0dux5747ux4e00ux5206ux6563ux306bux9811ux5065ux306aux63a8ux8ad6}}
+不均一分散に頑健な推論}\label{ux4e0dux5747ux4e00ux5206ux6563ux306bux9811ux5065ux306aux63a8ux8ad6}
 
 \begin{frame}{頑健な標準誤差 (Robust Standard Errors)}
-\protect\hypertarget{ux9811ux5065ux306aux6a19ux6e96ux8aa4ux5dee-robust-standard-errors}{}
+\phantomsection\label{ux9811ux5065ux306aux6a19ux6e96ux8aa4ux5dee-robust-standard-errors}
 \begin{itemize}
 \tightlist
 \item
@@ -259,7 +260,7 @@ Seventh Edition. Cengage Learning.}
 \end{frame}
 
 \begin{frame}[fragile]{Rでの実装例 (\texttt{gpa3})}
-\protect\hypertarget{rux3067ux306eux5b9fux88c5ux4f8b-gpa3}{}
+\phantomsection\label{rux3067ux306eux5b9fux88c5ux4f8b-gpa3}
 \footnotesize
 
 \begin{Shaded}
@@ -286,54 +287,74 @@ Seventh Edition. Cengage Learning.}
 \normalsize
 \end{frame}
 
-\hypertarget{ux4e0dux5747ux4e00ux5206ux6563ux306eux691cux5b9a}{%
 \section{8-3
-不均一分散の検定}\label{ux4e0dux5747ux4e00ux5206ux6563ux306eux691cux5b9a}}
+不均一分散の検定}\label{ux4e0dux5747ux4e00ux5206ux6563ux306eux691cux5b9a}
 
-\begin{frame}{ブロイシュ＝ペーガン検定 (Breusch-Pagan Test)}
-\protect\hypertarget{ux30d6ux30edux30a4ux30b7ux30e5ux30daux30fcux30acux30f3ux691cux5b9a-breusch-pagan-test}{}
+\begin{frame}{なぜ検定するのか？}
+\phantomsection\label{ux306aux305cux691cux5b9aux3059ux308bux306eux304b}
 \begin{itemize}
 \tightlist
 \item
-  \(H_0: Var(u|x_1, \dots, x_k) = \sigma^2\) （等分散）
+  不均一分散が疑われる場合、まず統計的に確認することが重要。
 \item
-  手順：
+  \textbf{検定の役割：}
+  「等分散という帰無仮説を棄却できるか」を判断する。
+\item
+  主な検定方法：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{ブロイシュ＝ペーガン (BP)
+    検定}：分散が説明変数の線形関数である場合に強力。
+  \item
+    \textbf{ホワイト (White)
+    検定}：より一般的な不均一分散（非線形など）も検出できる。
+  \end{itemize}
+\item
+  \(p\)
+  値が小さい（例：0.05未満）なら、等分散の仮定を棄却し、頑健な標準誤差やWLSで対応する。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ブロイシュ＝ペーガン検定 (Breusch-Pagan Test)}
+\phantomsection\label{ux30d6ux30edux30a4ux30b7ux30e5ux30daux30fcux30acux30f3ux691cux5b9a-breusch-pagan-test}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{帰無仮説}
+  \(H_0: Var(u|x_1, \dots, x_k) = \sigma^2\)（等分散、不均一分散なし）
+\item
+  \textbf{対立仮説} \(H_1\)：分散が少なくとも1つの \(x_j\)
+  に依存する（不均一分散あり）
+\item
+  \textbf{直感：} もし分散が \(x_j\) に無関係なら、\(\hat{u}^2\) を
+  \(x_j\) で回帰しても \(R^2 \approx 0\) になるはず。
+\item
+  \textbf{手順：}
 
   \begin{enumerate}
   \tightlist
   \item
     OLS残差 \(\hat{u}\) を求める。
   \item
-    残差の2乗 \(\hat{u}^2\) を独立変数 \(x_j\) で回帰する（補助回帰）。
+    残差の2乗 \(\hat{u}^2\) を独立変数 \(x_1, \dots, x_k\)
+    で\textbf{補助回帰}する。
   \item
-    その回帰の \(F\) 統計量または \(LM = n \cdot R^2\)
-    を用いて検定する。
+    \(LM = n \cdot R^2\) を計算し、自由度 \(k\) の \(\chi^2\) 分布で
+    \(p\) 値を求める。
   \end{enumerate}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{ホワイト検定 (White Test)}
-\protect\hypertarget{ux30dbux30efux30a4ux30c8ux691cux5b9a-white-test}{}
-\begin{itemize}
-\tightlist
-\item
-  BP検定よりも一般的な不均一分散（非線形な形態など）を検出できる。
-\item
-  手順：残差の2乗 \(\hat{u}^2\)
-  を、独立変数、その2乗、および交差項で回帰する。
-\item
-  変数が多いと自由度が急激に減少するため、予測値 \(\hat{y}\) とその2乗
-  \(\hat{y}^2\) を用いる簡略版がよく使われる。
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{検定の実装例}
-\protect\hypertarget{ux691cux5b9aux306eux5b9fux88c5ux4f8b}{}
+\begin{frame}[fragile]{BP検定の実装例（\texttt{gpa3}データ、8-2の\texttt{res}を使用）}
+\phantomsection\label{bpux691cux5b9aux306eux5b9fux88c5ux4f8bgpa3ux30c7ux30fcux30bf8-2ux306eresux3092ux4f7fux7528}
 \footnotesize
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# BP検定 (lmtestパッケージ)}
+\CommentTok{\# bptest()はlmtestパッケージの関数}
+\CommentTok{\# 引数にOLS結果オブジェクト(res)を渡すだけで自動的にBP検定を実行}
 \FunctionTok{bptest}\NormalTok{(res)}
 \end{Highlighting}
 \end{Shaded}
@@ -348,70 +369,360 @@ Seventh Edition. Cengage Learning.}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# ホワイト検定（簡略版）}
-\CommentTok{\# 手動計算: 残差2乗を予測値とその2乗で回帰}
-\NormalTok{u2 }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(res)}\SpecialCharTok{\^{}}\DecValTok{2}
-\NormalTok{yhat }\OtherTok{\textless{}{-}} \FunctionTok{fitted}\NormalTok{(res)}
-\NormalTok{white\_reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(u2 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ yhat }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(yhat}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
-\CommentTok{\# LM統計量 (n * R2) と p値}
-\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(u2)}
-\NormalTok{lm\_stat }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{summary}\NormalTok{(white\_reg)}\SpecialCharTok{$}\NormalTok{r.squared}
-\NormalTok{p\_val }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(lm\_stat, }\AttributeTok{df =} \DecValTok{2}\NormalTok{)}
-\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{LM =}\NormalTok{ lm\_stat, }\AttributeTok{p\_value =}\NormalTok{ p\_val)}
+\CommentTok{\# 出力の見方：}
+\CommentTok{\#   BP = LM統計量 (n * R\^{}2\_補助回帰)}
+\CommentTok{\#   df = 補助回帰の説明変数の数（= 元モデルの k）}
+\CommentTok{\#   p{-}value が小さい → H0（等分散）を棄却 → 不均一分散の証拠あり}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-##         LM   p_value
-## 1 1.264452 0.5314075
-\end{verbatim}
 
 \normalsize
 \end{frame}
 
-\hypertarget{ux52a0ux91cdux6700ux5c0fux4e8cux4e57ux6cd5-wls}{%
-\section{8-4 加重最小二乗法
-(WLS)}\label{ux52a0ux91cdux6700ux5c0fux4e8cux4e57ux6cd5-wls}}
+\begin{frame}
+\end{frame}
 
-\begin{frame}{加重最小二乗法 (Weighted Least Squares)}
-\protect\hypertarget{ux52a0ux91cdux6700ux5c0fux4e8cux4e57ux6cd5-weighted-least-squares}{}
+\begin{frame}{ホワイト検定 (White Test)}
+\phantomsection\label{ux30dbux30efux30a4ux30c8ux691cux5b9a-white-test}
 \begin{itemize}
 \tightlist
 \item
-  不均一分散の構造 \(Var(u|x) = \sigma^2 h(x)\)
+  \textbf{帰無仮説} \(H_0\)：等分散（BP検定と同じ）
+\item
+  \textbf{BP検定との違い：}
+  補助回帰に説明変数の\textbf{2乗項・交差項}も含める。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    分散が非線形な形で \(x_j\) に依存する場合も検出できる。
+  \end{itemize}
+\item
+  \textbf{問題点：} 変数が多いと交差項が膨大になり自由度が急減する。
+\item
+  \textbf{簡略版（推奨）：} OLS予測値 \(\hat{y}\) とその2乗
+  \(\hat{y}^2\) を補助回帰に使う。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\hat{y}\)
+    は全説明変数の線形結合なので、2乗項・交差項の情報を集約している。
+  \item
+    自由度の消費は常に2（\(\hat{y}\) と \(\hat{y}^2\) の2変数）。
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{ホワイト検定の実装例（簡略版）}
+\phantomsection\label{ux30dbux30efux30a4ux30c8ux691cux5b9aux306eux5b9fux88c5ux4f8bux7c21ux7565ux7248}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ステップ1：OLS残差の2乗と予測値を取得}
+\NormalTok{u2   }\OtherTok{\textless{}{-}} \FunctionTok{resid}\NormalTok{(res)}\SpecialCharTok{\^{}}\DecValTok{2}    \CommentTok{\# 残差の2乗（被説明変数）}
+\NormalTok{yhat }\OtherTok{\textless{}{-}} \FunctionTok{fitted}\NormalTok{(res)     }\CommentTok{\# OLS予測値（= 説明変数の線形結合）}
+
+\CommentTok{\# ステップ2：補助回帰 — 残差2乗 を yhat と yhat\^{}2 で説明}
+\CommentTok{\# I(yhat\^{}2) はRの数式内で yhat の2乗を計算する記法}
+\NormalTok{white\_reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(u2 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ yhat }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(yhat}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{ホワイト検定：LM統計量の計算}
+\phantomsection\label{ux30dbux30efux30a4ux30c8ux691cux5b9almux7d71ux8a08ux91cfux306eux8a08ux7b97}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# LM統計量 = n * R\^{}2（補助回帰のR\^{}2）}
+\NormalTok{n        }\OtherTok{\textless{}{-}} \FunctionTok{nobs}\NormalTok{(res)                         }\CommentTok{\# サンプルサイズ}
+\NormalTok{lm\_stat  }\OtherTok{\textless{}{-}}\NormalTok{ n }\SpecialCharTok{*} \FunctionTok{summary}\NormalTok{(white\_reg)}\SpecialCharTok{$}\NormalTok{r.squared  }\CommentTok{\# LM統計量}
+\CommentTok{\# 簡略版ホワイト検定の自由度 = 2（yhat と yhat\^{}2 の2変数）}
+\NormalTok{p\_val    }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pchisq}\NormalTok{(lm\_stat, }\AttributeTok{df =} \DecValTok{2}\NormalTok{)      }\CommentTok{\# χ\^{}2(2) のp値}
+\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{LM =}\NormalTok{ lm\_stat, }\AttributeTok{df =} \DecValTok{2}\NormalTok{, }\AttributeTok{p\_value =}\NormalTok{ p\_val)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         LM df   p_value
+## 1 1.264452  2 0.5314075
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# p値が小さい → H0（等分散）を棄却 → 何らかの不均一分散が存在する}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}{BP検定 vs.~ホワイト検定：使い分け}
+\phantomsection\label{bpux691cux5b9a-vs.-ux30dbux30efux30a4ux30c8ux691cux5b9aux4f7fux3044ux5206ux3051}
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& BP検定 & ホワイト検定（簡略版） \\
+\midrule\noalign{}
+\endhead
+補助回帰の説明変数 & 元の \(x_j\) のみ & \(\hat{y},\ \hat{y}^2\) \\
+自由度の消費 & \(k\)（変数の数） & 常に \(2\) \\
+検出できる不均一分散 & 線形な依存 & 線形・非線形 \\
+推奨される場面 & 変数数が少ない場合 & 変数数が多い場合 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\section{8-4 加重最小二乗法
+(WLS)}\label{ux52a0ux91cdux6700ux5c0fux4e8cux4e57ux6cd5-wls}
+
+\begin{frame}[fragile]{加重最小二乗法 (Weighted Least Squares)}
+\phantomsection\label{ux52a0ux91cdux6700ux5c0fux4e8cux4e57ux6cd5-weighted-least-squares}
+\begin{itemize}
+\tightlist
+\item
+  不均一分散の構造 \(Var(u|\mathbf{x}) = \sigma^2 h(\mathbf{x})\)
   が既知である場合、OLSよりも効率的な推定が可能。
 \item
-  各観測値を \(1/\sqrt{h(x)}\)
-  倍して重み付けし、変換されたモデルにOLSを適用する。
+  各観測値を \(1/\sqrt{h_i}\) で割って変換し、変換モデルにOLSを適用 →
+  これがWLS。
+\item
+  Rでは \texttt{lm()} の \texttt{weights} 引数に \(1/h_i\)
+  を指定するだけでよい。
 \item
   これを\textbf{一般化最小二乗法 (GLS)} の一種と呼ぶ。
 \end{itemize}
 \end{frame}
 
-\begin{frame}{実行可能な一般化最小二乗法 (FGLS)}
-\protect\hypertarget{ux5b9fux884cux53efux80fdux306aux4e00ux822cux5316ux6700ux5c0fux4e8cux4e57ux6cd5-fgls}{}
+\begin{frame}[fragile]{WLS の実装例：Example 8.6（金融資産方程式）}
+\phantomsection\label{wls-ux306eux5b9fux88c5ux4f8bexample-8.6ux91d1ux878dux8cc7ux7523ux65b9ux7a0bux5f0f}
 \begin{itemize}
 \tightlist
 \item
-  関数 \(h(x)\) の形が未知の場合、データから \(h(x)\)
-  を推定してWLSを行う。
+  データ：\texttt{k401ksubs}（単身世帯 \texttt{fsize\ ==\ 1}）
 \item
-  一般的な手順：
+  モデル：\(nettfa = \beta_0 + \beta_1 inc + \beta_2 (age-25)^2 + \beta_3 male + \beta_4 e401k + u\)
+\item
+  仮定：\(Var(u|inc) = \sigma^2 \cdot inc\)（分散が所得に比例）
+\item
+  重み：\(1/h_i = 1/inc_i\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{WLS の実装例: Example 8.6（続き）}
+\phantomsection\label{wls-ux306eux5b9fux88c5ux4f8b-example-8.6ux7d9aux304d}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(k401ksubs)}
+\CommentTok{\# 単身世帯のみを抽出（fsize == 1）}
+\NormalTok{k401\_s }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(k401ksubs, fsize }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# OLS推定（比較用）}
+\NormalTok{ols\_w }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(nettfa }\SpecialCharTok{\textasciitilde{}}\NormalTok{ inc }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{((age}\DecValTok{{-}25}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ male }\SpecialCharTok{+}\NormalTok{ e401k, }\AttributeTok{data =}\NormalTok{ k401\_s)}
+
+\CommentTok{\# WLS：Var(u|inc) = σ²*inc を仮定}
+\CommentTok{\# weights に 1/h\_i = 1/inc を指定 → 所得が大きい観測は信頼度が低いとみなす}
+\NormalTok{wls\_w }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(nettfa }\SpecialCharTok{\textasciitilde{}}\NormalTok{ inc }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{((age}\DecValTok{{-}25}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ male }\SpecialCharTok{+}\NormalTok{ e401k,}
+            \AttributeTok{data =}\NormalTok{ k401\_s, }\AttributeTok{weights =} \DecValTok{1}\SpecialCharTok{/}\NormalTok{inc)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{WLS の実装例: Example 8.6（続き）}
+\phantomsection\label{wls-ux306eux5b9fux88c5ux4f8b-example-8.6ux7d9aux304d-1}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# OLS と WLS の係数・標準誤差を比較}
+\FunctionTok{round}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\AttributeTok{OLS\_coef  =} \FunctionTok{coef}\NormalTok{(ols\_w),}
+            \AttributeTok{WLS\_coef  =} \FunctionTok{coef}\NormalTok{(wls\_w)), }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 OLS_coef WLS_coef
+## (Intercept)      -20.985  -16.703
+## inc                0.771    0.740
+## I((age - 25)^2)    0.025    0.018
+## male               2.478    1.841
+## e401k              6.886    5.188
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{WLS 結果の解釈}
+\phantomsection\label{wls-ux7d50ux679cux306eux89e3ux91c8}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 標準誤差の比較}
+\FunctionTok{round}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\AttributeTok{OLS\_se =} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{vcov}\NormalTok{(ols\_w))),}
+            \AttributeTok{WLS\_se =} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{diag}\NormalTok{(}\FunctionTok{vcov}\NormalTok{(wls\_w)))), }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 OLS_se WLS_se
+## (Intercept)      2.472  1.958
+## inc              0.061  0.064
+## I((age - 25)^2)  0.003  0.002
+## male             2.048  1.564
+## e401k            2.123  1.703
+\end{verbatim}
+
+\normalsize
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{inc} の係数：OLS ≈ 0.82 → WLS ≈
+  0.79（高所得層に少ない重みをつけた結果）
+\item
+  WLS の標準誤差は OLS より小さい →
+  分散の構造を正しく利用すれば効率が上がる。
+\end{itemize}
+\end{frame}
+
+\begin{frame}{実行可能な一般化最小二乗法 (FGLS)}
+\phantomsection\label{ux5b9fux884cux53efux80fdux306aux4e00ux822cux5316ux6700ux5c0fux4e8cux4e57ux6cd5-fgls}
+\begin{itemize}
+\tightlist
+\item
+  \(h(\mathbf{x})\) の形が未知の場合、データから推定する →
+  \textbf{FGLS（実行可能GLS）}。
+\item
+  分散関数のモデル化：\(Var(u|\mathbf{x}) = \sigma^2 \exp(\delta_0 + \delta_1 x_1 + \cdots + \delta_k x_k)\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    指数関数を使うので推定された分散は常に正。
+  \end{itemize}
+\item
+  \textbf{FGLS の手順：}
 
   \begin{enumerate}
   \tightlist
   \item
-    \(\log(\hat{u}^2)\) を独立変数で回帰し、予測値 \(\hat{g}\) を得る。
+    OLSを実行し残差 \(\hat{u}\) を取得。
   \item
-    重み \(\hat{h} = \exp(\hat{g})\) を計算する。
+    \(\log(\hat{u}^2)\) を独立変数で回帰し、予測値 \(\hat{g}_i\)
+    を得る。
   \item
-    重み \(1/\hat{h}\) を用いてWLSを実行する。
+    \(\hat{h}_i = \exp(\hat{g}_i)\) を計算（分散の推定値）。
+  \item
+    重み \(1/\hat{h}_i\) でWLSを実行。
   \end{enumerate}
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{FGLS の実装例：Example 8.7（タバコ需要関数）}
+\phantomsection\label{fgls-ux306eux5b9fux88c5ux4f8bexample-8.7ux30bfux30d0ux30b3ux9700ux8981ux95a2ux6570}
+\begin{itemize}
+\tightlist
+\item
+  データ：\texttt{smoke}
+\item
+  モデル：\(cigs = \beta_0 + \beta_1 \log(income) + \beta_2 \log(cigpric) + \beta_3 educ + \beta_4 age + \beta_5 age^2 + \beta_6 restaurn + u\)
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(smoke)}
+
+\CommentTok{\# ステップ1：OLS推定（残差を取得するため）}
+\NormalTok{ols\_c }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(cigs }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(income) }\SpecialCharTok{+} \FunctionTok{log}\NormalTok{(cigpric) }\SpecialCharTok{+}\NormalTok{ educ }\SpecialCharTok{+}
+\NormalTok{              age }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(age}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ restaurn, }\AttributeTok{data =}\NormalTok{ smoke)}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ステップ2：残差の2乗を対数変換 → log(û²)}
+\CommentTok{\# log(0) を避けるため resid()\^{}2 が 0 になる場合は注意（通常は問題ない）}
+\NormalTok{log\_u2 }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(}\FunctionTok{resid}\NormalTok{(ols\_c)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# ステップ3：log(û²) を元の説明変数で回帰（分散関数を推定）}
+\CommentTok{\# 予測値 ghat = log(h\_i) の推定値}
+\NormalTok{var\_reg }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(log\_u2 }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(income) }\SpecialCharTok{+} \FunctionTok{log}\NormalTok{(cigpric) }\SpecialCharTok{+}\NormalTok{ educ }\SpecialCharTok{+}
+\NormalTok{                age }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(age}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ restaurn, }\AttributeTok{data =}\NormalTok{ smoke)}
+
+\CommentTok{\# ステップ4：hhat = exp(ghat) → 各観測の分散推定値（常に正）}
+\NormalTok{hhat }\OtherTok{\textless{}{-}} \FunctionTok{exp}\NormalTok{(}\FunctionTok{fitted}\NormalTok{(var\_reg))}
+\end{Highlighting}
+\end{Shaded}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ステップ5：WLS（重み = 1/hhat）で本来のモデルを推定}
+\CommentTok{\# 分散が大きいと推定された観測には小さな重みがつく}
+\NormalTok{fgls\_c }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(cigs }\SpecialCharTok{\textasciitilde{}} \FunctionTok{log}\NormalTok{(income) }\SpecialCharTok{+} \FunctionTok{log}\NormalTok{(cigpric) }\SpecialCharTok{+}\NormalTok{ educ }\SpecialCharTok{+}
+\NormalTok{               age }\SpecialCharTok{+} \FunctionTok{I}\NormalTok{(age}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+}\NormalTok{ restaurn,}
+             \AttributeTok{data =}\NormalTok{ smoke, }\AttributeTok{weights =} \DecValTok{1}\SpecialCharTok{/}\NormalTok{hhat)}
+
+\CommentTok{\# OLS と FGLS の係数比較（テキスト式(8.35)・(8.36)に対応）}
+\FunctionTok{round}\NormalTok{(}\FunctionTok{cbind}\NormalTok{(}\AttributeTok{OLS  =} \FunctionTok{coef}\NormalTok{(ols\_c),}
+            \AttributeTok{FGLS =} \FunctionTok{coef}\NormalTok{(fgls\_c)), }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 OLS   FGLS
+## (Intercept)  -3.640  5.635
+## log(income)   0.880  1.295
+## log(cigpric) -0.751 -2.940
+## educ         -0.501 -0.463
+## age           0.771  0.482
+## I(age^2)     -0.009 -0.006
+## restaurn     -2.825 -3.461
+\end{verbatim}
+
+\normalsize
+\end{frame}
+
+\begin{frame}[fragile]{FGLS 結果の解釈}
+\phantomsection\label{fgls-ux7d50ux679cux306eux89e3ux91c8}
+\begin{itemize}
+\tightlist
+\item
+  OLS の \texttt{log(income)} 係数 ≈ 0.880（有意でない）→ FGLS では ≈
+  1.30（有意）
+\item
+  BP検定で強い不均一分散を確認済み（\(LM \approx 32.3\),
+  \(p < 0.001\)）。
+\item
+  FGLS は分散の大きい観測の影響を抑えることで、係数推定を改善。
+\item
+  OLS と FGLS
+  の係数が大きく異なる場合は、モデルの関数形の誤特定の可能性もある点に注意。
+\end{itemize}
+\end{frame}
+
 \begin{frame}{まとめ}
-\protect\hypertarget{ux307eux3068ux3081}{}
+\phantomsection\label{ux307eux3068ux3081}
 \begin{itemize}
 \tightlist
 \item
